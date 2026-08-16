@@ -40,12 +40,12 @@ ITU_OBJECTS = $(wildcard $(ITU_DIR)/*.o)
 CODEC_MODULES = g723_1_decoder.cpp g711u_coder.cpp
 
 # Главный мост интеграции с СУБД InterBase
-TARGET = sosna_udf.dll
 SRC = sosna_udf.cpp
+TARGET = sosna_udf.dll
 
 # Файлы тестового стенда
-TEST_TARGET = test_runner.exe
 TEST_SRC = test_transcode_g723_to_pcmu.cpp
+TEST_TARGET = test_runner.exe
 
 .PHONY: all build test run clean info
 
@@ -60,14 +60,14 @@ $(ITU_DIR)/%.o: $(ITU_DIR)/%.C
 	$(GCC) $(ITU_CFLAGS) -c $< -o $@
 
 $(TARGET): $(SRC) $(CODEC_MODULES) $(ITU_OBJECTS)
-	@echo ====================================================
+	@echo ==============================================================
 	@echo  Начинается сборка UDF-библиотеки для InterBase...
-	@echo ====================================================
+	@echo ==============================================================
 	$(CC) $(CFLAGS) -o $(TARGET) $(SRC) $(CODEC_MODULES) $(ITU_OBJECTS)
 	@echo  
 	@echo  [УСПЕХ] Сборка библиотеки завершена!
-	@echo  Перенесите $(TARGET) в папку установки Interbase\UDF
-	@echo ====================================================
+	@echo  Перенесите файл $(TARGET) в папку установки Interbase\UDF
+	@echo ==============================================================
 
 ## test: Сборка автономного тестового стенда под типы данных Annex B
 test: $(TARGET) $(TEST_SRC)
@@ -88,9 +88,9 @@ run: test
 ## clean: Полная очистка всех артефактов компиляции, логов и сгенерированных аудио-файлов
 clean:
 	@echo  Очистка временных файлов и бинарников...
-	@if exist $(TARGET) (del /f /q $(TARGET) && echo  Файл $(TARGET) удален.)
-	@if exist $(TEST_TARGET) (del /f /q $(TEST_TARGET) && echo  Файл $(TEST_TARGET) удален.)
-	@if exist $(ITU_DIR)\*.o del /f /q $(ITU_DIR)\*.o && echo  Файлы компиляции декодера ITU-T удалены.)
+	@if exist $(TARGET) (del /f /q $(TARGET) && echo  Конечный файл $(TARGET) удален.)
+	@if exist $(TEST_TARGET) (del /f /q $(TEST_TARGET) && echo  Конечный файл $(TEST_TARGET) удален.)
+	@if exist $(ITU_DIR)\*.o del /f /q $(ITU_DIR)\*.o && echo  Си-объекты декодера ITU-T удалены.)
 	@if exist test_input.g723 (del /f /q test_input.g723 && echo  Тестовый входной файл удален.)
 	@if exist test_output.pcmu (del /f /q test_output.pcmu && echo  Тестовый выходной файл удален.)
 	@echo  [ОК] Очистка успешно завершена.
