@@ -7,7 +7,7 @@
 #define G723_FRAME_SIZE_SID 4
 #define G723_SAMPLES_PER_FRAME 240
 
-// Внутренние структуры InterBase для работы с BLOB
+// Р’РЅСѓС‚СЂРµРЅРЅРёРµ СЃС‚СЂСѓРєС‚СѓСЂС‹ InterBase РґР»СЏ СЂР°Р±РѕС‚С‹ СЃ BLOB
 typedef struct blob_packet {
     short   blob_packet_length;
     char    blob_packet_data[1];
@@ -22,7 +22,7 @@ typedef struct blob_callback {
     void    (*blob_put_segment) (void*, const char*, unsigned short);
 } *BLOB_CB;
 
-// Таблица расчетов LUT для PCMU
+// РўР°Р±Р»РёС†Р° СЂР°СЃС‡РµС‚РѕРІ LUT РґР»СЏ PCMU
 static unsigned char g_linear_to_pcmu_table[65536];
 static bool g_table_initialized = false;
 
@@ -76,7 +76,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
     return TRUE;
 }
 
-// ЭКСПОРТИРУЕМАЯ ФУНКЦИЯ: Работает напрямую через потоковое чтение/запись BLOB с поддержкой PLC
+// Р­РљРЎРџРћР РўРР РЈР•РњРђРЇ Р¤РЈРќРљР¦РРЇ: Р Р°Р±РѕС‚Р°РµС‚ РЅР°РїСЂСЏРјСѓСЋ С‡РµСЂРµР· РїРѕС‚РѕРєРѕРІРѕРµ С‡С‚РµРЅРёРµ/Р·Р°РїРёСЃСЊ BLOB СЃ РїРѕРґРґРµСЂР¶РєРѕР№ PLC
 extern "C" __declspec(dllexport) void __stdcall transcode_g723_blob(BLOB_CB in_blob, BLOB_CB out_blob) {
     if (!in_blob || !out_blob || !in_blob->blob_handle || !in_blob->blob_get_segment) {
         return;
@@ -92,12 +92,12 @@ extern "C" __declspec(dllexport) void __stdcall transcode_g723_blob(BLOB_CB in_b
 
     short pcm_frame[G723_SAMPLES_PER_FRAME];
     
-    // БУФЕР ДЛЯ PLC: Хранит последний успешный декодированный кадр (240 отсчетов)
+    // Р‘РЈР¤Р•Р  Р”Р›РЇ PLC: РҐСЂР°РЅРёС‚ РїРѕСЃР»РµРґРЅРёР№ СѓСЃРїРµС€РЅС‹Р№ РґРµРєРѕРґРёСЂРѕРІР°РЅРЅС‹Р№ РєР°РґСЂ (240 РѕС‚СЃС‡РµС‚РѕРІ)
     short last_valid_pcm_frame[G723_SAMPLES_PER_FRAME];
     std::memset(last_valid_pcm_frame, 0, sizeof(last_valid_pcm_frame));
     bool has_last_valid = false;
     
-    // Коэффициент затухания для последовательных потерянных кадров (по стандарту ~0.75)
+    // РљРѕСЌС„С„РёС†РёРµРЅС‚ Р·Р°С‚СѓС…Р°РЅРёСЏ РґР»СЏ РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅС‹С… РїРѕС‚РµСЂСЏРЅРЅС‹С… РєР°РґСЂРѕРІ (РїРѕ СЃС‚Р°РЅРґР°СЂС‚Сѓ ~0.75)
     const float plc_attenuation = 0.75f; 
 
     while (in_blob->blob_get_segment(in_blob->blob_handle, input_chunk + leftover_bytes, max_seg_size - leftover_bytes, &bytes_read) == 0 || bytes_read > 0) {
@@ -117,7 +117,7 @@ extern "C" __declspec(dllexport) void __stdcall transcode_g723_blob(BLOB_CB in_b
             unsigned char first_byte = (unsigned char)input_chunk[input_idx];
             int current_frame_size = 0;
             bool is_sid_frame = false;
-            bool is_erasure_frame = false; // Флаг утери пакета (биты 11)
+            bool is_erasure_frame = false; // Р¤Р»Р°Рі СѓС‚РµСЂРё РїР°РєРµС‚Р° (Р±РёС‚С‹ 11)
 
             switch (first_byte & 0x03) {
                 case 0x00: 
@@ -131,8 +131,8 @@ extern "C" __declspec(dllexport) void __stdcall transcode_g723_blob(BLOB_CB in_b
                     is_sid_frame = true; 
                     break;
                 default:   
-                    // МАСКА 11: Обнаружен Erasure/Untransmitted кадр (потеря пакета в VoIP)
-                    current_frame_size = 1; // Согласно спецификации RTP, такой маркер занимает 1 байт
+                    // РњРђРЎРљРђ 11: РћР±РЅР°СЂСѓР¶РµРЅ Erasure/Untransmitted РєР°РґСЂ (РїРѕС‚РµСЂСЏ РїР°РєРµС‚Р° РІ VoIP)
+                    current_frame_size = 1; // РЎРѕРіР»Р°СЃРЅРѕ СЃРїРµС†РёС„РёРєР°С†РёРё RTP, С‚Р°РєРѕР№ РјР°СЂРєРµСЂ Р·Р°РЅРёРјР°РµС‚ 1 Р±Р°Р№С‚
                     is_erasure_frame = true;
                     break;
             }
@@ -144,35 +144,35 @@ extern "C" __declspec(dllexport) void __stdcall transcode_g723_blob(BLOB_CB in_b
                 break;
             }
 
-            // РЕАЛИЗАЦИЯ ЛОГИКИ ДЕКОДИРОВАНИЯ И PLC
+            // Р Р•РђР›РР—РђР¦РРЇ Р›РћР“РРљР Р”Р•РљРћР”РР РћР’РђРќРРЇ Р PLC
             if (is_erasure_frame) {
-                // АЛГОРИТМ PLC (Packet Loss Concealment)
+                // РђР›Р“РћР РРўРњ PLC (Packet Loss Concealment)
                 if (has_last_valid) {
-                    // Экстраполируем предыдущий кадр речевого сигнала, снижая его амплитуду
+                    // Р­РєСЃС‚СЂР°РїРѕР»РёСЂСѓРµРј РїСЂРµРґС‹РґСѓС‰РёР№ РєР°РґСЂ СЂРµС‡РµРІРѕРіРѕ СЃРёРіРЅР°Р»Р°, СЃРЅРёР¶Р°СЏ РµРіРѕ Р°РјРїР»РёС‚СѓРґСѓ
                     for (int i = 0; i < G723_SAMPLES_PER_FRAME; i++) {
                         float attenuated_sample = (float)last_valid_pcm_frame[i] * plc_attenuation;
                         pcm_frame[i] = (short)attenuated_sample;
                         
-                        // Сохраняем затухший кадр на случай, если следующий пакет ТОЖЕ утерян
+                        // РЎРѕС…СЂР°РЅСЏРµРј Р·Р°С‚СѓС…С€РёР№ РєР°РґСЂ РЅР° СЃР»СѓС‡Р°Р№, РµСЃР»Рё СЃР»РµРґСѓСЋС‰РёР№ РїР°РєРµС‚ РўРћР–Р• СѓС‚РµСЂСЏРЅ
                         last_valid_pcm_frame[i] = pcm_frame[i];
                     }
                 } else {
-                    // Если предыстории звука еще нет (потеря в самом начале записи), заполняем тишиной
+                    // Р•СЃР»Рё РїСЂРµРґС‹СЃС‚РѕСЂРёРё Р·РІСѓРєР° РµС‰Рµ РЅРµС‚ (РїРѕС‚РµСЂСЏ РІ СЃР°РјРѕРј РЅР°С‡Р°Р»Рµ Р·Р°РїРёСЃРё), Р·Р°РїРѕР»РЅСЏРµРј С‚РёС€РёРЅРѕР№
                     std::memset(pcm_frame, 0, sizeof(pcm_frame));
                 }
             } else if (is_sid_frame) {
-                // Обработка комфортного шума для пауз (Защита от фонового щелчка)
+                // РћР±СЂР°Р±РѕС‚РєР° РєРѕРјС„РѕСЂС‚РЅРѕРіРѕ С€СѓРјР° РґР»СЏ РїР°СѓР· (Р—Р°С‰РёС‚Р° РѕС‚ С„РѕРЅРѕРІРѕРіРѕ С‰РµР»С‡РєР°)
                 unsigned char gain_index = (unsigned char)input_chunk[input_idx + 3];
                 for (int i = 0; i < G723_SAMPLES_PER_FRAME; i++) {
                     pcm_frame[i] = generate_white_noise(gain_index);
-                    last_valid_pcm_frame[i] = pcm_frame[i]; // Шум тоже может служить базой для PLC
+                    last_valid_pcm_frame[i] = pcm_frame[i]; // РЁСѓРј С‚РѕР¶Рµ РјРѕР¶РµС‚ СЃР»СѓР¶РёС‚СЊ Р±Р°Р·РѕР№ РґР»СЏ PLC
                 }
                 has_last_valid = true;
             } else {
-                // Обычный успешный кадр речи (6.3 или 5.3 кбит/с)
+                // РћР±С‹С‡РЅС‹Р№ СѓСЃРїРµС€РЅС‹Р№ РєР°РґСЂ СЂРµС‡Рё (6.3 РёР»Рё 5.3 РєР±РёС‚/СЃ)
                 decode_g723_frame((const unsigned char*)&input_chunk[input_idx], pcm_frame, current_frame_size);
                 
-                // Сохраняем текущий PCM фрейм в историю для будущих PLC вызовов
+                // РЎРѕС…СЂР°РЅСЏРµРј С‚РµРєСѓС‰РёР№ PCM С„СЂРµР№Рј РІ РёСЃС‚РѕСЂРёСЋ РґР»СЏ Р±СѓРґСѓС‰РёС… PLC РІС‹Р·РѕРІРѕРІ
                 std::memcpy(last_valid_pcm_frame, pcm_frame, sizeof(pcm_frame));
                 has_last_valid = true;
             }
@@ -180,7 +180,7 @@ extern "C" __declspec(dllexport) void __stdcall transcode_g723_blob(BLOB_CB in_b
             input_idx += current_frame_size;
             leftover_bytes = 0;
 
-            // Конвертация результирующего PCM (реального или сгенерированного через PLC) в PCMU
+            // РљРѕРЅРІРµСЂС‚Р°С†РёСЏ СЂРµР·СѓР»СЊС‚РёСЂСѓСЋС‰РµРіРѕ PCM (СЂРµР°Р»СЊРЅРѕРіРѕ РёР»Рё СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅРЅРѕРіРѕ С‡РµСЂРµР· PLC) РІ PCMU
             for (int i = 0; i < G723_SAMPLES_PER_FRAME; i++) {
                 output_chunk[output_idx++] = (char)fast_linear_to_pcmu(pcm_frame[i]);
                 

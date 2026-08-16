@@ -4,7 +4,7 @@
 #include <vector>
 #include <cstring>
 
-// Структуры InterBase для совместимости
+// РЎС‚СЂСѓРєС‚СѓСЂС‹ InterBase РґР»СЏ СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё
 typedef struct blob_callback {
     short   (*blob_get_segment) (void*, char*, unsigned short, unsigned short*);
     void*   blob_handle;
@@ -19,13 +19,13 @@ struct MockBlobContext {
     size_t read_position = 0;
 };
 
-// Функция-коллбэк для ЧТЕНИЯ из BLOB
+// Р¤СѓРЅРєС†РёСЏ-РєРѕР»Р»Р±СЌРє РґР»СЏ Р§РўР•РќРРЇ РёР· BLOB
 short MockGetSegment(void* handle, char* buffer, unsigned short max_length, unsigned short* bytes_read) {
     MockBlobContext* ctx = static_cast<MockBlobContext*>(handle);
     
     if (ctx->read_position >= ctx->data.size()) {
         *bytes_read = 0;
-        return 1; // EOF для InterBase
+        return 1; // EOF РґР»СЏ InterBase
     }
 
     size_t available = ctx->data.size() - ctx->read_position;
@@ -38,7 +38,7 @@ short MockGetSegment(void* handle, char* buffer, unsigned short max_length, unsi
     return 0;
 }
 
-// Функция-коллбэк для ЗАПИСИ в BLOB
+// Р¤СѓРЅРєС†РёСЏ-РєРѕР»Р»Р±СЌРє РґР»СЏ Р—РђРџРРЎР РІ BLOB
 void MockPutSegment(void* handle, const char* buffer, unsigned short length) {
     MockBlobContext* ctx = static_cast<MockBlobContext*>(handle);
     ctx->data.insert(ctx->data.end(), buffer, buffer + length);
@@ -47,61 +47,61 @@ void MockPutSegment(void* handle, const char* buffer, unsigned short length) {
 typedef void (__stdcall *TranscodeBlobFunc)(BLOB_CB, BLOB_CB);
 
 int main() {
-    std::cout << "=== Стенд тестирования UDF с алгоритмами CNG (Шум) и PLC (Потери) ===" << std::endl;
+    std::cout << "=== РЎС‚РµРЅРґ С‚РµСЃС‚РёСЂРѕРІР°РЅРёСЏ UDF СЃ Р°Р»РіРѕСЂРёС‚РјР°РјРё CNG (РЁСѓРј) Рё PLC (РџРѕС‚РµСЂРё) ===" << std::endl;
 
-    // 1. Загрузка DLL
+    // 1. Р—Р°РіСЂСѓР·РєР° DLL
     HMODULE hDll = LoadLibrary("sosna_udf.dll");
     if (!hDll) {
-        std::cerr << "[ОШИБКА] Не удалось загрузить sosna_udf.dll!" << std::endl;
+        std::cerr << "[РћРЁРР‘РљРђ] РќРµ СѓРґР°Р»РѕСЃСЊ Р·Р°РіСЂСѓР·РёС‚СЊ sosna_udf.dll!" << std::endl;
         return 1;
     }
 
     TranscodeBlobFunc transcode_g723_blob = (TranscodeBlobFunc)GetProcAddress(hDll, "transcode_g723_blob");
     if (!transcode_g723_blob) {
-        std::cerr << "[ОШИБКА] Точка входа 'transcode_g723_blob' не найдена!" << std::endl;
+        std::cerr << "[РћРЁРР‘РљРђ] РўРѕС‡РєР° РІС…РѕРґР° 'transcode_g723_blob' РЅРµ РЅР°Р№РґРµРЅР°!" << std::endl;
         FreeLibrary(hDll);
         return 1;
     }
 
-    // 2. Генерация тестового VoIP потока с аномалиями
+    // 2. Р“РµРЅРµСЂР°С†РёСЏ С‚РµСЃС‚РѕРІРѕРіРѕ VoIP РїРѕС‚РѕРєР° СЃ Р°РЅРѕРјР°Р»РёСЏРјРё
     std::string input_filename = "test_input.g723";
     std::ofstream create_file(input_filename, std::ios::binary);
     
     if (create_file.is_open()) {
-        std::cout << "[ИНФО] Формирование тестового файла с сетевыми аномалиями..." << std::endl;
+        std::cout << "[РРќР¤Рћ] Р¤РѕСЂРјРёСЂРѕРІР°РЅРёРµ С‚РµСЃС‚РѕРІРѕРіРѕ С„Р°Р№Р»Р° СЃ СЃРµС‚РµРІС‹РјРё Р°РЅРѕРјР°Р»РёСЏРјРё..." << std::endl;
         
-        // Этап А: Поток нормальной речи (50 кадров, чередуем 6.3 и 5.3 кбит/с)
+        // Р­С‚Р°Рї Рђ: РџРѕС‚РѕРє РЅРѕСЂРјР°Р»СЊРЅРѕР№ СЂРµС‡Рё (50 РєР°РґСЂРѕРІ, С‡РµСЂРµРґСѓРµРј 6.3 Рё 5.3 РєР±РёС‚/СЃ)
         for (int i = 0; i < 50; i++) {
             if (i % 2 == 0) {
                 char frame[24] = {0};
-                frame[0] = 0x00; // Маска 00 -> 6.3 кбит/с
-                frame[5] = 0xAB; // Фейковые биты аудио данных
+                frame[0] = 0x00; // РњР°СЃРєР° 00 -> 6.3 РєР±РёС‚/СЃ
+                frame[5] = 0xAB; // Р¤РµР№РєРѕРІС‹Рµ Р±РёС‚С‹ Р°СѓРґРёРѕ РґР°РЅРЅС‹С…
                 create_file.write(frame, 24);
             } else {
                 char frame[20] = {0};
-                frame[0] = 0x01; // Маска 01 -> 5.3 кбит/с
+                frame[0] = 0x01; // РњР°СЃРєР° 01 -> 5.3 РєР±РёС‚/СЃ
                 frame[5] = 0xCD;
                 create_file.write(frame, 20);
             }
         }
 
-        // Этап Б: Пауза в разговоре (10 кадров SID комфортного шума)
-        // По стандарту кадр SID занимает 4 байта, младшие биты первого байта = 10 (0x02)
+        // Р­С‚Р°Рї Р‘: РџР°СѓР·Р° РІ СЂР°Р·РіРѕРІРѕСЂРµ (10 РєР°РґСЂРѕРІ SID РєРѕРјС„РѕСЂС‚РЅРѕРіРѕ С€СѓРјР°)
+        // РџРѕ СЃС‚Р°РЅРґР°СЂС‚Сѓ РєР°РґСЂ SID Р·Р°РЅРёРјР°РµС‚ 4 Р±Р°Р№С‚Р°, РјР»Р°РґС€РёРµ Р±РёС‚С‹ РїРµСЂРІРѕРіРѕ Р±Р°Р№С‚Р° = 10 (0x02)
         for (int i = 0; i < 10; i++) {
             char sid_frame[4] = {0};
-            sid_frame[0] = 0x02; // Маска 10 -> SID кадр
-            sid_frame[3] = 0x20; // Уровень энергии шума (Gain)
+            sid_frame[0] = 0x02; // РњР°СЃРєР° 10 -> SID РєР°РґСЂ
+            sid_frame[3] = 0x20; // РЈСЂРѕРІРµРЅСЊ СЌРЅРµСЂРіРёРё С€СѓРјР° (Gain)
             create_file.write(sid_frame, 4);
         }
 
-        // Этап В: Сбой в сети / Потеря пакетов (Серия из 5 подряд утерянных кадров)
-        // В VoIP-телефонии при утере RTP пакета маркер Erasure Frame записывается как 1 байт с маской 11
+        // Р­С‚Р°Рї Р’: РЎР±РѕР№ РІ СЃРµС‚Рё / РџРѕС‚РµСЂСЏ РїР°РєРµС‚РѕРІ (РЎРµСЂРёСЏ РёР· 5 РїРѕРґСЂСЏРґ СѓС‚РµСЂСЏРЅРЅС‹С… РєР°РґСЂРѕРІ)
+        // Р’ VoIP-С‚РµР»РµС„РѕРЅРёРё РїСЂРё СѓС‚РµСЂРµ RTP РїР°РєРµС‚Р° РјР°СЂРєРµСЂ Erasure Frame Р·Р°РїРёСЃС‹РІР°РµС‚СЃСЏ РєР°Рє 1 Р±Р°Р№С‚ СЃ РјР°СЃРєРѕР№ 11
         for (int i = 0; i < 5; i++) {
-            char erasure_marker = 0x03; // Маска 11 -> Erasure (Запуск PLC)
+            char erasure_marker = 0x03; // РњР°СЃРєР° 11 -> Erasure (Р—Р°РїСѓСЃРє PLC)
             create_file.write(&erasure_marker, 1);
         }
 
-        // Этап Г: Восстановление связи (Еще 20 кадров речи)
+        // Р­С‚Р°Рї Р“: Р’РѕСЃСЃС‚Р°РЅРѕРІР»РµРЅРёРµ СЃРІСЏР·Рё (Р•С‰Рµ 20 РєР°РґСЂРѕРІ СЂРµС‡Рё)
         for (int i = 0; i < 20; i++) {
             char frame[24] = {0};
             frame[0] = 0x00;
@@ -112,7 +112,7 @@ int main() {
         create_file.close();
     }
 
-    // 3. Чтение файла в память эмулятора BLOB
+    // 3. Р§С‚РµРЅРёРµ С„Р°Р№Р»Р° РІ РїР°РјСЏС‚СЊ СЌРјСѓР»СЏС‚РѕСЂР° BLOB
     std::ifstream infile(input_filename, std::ios::binary | std::ios::ate);
     std::streamsize size = infile.tellg();
     infile.seekg(0, std::ios::beg);
@@ -122,9 +122,9 @@ int main() {
     infile.read(input_ctx.data.data(), size);
     infile.close();
     
-    std::cout << "[ОК] Тестовый поток сформирован. Всего: " << input_ctx.data.size() << " байт битового потока." << std::endl;
+    std::cout << "[РћРљ] РўРµСЃС‚РѕРІС‹Р№ РїРѕС‚РѕРє СЃС„РѕСЂРјРёСЂРѕРІР°РЅ. Р’СЃРµРіРѕ: " << input_ctx.data.size() << " Р±Р°Р№С‚ Р±РёС‚РѕРІРѕРіРѕ РїРѕС‚РѕРєР°." << std::endl;
 
-    // 4. Подготовка контекстов InterBase
+    // 4. РџРѕРґРіРѕС‚РѕРІРєР° РєРѕРЅС‚РµРєСЃС‚РѕРІ InterBase
     MockBlobContext output_ctx;
 
     blob_callback in_blob_cb;
@@ -136,22 +136,22 @@ int main() {
     out_blob_cb.blob_put_segment = MockPutSegment;
     out_blob_cb.blob_handle = &output_ctx;
 
-    // 5. Вызов UDF транскодирования
-    std::cout << "[ИНФО] Вызов транскодера в DLL..." << std::endl;
+    // 5. Р’С‹Р·РѕРІ UDF С‚СЂР°РЅСЃРєРѕРґРёСЂРѕРІР°РЅРёСЏ
+    std::cout << "[РРќР¤Рћ] Р’С‹Р·РѕРІ С‚СЂР°РЅСЃРєРѕРґРµСЂР° РІ DLL..." << std::endl;
     transcode_g723_blob(&in_blob_cb, &out_blob_cb);
-    std::cout << "[ОК] Метод отработал успешно, исключений памяти не зафиксировано." << std::endl;
+    std::cout << "[РћРљ] РњРµС‚РѕРґ РѕС‚СЂР°Р±РѕС‚Р°Р» СѓСЃРїРµС€РЅРѕ, РёСЃРєР»СЋС‡РµРЅРёР№ РїР°РјСЏС‚Рё РЅРµ Р·Р°С„РёРєСЃРёСЂРѕРІР°РЅРѕ." << std::endl;
 
-    // 6. Сохранение результата
+    // 6. РЎРѕС…СЂР°РЅРµРЅРёРµ СЂРµР·СѓР»СЊС‚Р°С‚Р°
     std::string output_filename = "test_output.pcmu";
     std::ofstream outfile(output_filename, std::ios::binary);
     if (outfile.is_open()) {
         outfile.write(output_ctx.data.data(), output_ctx.data.size());
         outfile.close();
-        std::cout << "[УСПЕХ] Файл '" << output_filename << "' сгенерирован (" << output_ctx.data.size() << " байт)." << std::endl;
-        std::cout << "[ИНФО] Структура файла включает: Речь -> Белый шум -> Сглаживание потерь (PLC) -> Речь." << std::endl;
+        std::cout << "[РЈРЎРџР•РҐ] Р¤Р°Р№Р» '" << output_filename << "' СЃРіРµРЅРµСЂРёСЂРѕРІР°РЅ (" << output_ctx.data.size() << " Р±Р°Р№С‚)." << std::endl;
+        std::cout << "[РРќР¤Рћ] РЎС‚СЂСѓРєС‚СѓСЂР° С„Р°Р№Р»Р° РІРєР»СЋС‡Р°РµС‚: Р РµС‡СЊ -> Р‘РµР»С‹Р№ С€СѓРј -> РЎРіР»Р°Р¶РёРІР°РЅРёРµ РїРѕС‚РµСЂСЊ (PLC) -> Р РµС‡СЊ." << std::endl;
     }
 
     FreeLibrary(hDll);
-    std::cout << "=== Тестирование завершено успешно ===" << std::endl;
+    std::cout << "=== РўРµСЃС‚РёСЂРѕРІР°РЅРёРµ Р·Р°РІРµСЂС€РµРЅРѕ СѓСЃРїРµС€РЅРѕ ===" << std::endl;
     return 0;
 }
