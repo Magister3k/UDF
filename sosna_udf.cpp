@@ -18,7 +18,6 @@ typedef struct blob_callback {
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved) {
     if (ul_reason_for_call == DLL_PROCESS_ATTACH) {
         g711u_init_encoder(); // Инициализация таблицы PCMU
-        g723_init_decoder();  // Инициализация структур ITU-T
     }
     return TRUE;
 }
@@ -36,9 +35,7 @@ extern "C" __declspec(dllexport) void __stdcall transcode_g723_blob(BLOB_CB in_b
     int leftover_bytes = 0;
     int output_idx = 0;
 
-    float pcm_output_buffer[G723_SAMPLES_PER_FRAME]; 
-
-    g723_reset_decoder(); // Сброс контекста под новый аудиопоток
+    double pcm_output_buffer[G723_SAMPLES_PER_FRAME]; 
 
     while (in_blob->blob_get_segment(in_blob->blob_handle, input_chunk + leftover_bytes, max_seg_size - leftover_bytes, &bytes_read) == 0 || bytes_read > 0) {
         int total_valid_bytes = bytes_read + leftover_bytes;
@@ -59,7 +56,7 @@ extern "C" __declspec(dllexport) void __stdcall transcode_g723_blob(BLOB_CB in_b
             input_idx += consumed_bytes;
             leftover_bytes = 0;
 
-            // 2. Кодируем float PCM в PCMU u-law
+            // 2. Кодируем float PCM в G.711 u-law
             for (int i = 0; i < G723_SAMPLES_PER_FRAME; i++) {
                 short sample_short = (short)pcm_output_buffer[i];
                 

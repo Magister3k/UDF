@@ -6,6 +6,7 @@
 
 # Название компилятора
 CC = g++
+GCC = gcc
 
 # Путь к подпапке с декодером ITU-T G.723.1
 ITU_DIR = g723_1
@@ -19,15 +20,21 @@ ITU_DIR = g723_1
 # -march=pentium4  : Совместимость со всеми CPU (исключает сбои Illegal Instruction)
 # -shared          : Сборка динамической библиотеки (.dll)
 # -Wl,--kill-at    : Удаление декораций имен функций @size (критично для InterBase)
-# -D_MSC_VER       : Обход ошибки "#error COMPILER NOT TESTED"
 # -I$(ITU_DIR)     : Подключает путь к заголовочным файлам кодека
-CFLAGS = -m32 -O3 -msse2 -mfpmath=sse -march=pentium4 -ftree-vectorize -Wall -shared -Wl,--kill-at -D_MSC_VER -I$(ITU_DIR)
+CFLAGS = -m32 -O3 -msse2 -mfpmath=sse -march=pentium4 -ftree-vectorize -Wall -shared -Wl,--kill-at -I$(ITU_DIR)
 
 # Флаги для сборки тестового исполняемого файла
-TEST_CFLAGS = -m32 -O2 -Wall -D_MSC_VER# -I$(ITU_DIR)
+TEST_CFLAGS = -m32 -O2 -Wall -I$(ITU_DIR)
 
 # Сбор всех файлов с расширением .C из подпапки с декодером ITU-T G.723.1
 ITU_SOURCES = $(wildcard $(ITU_DIR)/*.C)
+
+# Флаги компиляции старых Си-файлов декодера ITU-T G.723.1 
+# -D__X86__ или -D__i386__ : активирует правильную ветку в TYPEDEF2.H для GCC
+ITU_CFLAGS = -m32 -O3 -msse2 -mfpmath=sse -march=pentium4 -D__X86__ -I. -I$(ITU_DIR)
+
+# Список Си-объектов
+ITU_OBJECTS = $(wildcard $(ITU_DIR)/*.o)
 
 # Изолированные модули кодеков
 CODEC_MODULES = g723_1_decoder.cpp g711u_coder.cpp
@@ -48,11 +55,15 @@ all: build
 ## build: Сборка многомодульной 32-битной UDF-библиотеки для InterBase
 build: $(TARGET)
 
-$(TARGET): $(SRC) $(CODEC_MODULES) $(ITU_SOURCES)
+# Шаблон правила для компиляции старых Си-файлов в .o объекты
+$(ITU_DIR)/%.o: $(ITU_DIR)/%.C
+	$(GCC) $(ITU_CFLAGS) -c $< -o $@
+
+$(TARGET): $(SRC) $(CODEC_MODULES) $(ITU_OBJECTS)
 	@echo ====================================================
 	@echo  Начинается сборка UDF-библиотеки для InterBase...
 	@echo ====================================================
-	$(CC) $(CFLAGS) -o $(TARGET) $(SRC) $(CODEC_MODULES) $(ITU_SOURCES)
+	$(CC) $(CFLAGS) -o $(TARGET) $(SRC) $(CODEC_MODULES) $(ITU_OBJECTS)
 	@echo  
 	@echo  [УСПЕХ] Сборка библиотеки завершена!
 	@echo  Перенесите $(TARGET) в папку установки Interbase\UDF
@@ -79,6 +90,7 @@ clean:
 	@echo  Очистка временных файлов и бинарников...
 	@if exist $(TARGET) (del /f /q $(TARGET) && echo  Файл $(TARGET) удален.)
 	@if exist $(TEST_TARGET) (del /f /q $(TEST_TARGET) && echo  Файл $(TEST_TARGET) удален.)
+	@if exist $(ITU_DIR)\*.o del /f /q $(ITU_DIR)\*.o && echo  Файлы компиляции декодера ITU-T удалены.)
 	@if exist test_input.g723 (del /f /q test_input.g723 && echo  Тестовый входной файл удален.)
 	@if exist test_output.pcmu (del /f /q test_output.pcmu && echo  Тестовый выходной файл удален.)
 	@echo  [ОК] Очистка успешно завершена.
@@ -88,3 +100,4 @@ info:
 	@echo Текущие флаги сборки:
 	@echo  CFLAGS:      $(CFLAGS)
 	@echo  TEST_CFLAGS: $(TEST_CFLAGS)
+	@echo  ITU_CFLAGS:  $(ITU_CFLAGS)
