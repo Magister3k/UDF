@@ -1,4 +1,5 @@
 #include "g723_1_decoder.h"
+#include <cstring>
 
 extern "C" {
     #include "g723_1/TYPEDEF2.H"
@@ -10,18 +11,18 @@ extern "C" {
 #define G723_FRAME_SIZE_53 20
 #define G723_FRAME_SIZE_SID 4
 
-static DecStatVal g_itu_decoder_state;
+static DecStat g_itu_decoder_state;
 
 void g723_init_decoder() {
-    std::memset(&g_itu_decoder_state, 0, sizeof(DecStatVal));
+    std::memset(&g_itu_decoder_state, 0, sizeof(DecStat));
 }
 
 void g723_reset_decoder() {
-    std::memset(&g_itu_decoder_state, 0, sizeof(DecStatVal));
+    std::memset(&g_itu_decoder_state, 0, sizeof(DecStat));
 }
 
 int g723_decode_frame(const unsigned char* input, float* output_pcm) {
-    unsigned char first_byte = input[0];
+    unsigned char first_byte = *input;
     int current_frame_size = 0;
     int crnt_crate = 0;
 
@@ -33,7 +34,7 @@ int g723_decode_frame(const unsigned char* input, float* output_pcm) {
     }
 
     // Вызов оригинального референсного ядра ITU-T
-    Decod(&g_itu_decoder_state, output_pcm, (char*)input, crnt_crate);
+    Decod(output_pcm, (char*)input, (Word16)crnt_crate);
 
     return current_frame_size;
 }

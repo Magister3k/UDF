@@ -13,16 +13,18 @@ ITU_DIR = g723_1
 # Флаги оптимизации для библиотеки (DLL):
 # -m32             : Строгая сборка под 32-битную архитектуру InterBase 2009
 # -O3              : Максимальная оптимизация (включает агрессивный инлайнинг)
-# -msse2 -mfpmath=sse : Расчет тригонометрии float (sinf) через быстрые регистры SSE2
+# -msse2
+# -mfpmath=sse     : Расчет тригонометрии float (sinf) через быстрые регистры SSE2
 # -ftree-vectorize : Векторизация циклов (SIMD) для ускорения обработки аудио-чанков
 # -march=pentium4  : Совместимость со всеми CPU (исключает сбои Illegal Instruction)
 # -shared          : Сборка динамической библиотеки (.dll)
 # -Wl,--kill-at    : Удаление декораций имен функций @size (критично для InterBase)
-# -I$(ITU_DIR)     : Автоматически подключает путь к переменной с исходниками
-CFLAGS = -m32 -O3 -msse2 -mfpmath=sse -march=pentium4 -ftree-vectorize -Wall -shared -Wl,--kill-at -I$(ITU_DIR)
+# -D_MSC_VER       : Обход ошибки "#error COMPILER NOT TESTED"
+# -I$(ITU_DIR)     : Подключает путь к заголовочным файлам кодека
+CFLAGS = -m32 -O3 -msse2 -mfpmath=sse -march=pentium4 -ftree-vectorize -Wall -shared -Wl,--kill-at -D_MSC_VER -I$(ITU_DIR)
 
 # Флаги для сборки тестового исполняемого файла
-TEST_CFLAGS = -m32 -O2 -Wall -I$(ITU_DIR)
+TEST_CFLAGS = -m32 -O2 -Wall -D_MSC_VER# -I$(ITU_DIR)
 
 # Сбор всех файлов с расширением .C из подпапки с декодером ITU-T G.723.1
 ITU_SOURCES = $(wildcard $(ITU_DIR)/*.C)
