@@ -32,7 +32,7 @@ int g723_decode_frame(const unsigned char* input, float* output_pcm) {
         default:   current_frame_size = 1; crnt_crate = 3; break; // PLC
     }
 
-    // Вызов оригинального референсного ядра ITU-T
+    // Р’С‹Р·РѕРІ РѕСЂРёРіРёРЅР°Р»СЊРЅРѕРіРѕ СЂРµС„РµСЂРµРЅСЃРЅРѕРіРѕ СЏРґСЂР° ITU-T
     Decod(&g_itu_decoder_state, output_pcm, (char*)input, crnt_crate);
 
     return current_frame_size;

@@ -1,10 +1,10 @@
 #include "g711u_coder.h"
 
-// Статическая таблица расчетов на 65536 значений (скрыта внутри этого файла)
+// РЎС‚Р°С‚РёС‡РµСЃРєР°СЏ С‚Р°Р±Р»РёС†Р° СЂР°СЃС‡РµС‚РѕРІ РЅР° 65536 Р·РЅР°С‡РµРЅРёР№ (СЃРєСЂС‹С‚Р° РІРЅСѓС‚СЂРё СЌС‚РѕРіРѕ С„Р°Р№Р»Р°)
 static unsigned char g_linear_to_pcmu_table[65536];
 static bool g_table_initialized = false;
 
-// Внутренняя историческая функция компрессии
+// Р’РЅСѓС‚СЂРµРЅРЅСЏСЏ РёСЃС‚РѕСЂРёС‡РµСЃРєР°СЏ С„СѓРЅРєС†РёСЏ РєРѕРјРїСЂРµСЃСЃРёРё
 static unsigned char calculate_pcmu_sample(short sample) {
     const int sign = (sample < 0) ? 0x80 : 0x00;
     if (sample < 0) sample = -sample;
@@ -19,7 +19,7 @@ static unsigned char calculate_pcmu_sample(short sample) {
     return ~(sign | (exponent << 4) | mantissa);
 }
 
-// Заполнение таблицы в оперативной памяти (O(N) при старте)
+// Р—Р°РїРѕР»РЅРµРЅРёРµ С‚Р°Р±Р»РёС†С‹ РІ РѕРїРµСЂР°С‚РёРІРЅРѕР№ РїР°РјСЏС‚Рё (O(N) РїСЂРё СЃС‚Р°СЂС‚Рµ)
 void g711u_init_encoder() {
     if (g_table_initialized) return;
     
@@ -29,7 +29,7 @@ void g711u_init_encoder() {
     g_table_initialized = true;
 }
 
-// Мгновенное чтение из памяти по индексу (O(1) при работе)
+// РњРіРЅРѕРІРµРЅРЅРѕРµ С‡С‚РµРЅРёРµ РёР· РїР°РјСЏС‚Рё РїРѕ РёРЅРґРµРєСЃСѓ (O(1) РїСЂРё СЂР°Р±РѕС‚Рµ)
 inline unsigned char g711u_linear_to_pcmu(short sample) {
     return g_linear_to_pcmu_table[sample + 32768];
 }
