@@ -1,29 +1,40 @@
 # ====================================================================
-# ФИНАЛЬНЫЙ MAKEFILE ДЛЯ СБОРКИ И ТЕСТИРОВАНИЯ SOSNA_UDF
+# МНОГОМОДУЛЬНЫЙ MAKEFILE ДЛЯ СБОРКИ И ТЕСТИРОВАНИЯ SOSNA_UDF.DLL
 # Поддерживаемые платформы: Windows x32 (MinGW-w64 / g++)
-# СУБД: InterBase 2009 (Архитектура BLOB)
+# СУБД: InterBase 2009
 # ====================================================================
 
 # Название компилятора
 CC = g++
 
-# ФЛАГИ ОПТИМИЗАЦИИ ДЛЯ БИБЛИОТЕКИ (DLL):
+# Путь к подпапке с декодером ITU-T G.723.1
+ITU_DIR = g723_1
+
+# Флаги оптимизации для библиотеки (DLL):
 # -m32             : Строгая сборка под 32-битную архитектуру InterBase 2009
-# -O3              : Максимальная оптимизация (включает инлайнинг функций)
+# -O3              : Максимальная оптимизация (включает агрессивный инлайнинг)
 # -msse2 -mfpmath=sse : Расчет тригонометрии float (sinf) через быстрые регистры SSE2
 # -ftree-vectorize : Векторизация циклов (SIMD) для ускорения обработки аудио-чанков
 # -march=pentium4  : Совместимость со всеми CPU (исключает сбои Illegal Instruction)
 # -shared          : Сборка динамической библиотеки (.dll)
 # -Wl,--kill-at    : Удаление декораций имен функций @size (критично для InterBase)
-CFLAGS = -m32 -O3 -msse2 -mfpmath=sse -march=pentium4 -ftree-vectorize -Wall -shared -Wl,--kill-at
+# -I$(ITU_DIR)     : Автоматически подключает путь к переменной с исходниками
+CFLAGS = -m32 -O3 -msse2 -mfpmath=sse -march=pentium4 -ftree-vectorize -Wall -shared -Wl,--kill-at -I$(ITU_DIR)
 
 # Флаги для сборки тестового исполняемого файла
-TEST_CFLAGS = -m32 -O2 -Wall
+TEST_CFLAGS = -m32 -O2 -Wall -I$(ITU_DIR)
 
-# Имена исходных файлов и целей
+# Сбор всех файлов с расширением .C из подпапки с декодером ITU-T G.723.1
+ITU_SOURCES = $(wildcard $(ITU_DIR)/*.C)
+
+# Изолированные модули кодеков
+CODEC_MODULES = g723_1_decoder.cpp g711u_coder.cpp
+
+# Главный мост интеграции с СУБД InterBase
 TARGET = sosna_udf.dll
 SRC = sosna_udf.cpp
 
+# Файлы тестового стенда
 TEST_TARGET = test_runner.exe
 TEST_SRC = test_transcode_g723_to_pcmu.cpp
 
@@ -32,20 +43,20 @@ TEST_SRC = test_transcode_g723_to_pcmu.cpp
 # По умолчанию собираем только целевую DLL для СУБД
 all: build
 
-## build: Сборка высокооптимизированной 32-битной DLL библиотеки для InterBase
+## build: Сборка многомодульной 32-битной UDF-библиотеки для InterBase
 build: $(TARGET)
 
-$(TARGET): $(SRC)
+$(TARGET): $(SRC) $(CODEC_MODULES) $(ITU_SOURCES)
 	@echo ====================================================
-	@echo  Начинается сборка BLOB-транскодера G.723 -> PCMU...
+	@echo  Начинается сборка UDF-библиотеки для InterBase...
 	@echo ====================================================
-	$(CC) $(CFLAGS) -o $(TARGET) $(SRC)
+	$(CC) $(CFLAGS) -o $(TARGET) $(SRC) $(CODEC_MODULES) $(ITU_SOURCES)
 	@echo  
 	@echo  [УСПЕХ] Сборка библиотеки завершена!
-	@echo  Итоговый файл: $(TARGET) (32-bit Windows DLL)
+	@echo  Перенесите $(TARGET) в папку установки Interbase\UDF
 	@echo ====================================================
 
-## test: Сборка автономного тестового стенда для симуляции вызовов СУБД
+## test: Сборка автономного тестового стенда под типы данных Annex B
 test: $(TARGET) $(TEST_SRC)
 	@echo ====================================================
 	@echo  Сборка автономного тестового стенда...
