@@ -5,7 +5,7 @@
 typedef short Word16; 
 
 extern "C" {
-    #include "g723_1/decode2.h"
+    #include "g723_1/decod2.h"
 }
 
 #define G723_FRAME_SIZE_63 24
