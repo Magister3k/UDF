@@ -5,6 +5,6 @@
 		}
 	],
 	"settings": {
-		"makefile.makePath": "d:\\Programs\\MinGW\\bin\\mingw32-make"
+		"makefile.makePath": "d:\\Programs\\MinGW\\mingw32\\bin\\mingw32-make"
 	}
 }

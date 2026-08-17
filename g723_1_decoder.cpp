@@ -1,12 +1,22 @@
 #include <cstring>
 #include "g723_1_decoder.h"
 
-// Локальное определение типа для совместимости с прототипом из DECOD2.H
-typedef short Word16; 
+// Типы для совместимости с ITU-T G.723.1
+typedef short int Word16;
+typedef int Word32;
+typedef int Flag;
+typedef double FLOAT;
+
+#define __unix__
 
 extern "C" {
+    #include "g723_1/typedef2.h"
+    #include "g723_1/cst2.h"
     #include "g723_1/decod2.h"
 }
+
+// Явное объявление функции для линкинга
+extern "C" Flag Decod(FLOAT *DataBuff, char *Vinp, Word16 Crc);
 
 #define G723_FRAME_SIZE_63 24
 #define G723_FRAME_SIZE_53 20

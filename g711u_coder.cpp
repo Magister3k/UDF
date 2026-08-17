@@ -30,6 +30,6 @@ void g711u_init_encoder() {
 }
 
 // Мгновенное чтение из памяти по индексу (O(1) при работе)
-inline unsigned char g711u_linear_to_pcmu(short sample) {
+unsigned char g711u_linear_to_pcmu(short sample) {
     return g_linear_to_pcmu_table[sample + 32768];
 }
