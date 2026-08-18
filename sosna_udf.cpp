@@ -22,7 +22,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
     return TRUE;
 }
 
-extern "C" __declspec(dllexport) void __stdcall transcode_g723_blob(BLOB_CB in_blob, BLOB_CB out_blob) {
+extern "C" __declspec(dllexport) void __stdcall transcode_g723_to_pcmu(BLOB_CB in_blob, BLOB_CB out_blob) {
     if (!in_blob || !out_blob || !in_blob->blob_handle || !in_blob->blob_get_segment) {
         return;
     }
