@@ -93,7 +93,7 @@ static std::string detect_g723_rate(const std::vector<char>& data) {
     return "unknown";
 }
 
-static void transcode_file(TranscodeBlobFunc transcode_g723_to_pcmu, const std::string& input_filename) {
+static void transcode_file(TranscodeBlobFunc transcode_g723, const std::string& input_filename) {
     std::ifstream infile(input_filename, std::ios::binary | std::ios::ate);
     if (!infile.is_open()) {
         std::cerr << "[ОШИБКА] Не удалось открыть входной файл '" << input_filename << "'." << std::endl;
@@ -116,7 +116,7 @@ static void transcode_file(TranscodeBlobFunc transcode_g723_to_pcmu, const std::
     blob_callback out_blob_cb = { nullptr, &output_ctx, 0, 0, 0, MockPutSegment };
 
     std::cout << "[ИНФО] Транскодирование '" << input_filename << "'..." << std::endl;
-    transcode_g723_to_pcmu(&in_blob_cb, &out_blob_cb);
+    transcode_g723(&in_blob_cb, &out_blob_cb);
 
     std::string output_filename = input_filename;
     const size_t dot_pos = output_filename.rfind('.');
@@ -136,7 +136,7 @@ static void transcode_file(TranscodeBlobFunc transcode_g723_to_pcmu, const std::
     }
 }
 
-static void transcode_all_g723_files(TranscodeBlobFunc transcode_g723_to_pcmu) {
+static void transcode_all_g723_files(TranscodeBlobFunc transcode_g723) {
     WIN32_FIND_DATAA find_data;
     HANDLE hFind = FindFirstFileA("*.g723", &find_data);
     if (hFind == INVALID_HANDLE_VALUE) {
@@ -146,7 +146,7 @@ static void transcode_all_g723_files(TranscodeBlobFunc transcode_g723_to_pcmu) {
 
     do {
         if (!(find_data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)) {
-            transcode_file(transcode_g723_to_pcmu, find_data.cFileName);
+            transcode_file(transcode_g723, find_data.cFileName);
         }
     } while (FindNextFileA(hFind, &find_data));
 
@@ -162,9 +162,9 @@ int main() {
         return 1;
     }
 
-    TranscodeBlobFunc transcode_g723_to_pcmu = (TranscodeBlobFunc)GetProcAddress(hDll, "transcode_g723_to_pcmu");
-    if (!transcode_g723_to_pcmu) {
-        std::cerr << "[ОШИБКА] Точка входа 'transcode_g723_to_pcmu' не найдена!" << std::endl;
+    TranscodeBlobFunc transcode_g723 = (TranscodeBlobFunc)GetProcAddress(hDll, "transcode_g723");
+    if (!transcode_g723) {
+        std::cerr << "[ОШИБКА] Точка входа 'transcode_g723' не найдена!" << std::endl;
         FreeLibrary(hDll);
         return 1;
     }
@@ -173,7 +173,7 @@ int main() {
     generate_g723_file("test_input_low.g723", false);
 
     std::cout << "[ИНФО] Передача BLOB-структур в DLL для всех файлов *.g723 в папке..." << std::endl;
-    transcode_all_g723_files(transcode_g723_to_pcmu);
+    transcode_all_g723_files(transcode_g723);
     std::cout << "[ОК] Модульный транскодер успешно завершил побитовый синтез." << std::endl;
 
     FreeLibrary(hDll);

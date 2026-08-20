@@ -50,8 +50,8 @@ TARGET = $(TARGET_DIR)/sosna_udf.dll
 RES = version.res
 
 # Файлы тестовой программы
-TEST_SRC = test_transcode_g723_to_pcmu.cpp
-TEST_TARGET = $(TARGET_DIR)/test_runner.exe
+TEST_SRC = test_transcode_g723.cpp
+TEST_TARGET = $(TARGET_DIR)/test_sosna_udf.exe
 
 # Файл-метка для отслеживания начала компиляции файлов декодера ITU-T
 ITU_START = $(ITU_DIR)\.itu_start
