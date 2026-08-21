@@ -13,12 +13,14 @@ BEGIN
     BEGIN
         /* Вызываем вашу процедуру транскодирования */
         EXECUTE PROCEDURE transcode_g723(:old_rec) RETURNING_VALUES (:new_rec);
-
-        /* Обновляем поля (исправлен синтаксис SET через запятую) */
-        UPDATE speech
-        SET rectype = 'PCMU',
-            rec = :new_rec
-        WHERE id = :current_id;
+	IF (:new_rec IS NOT NULL) THEN
+        BEGIN
+	        /* Обновляем поля (исправлен синтаксис SET через запятую) */
+	        UPDATE speech
+	        SET rec = :new_rec,
+	            rectype = 'PCMU'
+	        WHERE id = :current_id;
+        END
     END
 END^
 
