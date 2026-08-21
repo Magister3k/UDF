@@ -25,10 +25,13 @@ ITU_DIR = g723_1
 # -shared             : Сборка динамической библиотеки (.dll)
 # -Wl,--kill-at       : Удаление декораций имен функций @size (критично для InterBase)
 # -I$(ITU_DIR)        : Подключает путь к заголовочным файлам кодека
-CFLAGS = -m32 -O3 -msse2 -mfpmath=sse -march=i686 -ftree-vectorize -Wall -shared -Wl,--kill-at -I$(ITU_DIR)
+# -I$(ITU_DIR)        : Подключает путь к заголовочным файлам кодека
+# -static-libgcc      : Вшивает в файл используемые библиотеки С 
+# -static-libstdc++   : Вшивает в файл используемые библиотеки С++
+CFLAGS = -m32 -O3 -msse2 -mfpmath=sse -march=i686 -ftree-vectorize -Wall -shared -Wl,--kill-at -static-libgcc -static-libstdc++ -I$(ITU_DIR)
 
 # Флаги для сборки тестового исполняемого файла
-TEST_CFLAGS = -m32 -O2 -Wall -I$(ITU_DIR)
+TEST_CFLAGS = -m32 -O2 -Wall -static-libgcc -static-libstdc++ -I$(ITU_DIR)
 
 # Список всех файлов с расширением .C из подпапки с декодером ITU-T G.723.1
 ITU_SOURCES = $(wildcard $(ITU_DIR)/*.C)
@@ -41,7 +44,7 @@ ITU_CFLAGS = -x c -m32 -O3 -msse2 -mfpmath=sse -march=i686 -D__X86__ -D__i386__ 
 # Список всех .o объектов из подпапки с декодером ITU-T G.723.1
 ITU_OBJECTS = $(patsubst $(ITU_DIR)/%.C,$(ITU_DIR)/%.o,$(ITU_SOURCES))
 
-# Изолированные модули кодеков
+# Модули кодеков
 CODEC_MODULES = g723_1_decoder.cpp g711u_coder.cpp
 
 # Файлы UDF-библиотекии
@@ -60,7 +63,7 @@ ITU_START = $(ITU_DIR)\.itu_start
 $(TARGET_DIR):
 	@if not exist $@ mkdir $@
 
-# Компиляция файла ANSI C декодера ITU-T в .o объект
+# Компиляция файла ANSI C декодера ITU-T в объектный файл (.o))
 # Использование g++ (C++) компилятора для совместимости с основным кодом
 $(ITU_DIR)/%.o: $(ITU_DIR)/%.C
 	@if not exist "$(ITU_START)" ( \
@@ -77,7 +80,7 @@ $(ITU_DIR)/%.o: $(ITU_DIR)/%.C
 		&& echo . \
 		&& if exist "$(ITU_START)" del /q "$(ITU_START)", rem)
 
-# Компиляция файла ресурсов в двоичный формат
+# Компиляция файла ресурсов в объектный файл
 $(RES): version.rc
 	@echo .
 	@echo ========================================================================
@@ -131,9 +134,9 @@ clean:
 	@echo  Очистка папки проекта от конечных и временных файлов...
 	@echo ------------------------------------------------------------------------
 	@if exist $(TARGET_DIR)\*.* (del /f /q $(TARGET_DIR)\*.* && echo  [ОК] Конечные файлы удалены)
-	@if exist $(ITU_DIR)\*.o (del /f /q $(ITU_DIR)\*.o && echo  [ОК] Си-объекты декодера ITU-Т удалены)
+	@if exist $(ITU_DIR)\*.o (del /f /q $(ITU_DIR)\*.o && echo  [ОК] Объектные файлы декодера ITU-Т удалены)
 	@if exist $(ITU_START) (del /f /q $(ITU_START) && echo  [ОК] Маркер начала компиляции ITU-T удален)
-	@if exist version.res (del /f /q version.res && echo  [ОК] Скомпилированный файл ресурса удален)
+	@if exist version.res (del /f /q version.res && echo  [ОК] Объектный файл ресурса удален)
 	@echo ------------------------------------------------------------------------
 	@echo  [УСПЕХ] Очистка завершена!
 	@echo ========================================================================
