@@ -15,8 +15,9 @@ extern "C" {
     #include "g723_1/decod2.h"
 }
 
-// Явное объявление функции для линкинга
+// Явное объявление функций для линкинга
 extern "C" Flag Decod(FLOAT *DataBuff, char *Vinp, Word16 Crc);
+extern "C" void Init_Decod(void);
 
 #define G723_FRAME_SIZE_63 24
 #define G723_FRAME_SIZE_53 20
@@ -39,4 +40,14 @@ int g723_decode_frame(const unsigned char* input, double* output_pcm) {
     Decod(output_pcm, (char*)input, (Word16)crnt_crate);
 
     return current_frame_size;
+}
+
+// Инициализация глобального состояния декодера (вызывается в DllMain)
+void g723_init_decoder() {
+    Init_Decod();
+}
+
+// Сброс состояния перед обработкой нового BLOB (вызывается в transcode_g723)
+void g723_reset_decoder() {
+    Init_Decod();
 }

@@ -2,24 +2,24 @@
 SET TERM ^ ;
 
 /* 2. Создаем временную процедуру */
-CREATE PROCEDURE tmp_update_speech
+CREATE PROCEDURE tmp_upd_speech
 AS
-DECLARE VARIABLE current_id INTEGER;
-DECLARE VARIABLE old_rec BLOB;
-DECLARE VARIABLE new_rec BLOB;
+DECLARE VARIABLE cur_id INTEGER;
+DECLARE VARIABLE rec_in BLOB;
+DECLARE VARIABLE rec_out BLOB;
 BEGIN
     /* Цикл по всем записям */
-    FOR SELECT id, rec FROM speech INTO :current_id, :old_rec DO
+    FOR SELECT id, rec FROM speech INTO :cur_id, :rec_in DO
     BEGIN
-        /* Вызываем вашу процедуру транскодирования */
-        EXECUTE PROCEDURE transcode_g723(:old_rec) RETURNING_VALUES (:new_rec);
-	IF (:new_rec IS NOT NULL) THEN
+        /* Вызываем процедуру транскодирования */
+        EXECUTE PROCEDURE transcode_g723(:rec_in) RETURNING_VALUES (:rec_out);
+	IF (:rec_out IS NOT NULL) THEN
         BEGIN
-	        /* Обновляем поля (исправлен синтаксис SET через запятую) */
+	        /* Обновляем поля */
 	        UPDATE speech
-	        SET rec = :new_rec,
+	        SET rec = :rec_out,
 	            rectype = 'PCMU'
-	        WHERE id = :current_id;
+	        WHERE id = :cur_id;
         END
     END
 END^
@@ -29,9 +29,9 @@ SET TERM ; ^
 COMMIT;
 
 /* 4. Запускаем только что созданную процедуру */
-EXECUTE PROCEDURE tmp_update_speech;
+EXECUTE PROCEDURE tmp_upd_speech;
 COMMIT;
 
-/* 5. Удаляем процедуру, чтобы не засырять базу данных */
-DROP PROCEDURE tmp_update_speech;
+/* 5. Удаляем процедуру, чтобы не засорять базу данных */
+DROP PROCEDURE tmp_upd_speech;
 COMMIT;
