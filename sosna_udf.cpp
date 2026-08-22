@@ -18,14 +18,18 @@ typedef struct blob_callback {
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved) {
     if (ul_reason_for_call == DLL_PROCESS_ATTACH) {
         g711u_init_encoder(); // Инициализация таблицы PCMU
+        g723_init_decoder();  // Инициализация глобального состояния декодера G.723.1
     }
     return TRUE;
 }
 
-extern "C" __declspec(dllexport) void __cdecl transcode_g723(BLOB_CB in_blob, BLOB_CB out_blob) { // void __stdcall или __cdecl
+extern "C" __declspec(dllexport) void __stdcall transcode_g723(BLOB_CB in_blob, BLOB_CB out_blob) { // void __stdcall или __cdecl
     if (!in_blob || !out_blob || !in_blob->blob_handle || !in_blob->blob_get_segment) {
         return;
     }
+
+    // Сброс состояния декодера перед обработкой нового BLOB
+    g723_reset_decoder();
 
     const unsigned short max_seg_size = 32768;
     char* input_chunk = new char[max_seg_size];
