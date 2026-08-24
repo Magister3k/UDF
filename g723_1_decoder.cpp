@@ -36,15 +36,14 @@ int g723_decode_frame(const unsigned char* input, double* output_pcm) {
     }
 
     // Вызов оригинального референсного ядра ITU-T Annex B
-    // Сигнатура из DECOD2.H: Decod(FLOAT *DataBuff, char *Vinp, Word16 Crc)
     Decod(output_pcm, (char*)input, (Word16)crnt_crate);
-
     return current_frame_size;
 }
 
 // Инициализация глобального состояния декодера (вызывается в DllMain)
-void g723_init_decoder() {
+bool g723_init_decoder() {
     Init_Decod();
+    return true;
 }
 
 // Сброс состояния перед обработкой нового BLOB (вызывается в transcode_g723)

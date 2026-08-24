@@ -2,7 +2,7 @@
 #define G723_1_DECODER_H
 
 // Инициализация статических структур декодера (вызывается при старте DLL)
-void g723_init_decoder();
+bool g723_init_decoder();
 
 // Сброс состояния для новой аудиозаписи BLOB
 void g723_reset_decoder();

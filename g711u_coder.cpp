@@ -20,13 +20,14 @@ static unsigned char calculate_pcmu_sample(short sample) {
 }
 
 // Заполнение таблицы в оперативной памяти (O(N) при старте)
-void g711u_init_encoder() {
-    if (g_table_initialized) return;
+bool g711u_init_encoder() {
+    if (g_table_initialized) return true;
     
     for (int i = -32768; i <= 32767; i++) {
         g_linear_to_pcmu_table[i + 32768] = calculate_pcmu_sample((short)i);
     }
     g_table_initialized = true;
+    return true;
 }
 
 // Мгновенное чтение из памяти по индексу (O(1) при работе)

@@ -59,7 +59,7 @@ static void generate_g723_file(const std::string& filename, bool high_rate) {
         unsigned char frame_type = high_rate ? 0x00 : 0x01;
         create_file.write(reinterpret_cast<const char*>(&frame_type), 1);
 
-        const int dummy_size = high_rate ? 23 : 19;
+        const int dummy_size = high_rate ? 24 : 20;
         std::vector<char> dummy(dummy_size, 0);
         create_file.write(dummy.data(), dummy_size);
     }

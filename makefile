@@ -28,10 +28,10 @@ ITU_DIR = g723_1
 # -I$(ITU_DIR)        : Подключает путь к заголовочным файлам кодека
 # -static-libgcc      : Вшивает в файл используемые библиотеки С 
 # -static-libstdc++   : Вшивает в файл используемые библиотеки С++
-CFLAGS = -m32 -O3 -msse2 -mfpmath=sse -march=i686 -ftree-vectorize -Wall -shared -Wl,--kill-at -static-libgcc -static-libstdc++ -I$(ITU_DIR)
+CFLAGS = -m32 -O0 -g -Wall -shared -Wl,--kill-at -static-libgcc -static-libstdc++ -I$(ITU_DIR)
 
 # Флаги для сборки тестового исполняемого файла
-TEST_CFLAGS = -m32 -O2 -Wall -static-libgcc -static-libstdc++ -I$(ITU_DIR)
+TEST_CFLAGS = -m32 -O0 -g -Wall -static-libgcc -static-libstdc++ -I$(ITU_DIR)
 
 # Список всех файлов с расширением .C из подпапки с декодером ITU-T G.723.1
 ITU_SOURCES = $(wildcard $(ITU_DIR)/*.C)

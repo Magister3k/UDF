@@ -1,5 +1,6 @@
 #include <windows.h>
 #include <cstring>
+#include <new> // std::nothrow
 #include "g723_1_decoder.h" // Интерфейс G.723.1
 #include "g711u_coder.h"    // Интерфейс G.711 u-law
 
@@ -17,8 +18,14 @@ typedef struct blob_callback {
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved) {
     if (ul_reason_for_call == DLL_PROCESS_ATTACH) {
-        g711u_init_encoder(); // Инициализация таблицы PCMU
-        g723_init_decoder();  // Инициализация глобального состояния декодера G.723.1
+        if (!g711u_init_encoder()) { // Инициализация таблицы PCMU
+    OutputDebugStringA("Failed to initialize G.711 encoder\n");
+    return FALSE;
+}
+        if (!g723_init_decoder()) {  // Инициализация глобального состояния декодера G.723.1
+    OutputDebugStringA("Failed to initialize G.723 decoder\n");
+    return FALSE;
+}
     }
     return TRUE;
 }
@@ -32,8 +39,12 @@ extern "C" __declspec(dllexport) void __stdcall transcode_g723(BLOB_CB in_blob, 
     g723_reset_decoder();
 
     const unsigned short max_seg_size = 32768;
-    char* input_chunk = new char[max_seg_size];
-    char* output_chunk = new char[max_seg_size * G723_SAMPLES_PER_FRAME];
+    char* input_chunk = new (std::nothrow) char[max_seg_size];
+    char* output_chunk = new (std::nothrow) char[max_seg_size * G723_SAMPLES_PER_FRAME];
+    if (!input_chunk || !output_chunk) {
+        OutputDebugStringA("Failed to allocate memory for chunks\n");
+        return;
+    }
 
     unsigned short bytes_read = 0;
     int leftover_bytes = 0;
@@ -41,7 +52,8 @@ extern "C" __declspec(dllexport) void __stdcall transcode_g723(BLOB_CB in_blob, 
 
     double pcm_output_buffer[G723_SAMPLES_PER_FRAME]; 
 
-    while (in_blob->blob_get_segment(in_blob->blob_handle, input_chunk + leftover_bytes, max_seg_size - leftover_bytes, &bytes_read) == 0 || bytes_read > 0) {
+    OutputDebugStringA("Starting processing loop\n");
+while ((in_blob->blob_get_segment(in_blob->blob_handle, input_chunk + leftover_bytes, max_seg_size - leftover_bytes, &bytes_read) == 0 && bytes_read > 0) || bytes_read > 0) {
         int total_valid_bytes = bytes_read + leftover_bytes;
         int input_idx = 0;
 
@@ -57,6 +69,13 @@ extern "C" __declspec(dllexport) void __stdcall transcode_g723(BLOB_CB in_blob, 
 
             // 1. Декодируем фрейм G.723.1 во float PCM
             int consumed_bytes = g723_decode_frame((const unsigned char*)&input_chunk[input_idx], pcm_output_buffer);
+            if (consumed_bytes <= 0) {
+                OutputDebugStringA("Failed to decode G.723 frame\n");
+                input_idx += 1; // Пропустим некорректный байт
+                leftover_bytes = 0;
+                continue;
+            }
+            OutputDebugStringA("Decoded G.723 frame\n");
             input_idx += consumed_bytes;
             leftover_bytes = 0;
 
@@ -66,6 +85,7 @@ extern "C" __declspec(dllexport) void __stdcall transcode_g723(BLOB_CB in_blob, 
                 
                 // Вызов изолированного кодера
                 output_chunk[output_idx++] = (char)g711u_linear_to_pcmu(sample_short);
+OutputDebugStringA("Encoded PCM to G.711\n");
                 
                 if (output_idx >= max_seg_size) {
                     out_blob->blob_put_segment(out_blob->blob_handle, output_chunk, output_idx);
