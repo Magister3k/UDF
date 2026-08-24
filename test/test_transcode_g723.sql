@@ -1,44 +1,65 @@
-/* 1. Удаляем оставшуюся временную процедуру (если она была) */
+/* 1. РЈРґР°Р»СЏРµРј РѕСЃС‚Р°РІС€СѓСЋСЃСЏ РІСЂРµРјРµРЅРЅСѓСЋ РїСЂРѕС†РµРґСѓСЂСѓ (РµСЃР»Рё РѕРЅР° Р±С‹Р»Р°) */
 DROP PROCEDURE tmp_upd_speech;
 COMMIT;
 
-/* 2. Меняем разделитель на ^ */
+/* 2. РЎРѕР·РґР°РµРј Р“Р›РћР‘РђР›Р¬РќРЈР® Р’Р Р•РњР•РќРќРЈР® РўРђР‘Р›РР¦РЈ (РѕРЅР° РёР·РѕР»РёСЂРѕРІР°РЅР° РґР»СЏ РІР°С€РµР№ СЃРµСЃСЃРёРё) */
+/* Р•СЃР»Рё РѕРЅР° СѓР¶Рµ СЃРѕР·РґР°РЅР°, InterBase РїСЂРѕРїСѓСЃС‚РёС‚ СЌС‚РѕС‚ С€Р°Рі, РЅРѕ РїРµСЂРµРґ СЌС‚РёРј РјС‹ РµС‘ РѕС‡РёСЃС‚РёРј */
+CREATE GLOBAL TEMPORARY TABLE tmp_speech_ids (
+    id_to_upd INTEGER
+) ON COMMIT PRESERVE ROWS;
+COMMIT;
+
 SET TERM ^ ;
 
-/* 3. Создаем временную процедуру */
+/* 3. РЎРѕР·РґР°РµРј РІСЂРµРјРµРЅРЅСѓСЋ РїСЂРѕС†РµРґСѓСЂСѓ */
 CREATE PROCEDURE tmp_upd_speech
 AS
 DECLARE VARIABLE cur_id INTEGER;
 DECLARE VARIABLE rec_in BLOB;
 DECLARE VARIABLE rec_out BLOB;
 BEGIN
-    /* Цикл по всем записям */
-    FOR SELECT id, REC FROM speech INTO :cur_id, :rec_in DO
+    /* РћС‡РёС‰Р°РµРј РІСЂРµРјРµРЅРЅСѓСЋ С‚Р°Р±Р»РёС†Сѓ РЅР° СЃР»СѓС‡Р°Р№, РµСЃР»Рё С‚Р°Рј С‡С‚Рѕ-С‚Рѕ Р±С‹Р»Рѕ */
+    DELETE FROM tmp_speech_ids;
+
+    /* РЁРђР“ 1: Р‘С‹СЃС‚СЂРѕ СЃРѕР±РёСЂР°РµРј ID РІСЃРµС… СЃС‚СЂРѕРє, РєРѕС‚РѕСЂС‹Рµ РЅСѓР¶РЅРѕ РѕР±СЂР°Р±РѕС‚Р°С‚СЊ. */
+    /* Р­С‚Рѕ РјРѕРјРµРЅС‚Р°Р»СЊРЅР°СЏ РѕРїРµСЂР°С†РёСЏ С‡С‚РµРЅРёСЏ, РѕРЅР° РЅРµ РЅР°РєР»Р°РґС‹РІР°РµС‚ РґРѕР»РіРѕСЃСЂРѕС‡РЅС‹С… Р±Р»РѕРєРёСЂРѕРІРѕРє. */
+    INSERT INTO tmp_speech_ids (id_to_upd)
+    SELECT id FROM speech;
+
+    /* РЁРђР“ 2: РўРµРїРµСЂСЊ Р·Р°РїСѓСЃРєР°РµРј С†РёРєР» РїРѕ РІСЂРµРјРµРЅРЅРѕР№ С‚Р°Р±Р»РёС†Рµ! */
+    /* РљСѓСЂСЃРѕСЂ РІРёСЃРёС‚ РЅР° С‚Р°Р±Р»РёС†Рµ tmp_speech_ids, РїРѕСЌС‚РѕРјСѓ РјС‹ РјРѕР¶РµРј */
+    /* Р±РµР·Р±РѕР»РµР·РЅРµРЅРЅРѕ Рё Р±РµР· РґРµРґР»РѕРєРѕРІ РґРµР»Р°С‚СЊ UPDATE РѕСЂРёРіРёРЅР°Р»СЊРЅРѕР№ С‚Р°Р±Р»РёС†С‹ speech. */
+    FOR SELECT id_to_upd FROM tmp_speech_ids INTO :cur_id DO
     BEGIN
-        /* Вызываем процедуру транскодирования через SELECT INTO, 
-           так как transcode_g723 содержит оператор SUSPEND */
-        SELECT rec_out FROM transcode_g723(:rec_in) INTO :rec_out;
-        
-        /* В PSQL двоеточие перед rec_out в условии IF не требуется */
-        IF (rec_out IS NOT NULL) THEN
+        /* РР·РѕР»РёСЂРѕРІР°РЅРЅРѕ С‡РёС‚Р°РµРј BLOB РєРѕРЅРєСЂРµС‚РЅРѕР№ СЃС‚СЂРѕРєРё */
+        SELECT rec FROM speech WHERE id = :cur_id INTO :rec_in;
+
+        IF (rec_in IS NOT NULL) THEN
         BEGIN
-            /* Обновляем поля для текущей строки курсора */
-            UPDATE speech
-               SET REC = :rec_out,
-                   rectype = 'PCMU'
-             WHERE id = :cur_id;
+            /* Р’С‹Р·С‹РІР°РµРј С‚СЂР°РЅСЃРєРѕРґРµСЂ */
+            SELECT rec_out FROM transcode_g723(:rec_in) INTO :rec_out;
+            
+            IF (rec_out IS NOT NULL) THEN
+            BEGIN
+                UPDATE speech
+                   SET rec = :rec_out,
+                       rectype = 'PCMU'
+                 WHERE id = :cur_id;
+            END
         END
-    END /* <- Обязательный END для закрытия цикла FOR SELECT */
+    END
+    
+    /* РћС‡РёС‰Р°РµРј РІСЂРµРјРµРЅРЅСѓСЋ С‚Р°Р±Р»РёС†Сѓ */
+    DELETE FROM tmp_speech_ids;
 END^
 
-/* 4. Возвращаем стандартный разделитель */
 SET TERM ; ^
 COMMIT;
 
-/* 5. Запускаем только что созданную процедуру */
+/* 4. Р—Р°РїСѓСЃРєР°РµРј РІС‹РїРѕР»РЅРµРЅРёРµ СЃРѕР·РґР°РЅРЅРѕР№ РїСЂРѕС†РµРґСѓСЂС‹ */
 EXECUTE PROCEDURE tmp_upd_speech;
 COMMIT;
 
-/* 6. Удаляем временную процедуру после успешного выполнения */
+/* 5. РЈРґР°Р»СЏРµРј РІСЂРµРјРµРЅРЅСѓСЋ РїСЂРѕС†РµРґСѓСЂСѓ */
 DROP PROCEDURE tmp_upd_speech;
 COMMIT;

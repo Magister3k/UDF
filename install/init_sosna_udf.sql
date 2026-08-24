@@ -24,20 +24,20 @@ SET TERM ^ ;
 
 /* 4. Создаем хранимую процедуру-обертку */
 CREATE PROCEDURE TRANSCODE_G723 (
-    REC_IN BLOB SUB_TYPE 0
+    rec_in BLOB SUB_TYPE 0
 )
 RETURNS (
-    REC_OUT BLOB SUB_TYPE 0
+    rec_out BLOB SUB_TYPE 0
 )
 AS
 BEGIN
-    IF (REC_IN IS NOT NULL) THEN
+    IF (rec_in IS NOT NULL) THEN
     BEGIN
-        REC_OUT = UDF_TRANSCODE_G723(REC_IN);
+        rec_out = UDF_TRANSCODE_G723(rec_in);
     END
     ELSE
     BEGIN
-        REC_OUT = NULL;
+        rec_out = NULL;
     END
     SUSPEND;
 END^
@@ -50,6 +50,6 @@ COMMIT;
    Пример использования для обновления таблицы speech:
 
    UPDATE speech
-      SET rec = (SELECT REC_OUT FROM TRANSCODE_G723(speech.rec))
+      SET rec = (SELECT rec_out FROM TRANSCODE_G723(rec))
     WHERE rec IS NOT NULL;
 */
