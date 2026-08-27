@@ -116,144 +116,9 @@ CMakeFiles/sosna_udf.dir/g711u_coder.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/sosna_udf.dir/g711u_coder.cpp.s"
 	d:\Programs\MinGW\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Projects\C++\UDF\g711u_coder.cpp -o CMakeFiles\sosna_udf.dir\g711u_coder.cpp.s
 
-CMakeFiles/sosna_udf.dir/g723_1/DECCNG2.C.obj: CMakeFiles/sosna_udf.dir/flags.make
-CMakeFiles/sosna_udf.dir/g723_1/DECCNG2.C.obj: CMakeFiles/sosna_udf.dir/includes_C.rsp
-CMakeFiles/sosna_udf.dir/g723_1/DECCNG2.C.obj: D:/Projects/C++/UDF/g723_1/DECCNG2.C
-CMakeFiles/sosna_udf.dir/g723_1/DECCNG2.C.obj: CMakeFiles/sosna_udf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/sosna_udf.dir/g723_1/DECCNG2.C.obj"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -MD -MT CMakeFiles/sosna_udf.dir/g723_1/DECCNG2.C.obj -MF CMakeFiles\sosna_udf.dir\g723_1\DECCNG2.C.obj.d -o CMakeFiles\sosna_udf.dir\g723_1\DECCNG2.C.obj -c D:\Projects\C++\UDF\g723_1\DECCNG2.C
-
-CMakeFiles/sosna_udf.dir/g723_1/DECCNG2.C.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sosna_udf.dir/g723_1/DECCNG2.C.i"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -E D:\Projects\C++\UDF\g723_1\DECCNG2.C > CMakeFiles\sosna_udf.dir\g723_1\DECCNG2.C.i
-
-CMakeFiles/sosna_udf.dir/g723_1/DECCNG2.C.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sosna_udf.dir/g723_1/DECCNG2.C.s"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -S D:\Projects\C++\UDF\g723_1\DECCNG2.C -o CMakeFiles\sosna_udf.dir\g723_1\DECCNG2.C.s
-
-CMakeFiles/sosna_udf.dir/g723_1/DECOD2.C.obj: CMakeFiles/sosna_udf.dir/flags.make
-CMakeFiles/sosna_udf.dir/g723_1/DECOD2.C.obj: CMakeFiles/sosna_udf.dir/includes_C.rsp
-CMakeFiles/sosna_udf.dir/g723_1/DECOD2.C.obj: D:/Projects/C++/UDF/g723_1/DECOD2.C
-CMakeFiles/sosna_udf.dir/g723_1/DECOD2.C.obj: CMakeFiles/sosna_udf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/sosna_udf.dir/g723_1/DECOD2.C.obj"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -MD -MT CMakeFiles/sosna_udf.dir/g723_1/DECOD2.C.obj -MF CMakeFiles\sosna_udf.dir\g723_1\DECOD2.C.obj.d -o CMakeFiles\sosna_udf.dir\g723_1\DECOD2.C.obj -c D:\Projects\C++\UDF\g723_1\DECOD2.C
-
-CMakeFiles/sosna_udf.dir/g723_1/DECOD2.C.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sosna_udf.dir/g723_1/DECOD2.C.i"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -E D:\Projects\C++\UDF\g723_1\DECOD2.C > CMakeFiles\sosna_udf.dir\g723_1\DECOD2.C.i
-
-CMakeFiles/sosna_udf.dir/g723_1/DECOD2.C.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sosna_udf.dir/g723_1/DECOD2.C.s"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -S D:\Projects\C++\UDF\g723_1\DECOD2.C -o CMakeFiles\sosna_udf.dir\g723_1\DECOD2.C.s
-
-CMakeFiles/sosna_udf.dir/g723_1/EXC2.C.obj: CMakeFiles/sosna_udf.dir/flags.make
-CMakeFiles/sosna_udf.dir/g723_1/EXC2.C.obj: CMakeFiles/sosna_udf.dir/includes_C.rsp
-CMakeFiles/sosna_udf.dir/g723_1/EXC2.C.obj: D:/Projects/C++/UDF/g723_1/EXC2.C
-CMakeFiles/sosna_udf.dir/g723_1/EXC2.C.obj: CMakeFiles/sosna_udf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/sosna_udf.dir/g723_1/EXC2.C.obj"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -MD -MT CMakeFiles/sosna_udf.dir/g723_1/EXC2.C.obj -MF CMakeFiles\sosna_udf.dir\g723_1\EXC2.C.obj.d -o CMakeFiles\sosna_udf.dir\g723_1\EXC2.C.obj -c D:\Projects\C++\UDF\g723_1\EXC2.C
-
-CMakeFiles/sosna_udf.dir/g723_1/EXC2.C.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sosna_udf.dir/g723_1/EXC2.C.i"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -E D:\Projects\C++\UDF\g723_1\EXC2.C > CMakeFiles\sosna_udf.dir\g723_1\EXC2.C.i
-
-CMakeFiles/sosna_udf.dir/g723_1/EXC2.C.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sosna_udf.dir/g723_1/EXC2.C.s"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -S D:\Projects\C++\UDF\g723_1\EXC2.C -o CMakeFiles\sosna_udf.dir\g723_1\EXC2.C.s
-
-CMakeFiles/sosna_udf.dir/g723_1/GLOBALS2.C.obj: CMakeFiles/sosna_udf.dir/flags.make
-CMakeFiles/sosna_udf.dir/g723_1/GLOBALS2.C.obj: CMakeFiles/sosna_udf.dir/includes_C.rsp
-CMakeFiles/sosna_udf.dir/g723_1/GLOBALS2.C.obj: D:/Projects/C++/UDF/g723_1/GLOBALS2.C
-CMakeFiles/sosna_udf.dir/g723_1/GLOBALS2.C.obj: CMakeFiles/sosna_udf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/sosna_udf.dir/g723_1/GLOBALS2.C.obj"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -MD -MT CMakeFiles/sosna_udf.dir/g723_1/GLOBALS2.C.obj -MF CMakeFiles\sosna_udf.dir\g723_1\GLOBALS2.C.obj.d -o CMakeFiles\sosna_udf.dir\g723_1\GLOBALS2.C.obj -c D:\Projects\C++\UDF\g723_1\GLOBALS2.C
-
-CMakeFiles/sosna_udf.dir/g723_1/GLOBALS2.C.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sosna_udf.dir/g723_1/GLOBALS2.C.i"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -E D:\Projects\C++\UDF\g723_1\GLOBALS2.C > CMakeFiles\sosna_udf.dir\g723_1\GLOBALS2.C.i
-
-CMakeFiles/sosna_udf.dir/g723_1/GLOBALS2.C.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sosna_udf.dir/g723_1/GLOBALS2.C.s"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -S D:\Projects\C++\UDF\g723_1\GLOBALS2.C -o CMakeFiles\sosna_udf.dir\g723_1\GLOBALS2.C.s
-
-CMakeFiles/sosna_udf.dir/g723_1/LPC2.C.obj: CMakeFiles/sosna_udf.dir/flags.make
-CMakeFiles/sosna_udf.dir/g723_1/LPC2.C.obj: CMakeFiles/sosna_udf.dir/includes_C.rsp
-CMakeFiles/sosna_udf.dir/g723_1/LPC2.C.obj: D:/Projects/C++/UDF/g723_1/LPC2.C
-CMakeFiles/sosna_udf.dir/g723_1/LPC2.C.obj: CMakeFiles/sosna_udf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/sosna_udf.dir/g723_1/LPC2.C.obj"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -MD -MT CMakeFiles/sosna_udf.dir/g723_1/LPC2.C.obj -MF CMakeFiles\sosna_udf.dir\g723_1\LPC2.C.obj.d -o CMakeFiles\sosna_udf.dir\g723_1\LPC2.C.obj -c D:\Projects\C++\UDF\g723_1\LPC2.C
-
-CMakeFiles/sosna_udf.dir/g723_1/LPC2.C.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sosna_udf.dir/g723_1/LPC2.C.i"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -E D:\Projects\C++\UDF\g723_1\LPC2.C > CMakeFiles\sosna_udf.dir\g723_1\LPC2.C.i
-
-CMakeFiles/sosna_udf.dir/g723_1/LPC2.C.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sosna_udf.dir/g723_1/LPC2.C.s"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -S D:\Projects\C++\UDF\g723_1\LPC2.C -o CMakeFiles\sosna_udf.dir\g723_1\LPC2.C.s
-
-CMakeFiles/sosna_udf.dir/g723_1/LSP2.C.obj: CMakeFiles/sosna_udf.dir/flags.make
-CMakeFiles/sosna_udf.dir/g723_1/LSP2.C.obj: CMakeFiles/sosna_udf.dir/includes_C.rsp
-CMakeFiles/sosna_udf.dir/g723_1/LSP2.C.obj: D:/Projects/C++/UDF/g723_1/LSP2.C
-CMakeFiles/sosna_udf.dir/g723_1/LSP2.C.obj: CMakeFiles/sosna_udf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/sosna_udf.dir/g723_1/LSP2.C.obj"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -MD -MT CMakeFiles/sosna_udf.dir/g723_1/LSP2.C.obj -MF CMakeFiles\sosna_udf.dir\g723_1\LSP2.C.obj.d -o CMakeFiles\sosna_udf.dir\g723_1\LSP2.C.obj -c D:\Projects\C++\UDF\g723_1\LSP2.C
-
-CMakeFiles/sosna_udf.dir/g723_1/LSP2.C.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sosna_udf.dir/g723_1/LSP2.C.i"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -E D:\Projects\C++\UDF\g723_1\LSP2.C > CMakeFiles\sosna_udf.dir\g723_1\LSP2.C.i
-
-CMakeFiles/sosna_udf.dir/g723_1/LSP2.C.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sosna_udf.dir/g723_1/LSP2.C.s"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -S D:\Projects\C++\UDF\g723_1\LSP2.C -o CMakeFiles\sosna_udf.dir\g723_1\LSP2.C.s
-
-CMakeFiles/sosna_udf.dir/g723_1/TAB2.C.obj: CMakeFiles/sosna_udf.dir/flags.make
-CMakeFiles/sosna_udf.dir/g723_1/TAB2.C.obj: CMakeFiles/sosna_udf.dir/includes_C.rsp
-CMakeFiles/sosna_udf.dir/g723_1/TAB2.C.obj: D:/Projects/C++/UDF/g723_1/TAB2.C
-CMakeFiles/sosna_udf.dir/g723_1/TAB2.C.obj: CMakeFiles/sosna_udf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building C object CMakeFiles/sosna_udf.dir/g723_1/TAB2.C.obj"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -MD -MT CMakeFiles/sosna_udf.dir/g723_1/TAB2.C.obj -MF CMakeFiles\sosna_udf.dir\g723_1\TAB2.C.obj.d -o CMakeFiles\sosna_udf.dir\g723_1\TAB2.C.obj -c D:\Projects\C++\UDF\g723_1\TAB2.C
-
-CMakeFiles/sosna_udf.dir/g723_1/TAB2.C.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sosna_udf.dir/g723_1/TAB2.C.i"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -E D:\Projects\C++\UDF\g723_1\TAB2.C > CMakeFiles\sosna_udf.dir\g723_1\TAB2.C.i
-
-CMakeFiles/sosna_udf.dir/g723_1/TAB2.C.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sosna_udf.dir/g723_1/TAB2.C.s"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -S D:\Projects\C++\UDF\g723_1\TAB2.C -o CMakeFiles\sosna_udf.dir\g723_1\TAB2.C.s
-
-CMakeFiles/sosna_udf.dir/g723_1/UTIL2.C.obj: CMakeFiles/sosna_udf.dir/flags.make
-CMakeFiles/sosna_udf.dir/g723_1/UTIL2.C.obj: CMakeFiles/sosna_udf.dir/includes_C.rsp
-CMakeFiles/sosna_udf.dir/g723_1/UTIL2.C.obj: D:/Projects/C++/UDF/g723_1/UTIL2.C
-CMakeFiles/sosna_udf.dir/g723_1/UTIL2.C.obj: CMakeFiles/sosna_udf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building C object CMakeFiles/sosna_udf.dir/g723_1/UTIL2.C.obj"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -MD -MT CMakeFiles/sosna_udf.dir/g723_1/UTIL2.C.obj -MF CMakeFiles\sosna_udf.dir\g723_1\UTIL2.C.obj.d -o CMakeFiles\sosna_udf.dir\g723_1\UTIL2.C.obj -c D:\Projects\C++\UDF\g723_1\UTIL2.C
-
-CMakeFiles/sosna_udf.dir/g723_1/UTIL2.C.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sosna_udf.dir/g723_1/UTIL2.C.i"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -E D:\Projects\C++\UDF\g723_1\UTIL2.C > CMakeFiles\sosna_udf.dir\g723_1\UTIL2.C.i
-
-CMakeFiles/sosna_udf.dir/g723_1/UTIL2.C.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sosna_udf.dir/g723_1/UTIL2.C.s"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -S D:\Projects\C++\UDF\g723_1\UTIL2.C -o CMakeFiles\sosna_udf.dir\g723_1\UTIL2.C.s
-
-CMakeFiles/sosna_udf.dir/g723_1/UTILCNG2.C.obj: CMakeFiles/sosna_udf.dir/flags.make
-CMakeFiles/sosna_udf.dir/g723_1/UTILCNG2.C.obj: CMakeFiles/sosna_udf.dir/includes_C.rsp
-CMakeFiles/sosna_udf.dir/g723_1/UTILCNG2.C.obj: D:/Projects/C++/UDF/g723_1/UTILCNG2.C
-CMakeFiles/sosna_udf.dir/g723_1/UTILCNG2.C.obj: CMakeFiles/sosna_udf.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building C object CMakeFiles/sosna_udf.dir/g723_1/UTILCNG2.C.obj"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -MD -MT CMakeFiles/sosna_udf.dir/g723_1/UTILCNG2.C.obj -MF CMakeFiles\sosna_udf.dir\g723_1\UTILCNG2.C.obj.d -o CMakeFiles\sosna_udf.dir\g723_1\UTILCNG2.C.obj -c D:\Projects\C++\UDF\g723_1\UTILCNG2.C
-
-CMakeFiles/sosna_udf.dir/g723_1/UTILCNG2.C.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/sosna_udf.dir/g723_1/UTILCNG2.C.i"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -E D:\Projects\C++\UDF\g723_1\UTILCNG2.C > CMakeFiles\sosna_udf.dir\g723_1\UTILCNG2.C.i
-
-CMakeFiles/sosna_udf.dir/g723_1/UTILCNG2.C.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/sosna_udf.dir/g723_1/UTILCNG2.C.s"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -S D:\Projects\C++\UDF\g723_1\UTILCNG2.C -o CMakeFiles\sosna_udf.dir\g723_1\UTILCNG2.C.s
-
 CMakeFiles/sosna_udf.dir/version.rc.obj: CMakeFiles/sosna_udf.dir/flags.make
 CMakeFiles/sosna_udf.dir/version.rc.obj: D:/Projects/C++/UDF/version.rc
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building RC object CMakeFiles/sosna_udf.dir/version.rc.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building RC object CMakeFiles/sosna_udf.dir/version.rc.obj"
 	D:\Programs\MinGW\mingw32\bin\windres.exe -O coff $(RC_DEFINES) $(RC_INCLUDES) $(RC_FLAGS) D:\Projects\C++\UDF\version.rc CMakeFiles\sosna_udf.dir\version.rc.obj
 
 # Object files for target sosna_udf
@@ -261,43 +126,26 @@ sosna_udf_OBJECTS = \
 "CMakeFiles/sosna_udf.dir/sosna_udf.cpp.obj" \
 "CMakeFiles/sosna_udf.dir/g723_1_decoder.cpp.obj" \
 "CMakeFiles/sosna_udf.dir/g711u_coder.cpp.obj" \
-"CMakeFiles/sosna_udf.dir/g723_1/DECCNG2.C.obj" \
-"CMakeFiles/sosna_udf.dir/g723_1/DECOD2.C.obj" \
-"CMakeFiles/sosna_udf.dir/g723_1/EXC2.C.obj" \
-"CMakeFiles/sosna_udf.dir/g723_1/GLOBALS2.C.obj" \
-"CMakeFiles/sosna_udf.dir/g723_1/LPC2.C.obj" \
-"CMakeFiles/sosna_udf.dir/g723_1/LSP2.C.obj" \
-"CMakeFiles/sosna_udf.dir/g723_1/TAB2.C.obj" \
-"CMakeFiles/sosna_udf.dir/g723_1/UTIL2.C.obj" \
-"CMakeFiles/sosna_udf.dir/g723_1/UTILCNG2.C.obj" \
 "CMakeFiles/sosna_udf.dir/version.rc.obj"
 
 # External object files for target sosna_udf
 sosna_udf_EXTERNAL_OBJECTS =
 
-libsosna_udf.dll: CMakeFiles/sosna_udf.dir/sosna_udf.cpp.obj
-libsosna_udf.dll: CMakeFiles/sosna_udf.dir/g723_1_decoder.cpp.obj
-libsosna_udf.dll: CMakeFiles/sosna_udf.dir/g711u_coder.cpp.obj
-libsosna_udf.dll: CMakeFiles/sosna_udf.dir/g723_1/DECCNG2.C.obj
-libsosna_udf.dll: CMakeFiles/sosna_udf.dir/g723_1/DECOD2.C.obj
-libsosna_udf.dll: CMakeFiles/sosna_udf.dir/g723_1/EXC2.C.obj
-libsosna_udf.dll: CMakeFiles/sosna_udf.dir/g723_1/GLOBALS2.C.obj
-libsosna_udf.dll: CMakeFiles/sosna_udf.dir/g723_1/LPC2.C.obj
-libsosna_udf.dll: CMakeFiles/sosna_udf.dir/g723_1/LSP2.C.obj
-libsosna_udf.dll: CMakeFiles/sosna_udf.dir/g723_1/TAB2.C.obj
-libsosna_udf.dll: CMakeFiles/sosna_udf.dir/g723_1/UTIL2.C.obj
-libsosna_udf.dll: CMakeFiles/sosna_udf.dir/g723_1/UTILCNG2.C.obj
-libsosna_udf.dll: CMakeFiles/sosna_udf.dir/version.rc.obj
-libsosna_udf.dll: CMakeFiles/sosna_udf.dir/build.make
-libsosna_udf.dll: libg723_stubs.a
-libsosna_udf.dll: CMakeFiles/sosna_udf.dir/linkLibs.rsp
-libsosna_udf.dll: CMakeFiles/sosna_udf.dir/objects1.rsp
-libsosna_udf.dll: CMakeFiles/sosna_udf.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX shared library libsosna_udf.dll"
+sosna_udf.dll: CMakeFiles/sosna_udf.dir/sosna_udf.cpp.obj
+sosna_udf.dll: CMakeFiles/sosna_udf.dir/g723_1_decoder.cpp.obj
+sosna_udf.dll: CMakeFiles/sosna_udf.dir/g711u_coder.cpp.obj
+sosna_udf.dll: CMakeFiles/sosna_udf.dir/version.rc.obj
+sosna_udf.dll: CMakeFiles/sosna_udf.dir/build.make
+sosna_udf.dll: libg723_codec.a
+sosna_udf.dll: libg723_stubs.a
+sosna_udf.dll: CMakeFiles/sosna_udf.dir/linkLibs.rsp
+sosna_udf.dll: CMakeFiles/sosna_udf.dir/objects1.rsp
+sosna_udf.dll: CMakeFiles/sosna_udf.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX shared library sosna_udf.dll"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\sosna_udf.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-CMakeFiles/sosna_udf.dir/build: libsosna_udf.dll
+CMakeFiles/sosna_udf.dir/build: sosna_udf.dll
 .PHONY : CMakeFiles/sosna_udf.dir/build
 
 CMakeFiles/sosna_udf.dir/clean:

@@ -234,4 +234,12 @@ CMakeFiles/sosna_udf.dir/sosna_udf.cpp.obj: \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/uses_allocator_args.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/tuple \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/invoke.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/algorithm \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_algo.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/algorithmfwd.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_heap.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/uniform_int_dist.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_tempbuf.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/pstl/glue_algorithm_defs.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/pstl/execution_defs.h \
  D:\Projects\C++\UDF\g723_1_decoder.h D:\Projects\C++\UDF\g711u_coder.h

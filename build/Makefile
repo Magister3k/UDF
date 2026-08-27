@@ -84,6 +84,51 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	D:\Programs\cmake\bin\cmake.exe -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Install the project..."
+	D:\Programs\cmake\bin\cmake.exe -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	D:\Programs\cmake\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing only the local directory..."
+	D:\Programs\cmake\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	D:\Programs\cmake\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Installing the project stripped..."
+	D:\Programs\cmake\bin\cmake.exe -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
 # The main all target
 all: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start D:\Projects\C++\UDF\build\CMakeFiles D:\Projects\C++\UDF\build\\CMakeFiles\progress.marks
@@ -114,6 +159,19 @@ preinstall/fast:
 depend:
 	$(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles\Makefile.cmake 1
 .PHONY : depend
+
+#=============================================================================
+# Target rules for targets named g723_codec
+
+# Build rule for target.
+g723_codec: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 g723_codec
+.PHONY : g723_codec
+
+# fast build rule for target.
+g723_codec/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/build
+.PHONY : g723_codec/fast
 
 #=============================================================================
 # Target rules for targets named g723_stubs
@@ -183,7 +241,7 @@ g723_1/DECCNG2.obj: g723_1/DECCNG2.C.obj
 
 # target to build an object file
 g723_1/DECCNG2.C.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/DECCNG2.C.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/DECCNG2.C.obj
 .PHONY : g723_1/DECCNG2.C.obj
 
 g723_1/DECCNG2.i: g723_1/DECCNG2.C.i
@@ -191,7 +249,7 @@ g723_1/DECCNG2.i: g723_1/DECCNG2.C.i
 
 # target to preprocess a source file
 g723_1/DECCNG2.C.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/DECCNG2.C.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/DECCNG2.C.i
 .PHONY : g723_1/DECCNG2.C.i
 
 g723_1/DECCNG2.s: g723_1/DECCNG2.C.s
@@ -199,7 +257,7 @@ g723_1/DECCNG2.s: g723_1/DECCNG2.C.s
 
 # target to generate assembly for a file
 g723_1/DECCNG2.C.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/DECCNG2.C.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/DECCNG2.C.s
 .PHONY : g723_1/DECCNG2.C.s
 
 g723_1/DECOD2.obj: g723_1/DECOD2.C.obj
@@ -207,7 +265,7 @@ g723_1/DECOD2.obj: g723_1/DECOD2.C.obj
 
 # target to build an object file
 g723_1/DECOD2.C.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/DECOD2.C.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/DECOD2.C.obj
 .PHONY : g723_1/DECOD2.C.obj
 
 g723_1/DECOD2.i: g723_1/DECOD2.C.i
@@ -215,7 +273,7 @@ g723_1/DECOD2.i: g723_1/DECOD2.C.i
 
 # target to preprocess a source file
 g723_1/DECOD2.C.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/DECOD2.C.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/DECOD2.C.i
 .PHONY : g723_1/DECOD2.C.i
 
 g723_1/DECOD2.s: g723_1/DECOD2.C.s
@@ -223,7 +281,7 @@ g723_1/DECOD2.s: g723_1/DECOD2.C.s
 
 # target to generate assembly for a file
 g723_1/DECOD2.C.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/DECOD2.C.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/DECOD2.C.s
 .PHONY : g723_1/DECOD2.C.s
 
 g723_1/EXC2.obj: g723_1/EXC2.C.obj
@@ -231,7 +289,7 @@ g723_1/EXC2.obj: g723_1/EXC2.C.obj
 
 # target to build an object file
 g723_1/EXC2.C.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/EXC2.C.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/EXC2.C.obj
 .PHONY : g723_1/EXC2.C.obj
 
 g723_1/EXC2.i: g723_1/EXC2.C.i
@@ -239,7 +297,7 @@ g723_1/EXC2.i: g723_1/EXC2.C.i
 
 # target to preprocess a source file
 g723_1/EXC2.C.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/EXC2.C.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/EXC2.C.i
 .PHONY : g723_1/EXC2.C.i
 
 g723_1/EXC2.s: g723_1/EXC2.C.s
@@ -247,7 +305,7 @@ g723_1/EXC2.s: g723_1/EXC2.C.s
 
 # target to generate assembly for a file
 g723_1/EXC2.C.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/EXC2.C.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/EXC2.C.s
 .PHONY : g723_1/EXC2.C.s
 
 g723_1/GLOBALS2.obj: g723_1/GLOBALS2.C.obj
@@ -256,7 +314,6 @@ g723_1/GLOBALS2.obj: g723_1/GLOBALS2.C.obj
 # target to build an object file
 g723_1/GLOBALS2.C.obj:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_stubs.dir\build.make CMakeFiles/g723_stubs.dir/g723_1/GLOBALS2.C.obj
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/GLOBALS2.C.obj
 .PHONY : g723_1/GLOBALS2.C.obj
 
 g723_1/GLOBALS2.i: g723_1/GLOBALS2.C.i
@@ -265,7 +322,6 @@ g723_1/GLOBALS2.i: g723_1/GLOBALS2.C.i
 # target to preprocess a source file
 g723_1/GLOBALS2.C.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_stubs.dir\build.make CMakeFiles/g723_stubs.dir/g723_1/GLOBALS2.C.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/GLOBALS2.C.i
 .PHONY : g723_1/GLOBALS2.C.i
 
 g723_1/GLOBALS2.s: g723_1/GLOBALS2.C.s
@@ -274,7 +330,6 @@ g723_1/GLOBALS2.s: g723_1/GLOBALS2.C.s
 # target to generate assembly for a file
 g723_1/GLOBALS2.C.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_stubs.dir\build.make CMakeFiles/g723_stubs.dir/g723_1/GLOBALS2.C.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/GLOBALS2.C.s
 .PHONY : g723_1/GLOBALS2.C.s
 
 g723_1/LPC2.obj: g723_1/LPC2.C.obj
@@ -282,7 +337,7 @@ g723_1/LPC2.obj: g723_1/LPC2.C.obj
 
 # target to build an object file
 g723_1/LPC2.C.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/LPC2.C.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/LPC2.C.obj
 .PHONY : g723_1/LPC2.C.obj
 
 g723_1/LPC2.i: g723_1/LPC2.C.i
@@ -290,7 +345,7 @@ g723_1/LPC2.i: g723_1/LPC2.C.i
 
 # target to preprocess a source file
 g723_1/LPC2.C.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/LPC2.C.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/LPC2.C.i
 .PHONY : g723_1/LPC2.C.i
 
 g723_1/LPC2.s: g723_1/LPC2.C.s
@@ -298,7 +353,7 @@ g723_1/LPC2.s: g723_1/LPC2.C.s
 
 # target to generate assembly for a file
 g723_1/LPC2.C.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/LPC2.C.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/LPC2.C.s
 .PHONY : g723_1/LPC2.C.s
 
 g723_1/LSP2.obj: g723_1/LSP2.C.obj
@@ -306,7 +361,7 @@ g723_1/LSP2.obj: g723_1/LSP2.C.obj
 
 # target to build an object file
 g723_1/LSP2.C.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/LSP2.C.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/LSP2.C.obj
 .PHONY : g723_1/LSP2.C.obj
 
 g723_1/LSP2.i: g723_1/LSP2.C.i
@@ -314,7 +369,7 @@ g723_1/LSP2.i: g723_1/LSP2.C.i
 
 # target to preprocess a source file
 g723_1/LSP2.C.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/LSP2.C.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/LSP2.C.i
 .PHONY : g723_1/LSP2.C.i
 
 g723_1/LSP2.s: g723_1/LSP2.C.s
@@ -322,7 +377,7 @@ g723_1/LSP2.s: g723_1/LSP2.C.s
 
 # target to generate assembly for a file
 g723_1/LSP2.C.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/LSP2.C.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/LSP2.C.s
 .PHONY : g723_1/LSP2.C.s
 
 g723_1/TAB2.obj: g723_1/TAB2.C.obj
@@ -330,7 +385,7 @@ g723_1/TAB2.obj: g723_1/TAB2.C.obj
 
 # target to build an object file
 g723_1/TAB2.C.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/TAB2.C.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/TAB2.C.obj
 .PHONY : g723_1/TAB2.C.obj
 
 g723_1/TAB2.i: g723_1/TAB2.C.i
@@ -338,7 +393,7 @@ g723_1/TAB2.i: g723_1/TAB2.C.i
 
 # target to preprocess a source file
 g723_1/TAB2.C.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/TAB2.C.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/TAB2.C.i
 .PHONY : g723_1/TAB2.C.i
 
 g723_1/TAB2.s: g723_1/TAB2.C.s
@@ -346,7 +401,7 @@ g723_1/TAB2.s: g723_1/TAB2.C.s
 
 # target to generate assembly for a file
 g723_1/TAB2.C.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/TAB2.C.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/TAB2.C.s
 .PHONY : g723_1/TAB2.C.s
 
 g723_1/UTIL2.obj: g723_1/UTIL2.C.obj
@@ -354,7 +409,7 @@ g723_1/UTIL2.obj: g723_1/UTIL2.C.obj
 
 # target to build an object file
 g723_1/UTIL2.C.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/UTIL2.C.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/UTIL2.C.obj
 .PHONY : g723_1/UTIL2.C.obj
 
 g723_1/UTIL2.i: g723_1/UTIL2.C.i
@@ -362,7 +417,7 @@ g723_1/UTIL2.i: g723_1/UTIL2.C.i
 
 # target to preprocess a source file
 g723_1/UTIL2.C.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/UTIL2.C.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/UTIL2.C.i
 .PHONY : g723_1/UTIL2.C.i
 
 g723_1/UTIL2.s: g723_1/UTIL2.C.s
@@ -370,7 +425,7 @@ g723_1/UTIL2.s: g723_1/UTIL2.C.s
 
 # target to generate assembly for a file
 g723_1/UTIL2.C.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/UTIL2.C.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/UTIL2.C.s
 .PHONY : g723_1/UTIL2.C.s
 
 g723_1/UTILCNG2.obj: g723_1/UTILCNG2.C.obj
@@ -378,7 +433,7 @@ g723_1/UTILCNG2.obj: g723_1/UTILCNG2.C.obj
 
 # target to build an object file
 g723_1/UTILCNG2.C.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/UTILCNG2.C.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/UTILCNG2.C.obj
 .PHONY : g723_1/UTILCNG2.C.obj
 
 g723_1/UTILCNG2.i: g723_1/UTILCNG2.C.i
@@ -386,7 +441,7 @@ g723_1/UTILCNG2.i: g723_1/UTILCNG2.C.i
 
 # target to preprocess a source file
 g723_1/UTILCNG2.C.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/UTILCNG2.C.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/UTILCNG2.C.i
 .PHONY : g723_1/UTILCNG2.C.i
 
 g723_1/UTILCNG2.s: g723_1/UTILCNG2.C.s
@@ -394,7 +449,7 @@ g723_1/UTILCNG2.s: g723_1/UTILCNG2.C.s
 
 # target to generate assembly for a file
 g723_1/UTILCNG2.C.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1/UTILCNG2.C.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/UTILCNG2.C.s
 .PHONY : g723_1/UTILCNG2.C.s
 
 g723_1_decoder.obj: g723_1_decoder.cpp.obj
@@ -484,7 +539,12 @@ help:
 	@echo ... clean
 	@echo ... depend
 	@echo ... edit_cache
+	@echo ... install
+	@echo ... install/local
+	@echo ... install/strip
+	@echo ... list_install_components
 	@echo ... rebuild_cache
+	@echo ... g723_codec
 	@echo ... g723_stubs
 	@echo ... sosna_udf
 	@echo ... test_sosna_udf

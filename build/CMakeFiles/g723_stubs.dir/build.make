@@ -72,19 +72,19 @@ CMakeFiles/g723_stubs.dir/codegen:
 .PHONY : CMakeFiles/g723_stubs.dir/codegen
 
 CMakeFiles/g723_stubs.dir/g723_1/GLOBALS2.C.obj: CMakeFiles/g723_stubs.dir/flags.make
-CMakeFiles/g723_stubs.dir/g723_1/GLOBALS2.C.obj: CMakeFiles/g723_stubs.dir/includes_C.rsp
+CMakeFiles/g723_stubs.dir/g723_1/GLOBALS2.C.obj: CMakeFiles/g723_stubs.dir/includes_CXX.rsp
 CMakeFiles/g723_stubs.dir/g723_1/GLOBALS2.C.obj: D:/Projects/C++/UDF/g723_1/GLOBALS2.C
 CMakeFiles/g723_stubs.dir/g723_1/GLOBALS2.C.obj: CMakeFiles/g723_stubs.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/g723_stubs.dir/g723_1/GLOBALS2.C.obj"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -MD -MT CMakeFiles/g723_stubs.dir/g723_1/GLOBALS2.C.obj -MF CMakeFiles\g723_stubs.dir\g723_1\GLOBALS2.C.obj.d -o CMakeFiles\g723_stubs.dir\g723_1\GLOBALS2.C.obj -c D:\Projects\C++\UDF\g723_1\GLOBALS2.C
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/g723_stubs.dir/g723_1/GLOBALS2.C.obj"
+	d:\Programs\MinGW\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/g723_stubs.dir/g723_1/GLOBALS2.C.obj -MF CMakeFiles\g723_stubs.dir\g723_1\GLOBALS2.C.obj.d -o CMakeFiles\g723_stubs.dir\g723_1\GLOBALS2.C.obj -c D:\Projects\C++\UDF\g723_1\GLOBALS2.C
 
 CMakeFiles/g723_stubs.dir/g723_1/GLOBALS2.C.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/g723_stubs.dir/g723_1/GLOBALS2.C.i"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -E D:\Projects\C++\UDF\g723_1\GLOBALS2.C > CMakeFiles\g723_stubs.dir\g723_1\GLOBALS2.C.i
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/g723_stubs.dir/g723_1/GLOBALS2.C.i"
+	d:\Programs\MinGW\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Projects\C++\UDF\g723_1\GLOBALS2.C > CMakeFiles\g723_stubs.dir\g723_1\GLOBALS2.C.i
 
 CMakeFiles/g723_stubs.dir/g723_1/GLOBALS2.C.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/g723_stubs.dir/g723_1/GLOBALS2.C.s"
-	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -O3 -ftree-vectorize -S D:\Projects\C++\UDF\g723_1\GLOBALS2.C -o CMakeFiles\g723_stubs.dir\g723_1\GLOBALS2.C.s
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/g723_stubs.dir/g723_1/GLOBALS2.C.s"
+	d:\Programs\MinGW\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Projects\C++\UDF\g723_1\GLOBALS2.C -o CMakeFiles\g723_stubs.dir\g723_1\GLOBALS2.C.s
 
 # Object files for target g723_stubs
 g723_stubs_OBJECTS = \
@@ -96,7 +96,7 @@ g723_stubs_EXTERNAL_OBJECTS =
 libg723_stubs.a: CMakeFiles/g723_stubs.dir/g723_1/GLOBALS2.C.obj
 libg723_stubs.a: CMakeFiles/g723_stubs.dir/build.make
 libg723_stubs.a: CMakeFiles/g723_stubs.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C static library libg723_stubs.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libg723_stubs.a"
 	$(CMAKE_COMMAND) -P CMakeFiles\g723_stubs.dir\cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\g723_stubs.dir\link.txt --verbose=$(VERBOSE)
 

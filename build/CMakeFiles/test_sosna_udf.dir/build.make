@@ -95,6 +95,7 @@ test_sosna_udf_EXTERNAL_OBJECTS =
 
 test_sosna_udf.exe: CMakeFiles/test_sosna_udf.dir/test_transcode_g723.cpp.obj
 test_sosna_udf.exe: CMakeFiles/test_sosna_udf.dir/build.make
+test_sosna_udf.exe: libsosna_udf.dll.a
 test_sosna_udf.exe: CMakeFiles/test_sosna_udf.dir/linkLibs.rsp
 test_sosna_udf.exe: CMakeFiles/test_sosna_udf.dir/objects1.rsp
 test_sosna_udf.exe: CMakeFiles/test_sosna_udf.dir/link.txt

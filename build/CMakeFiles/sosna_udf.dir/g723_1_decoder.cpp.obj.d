@@ -14,6 +14,10 @@ CMakeFiles/sosna_udf.dir/g723_1_decoder.cpp.obj: \
  D:/Programs/MinGW/mingw32/i686-w64-mingw32/include/_mingw_secapi.h \
  D:/Programs/MinGW/mingw32/i686-w64-mingw32/include/vadefs.h \
  D:/Programs/MinGW/mingw32/i686-w64-mingw32/include/sec_api/string_s.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/new \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/exception.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/new_except.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/exception_defines.h \
  D:\Projects\C++\UDF\g723_1_decoder.h \
  D:/Programs/MinGW/mingw32/i686-w64-mingw32/include/windows.h \
  D:/Programs/MinGW/mingw32/i686-w64-mingw32/include/sdkddkver.h \

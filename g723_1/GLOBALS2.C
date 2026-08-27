@@ -28,7 +28,7 @@ enum Crate WrkRate = Rate63;     /* Work rate enum - default Rate63 */
 ** Function: Update_Acf (stub implementation)
 ** Updates autocorrelation coefficients for LPC analysis
 */
-void Update_Acf(double *Acf_sf)
+void Update_Acf(FLOAT *Acf_sf)
 {
     /* This is a stub implementation for compatibility.
        The original codec may use this for adaptive LPC updates.

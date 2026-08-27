@@ -1,28 +1,9 @@
 #include <cstring>
+#include <new>
 #include "g723_1_decoder.h"
 
-// Глобальная критическая секция для потокобезопасности
-static CRITICAL_SECTION g_critical_section;
-
-// Типы для совместимости с ITU-T G.723.1
-typedef short int Word16;
-typedef int Word32;
-typedef int Flag;
-
-// Определение для совместимости с ITU-T G.723.1
-#define G723_SAMPLES_PER_FRAME 240
-
-#ifdef _WIN32
-    typedef float FLOAT; // Совместимость с Windows API
-#else
-    typedef double FLOAT;
-#endif
-
 #define __unix__
-
-// Исправляем конфликт типов перед включением ITU-T
-#define __TYPEDEF2_H__
-// Определение _single перенесено в CMakeLists.txt
+#define _single
 
 extern "C" {
     #include "g723_1/typedef2.h"
@@ -30,21 +11,68 @@ extern "C" {
     #include "g723_1/decod2.h"
 }
 
-// Явное объявление функций для линкинга
-extern "C" {
-    Flag Decod(FLOAT *DataBuff, char *Vinp, Word16 Crc);
-    void Init_Decod(void);
-}
-
+#define G723_SAMPLES_PER_FRAME 240
 #define G723_FRAME_SIZE_63 24
 #define G723_FRAME_SIZE_53 20
 #define G723_FRAME_SIZE_SID 4
 
-int g723_decode_frame(const unsigned char* input, double* output_pcm) {
-    if (!input || !output_pcm) {
+struct G723DecoderContext {
+    CRITICAL_SECTION critical_section;
+    bool initialized = false;
+};
+
+bool g723_init_decoder() {
+    Init_Decod();
+    return true;
+}
+
+void g723_cleanup_decoder() {
+}
+
+G723DecoderContext* g723_create_context() {
+    G723DecoderContext* ctx = new (std::nothrow) G723DecoderContext();
+    if (!ctx) {
+        return nullptr;
+    }
+
+    InitializeCriticalSection(&ctx->critical_section);
+    ctx->initialized = true;
+
+    EnterCriticalSection(&ctx->critical_section);
+    Init_Decod();
+    LeaveCriticalSection(&ctx->critical_section);
+
+    return ctx;
+}
+
+void g723_destroy_context(G723DecoderContext* ctx) {
+    if (!ctx) {
+        return;
+    }
+
+    if (ctx->initialized) {
+        DeleteCriticalSection(&ctx->critical_section);
+        ctx->initialized = false;
+    }
+
+    delete ctx;
+}
+
+void g723_reset_decoder(G723DecoderContext* ctx) {
+    if (!ctx || !ctx->initialized) {
+        return;
+    }
+
+    EnterCriticalSection(&ctx->critical_section);
+    Init_Decod();
+    LeaveCriticalSection(&ctx->critical_section);
+}
+
+int g723_decode_frame(G723DecoderContext* ctx, const unsigned char* input, double* output_pcm) {
+    if (!ctx || !ctx->initialized || !input || !output_pcm) {
         return 0;
     }
-    
+
     unsigned char first_byte = *input;
     int current_frame_size = 0;
     int crnt_crate = 0;
@@ -53,40 +81,18 @@ int g723_decode_frame(const unsigned char* input, double* output_pcm) {
         case 0x00: current_frame_size = G723_FRAME_SIZE_63; crnt_crate = 0; break;
         case 0x01: current_frame_size = G723_FRAME_SIZE_53; crnt_crate = 1; break;
         case 0x02: current_frame_size = G723_FRAME_SIZE_SID; crnt_crate = 2; break;
-        default:   current_frame_size = 1; crnt_crate = 3; break; // PLC
+        default:   current_frame_size = 1; crnt_crate = 3; break;
     }
 
-    // Потокобезопасный вызов декодера
-    float pcm_float_buffer[G723_SAMPLES_PER_FRAME];
-    EnterCriticalSection(&g_critical_section);
-    Decod(pcm_float_buffer, (char*)input, (Word16)crnt_crate);
-    LeaveCriticalSection(&g_critical_section);
-    
-    // Конвертация float в double
-    for (int i = 0; i < G723_SAMPLES_PER_FRAME; i++) {
+    FLOAT pcm_float_buffer[G723_SAMPLES_PER_FRAME];
+
+    EnterCriticalSection(&ctx->critical_section);
+    Decod(pcm_float_buffer, const_cast<char*>(reinterpret_cast<const char*>(input)), static_cast<Word16>(crnt_crate));
+    LeaveCriticalSection(&ctx->critical_section);
+
+    for (int i = 0; i < G723_SAMPLES_PER_FRAME; ++i) {
         output_pcm[i] = static_cast<double>(pcm_float_buffer[i]);
     }
-    
+
     return current_frame_size;
-}
-
-// Инициализация глобального состояния декодера (вызывается в DllMain)
-bool g723_init_decoder() {
-    InitializeCriticalSection(&g_critical_section);
-    EnterCriticalSection(&g_critical_section);
-    Init_Decod();
-    LeaveCriticalSection(&g_critical_section);
-    return true;
-}
-
-// Сброс состояния перед обработкой нового BLOB (вызывается в transcode_g723)
-void g723_reset_decoder() {
-    EnterCriticalSection(&g_critical_section);
-    // Логика сброса состояния декодера (если требуется)
-    LeaveCriticalSection(&g_critical_section);
-}
-
-// Очистка ресурсов декодера (вызывается при выгрузке DLL)
-void g723_cleanup_decoder() {
-    DeleteCriticalSection(&g_critical_section);
 }

@@ -15,7 +15,7 @@ static unsigned char calculate_pcmu_sample(short sample) {
     for (int mask = 0x4000; (sample & mask) == 0 && exponent > 0; mask >>= 1) {
         exponent--;
     }
-    int mantissa = (sample >> (exponent + 3)) & 0x0F;
+    int mantissa = (static_cast<unsigned short>(sample) >> (exponent + 3)) & 0x0F;
     return ~(sign | (exponent << 4) | mantissa);
 }
 
