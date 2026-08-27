@@ -2,28 +2,34 @@ cmake_minimum_required(VERSION 3.15)
 project(SosnaUDF C CXX)
 
 # ====================================================================
-# 1. ГЛОБАЛЬНЫЕ НАСТРОЙКИ СТАНДАРТОВ И ПУТЕЙ
+# 1. Р“Р›РћР‘РђР›Р¬РќР«Р• РќРђРЎРўР РћР™РљР РЎРўРђРќР”РђР РўРћР’ Р РџРЈРўР•Р™
 # ====================================================================
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_C_STANDARD 99)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
-# Указываем путь к заголовочным файлам кодека G.723.1
+# РЈРєР°Р·С‹РІР°РµРј РїСѓС‚СЊ Рє Р·Р°РіРѕР»РѕРІРѕС‡РЅС‹Рј С„Р°Р№Р»Р°Рј РєРѕРґРµРєР° G.723.1
 include_directories(g723_1)
 
-# Автоматически собираем все файлы кодека ANSI C в подпапке g723_1
+# РђРІС‚РѕРјР°С‚РёС‡РµСЃРєРё СЃРѕР±РёСЂР°РµРј РІСЃРµ С„Р°Р№Р»С‹ РєРѕРґРµРєР° ANSI C РІ РїРѕРґРїР°РїРєРµ g723_1
 file(GLOB ITU_SOURCES "g723_1/*.C")
 
-# ====================================================================
-# 2. ПЕРЕКЛЮЧАТЕЛИ РЕЖИМОВ СБОРКИ И АНАЛИЗА (OPTIONS)
-# ====================================================================
-option(ENABLE_ASAN "Включить AddressSanitizer для поиска багов памяти" OFF)
-option(ENABLE_CPPCHECK "Включить автоматический статический анализ Cppcheck" ON)
-option(STATIC_LINK_CRT "Статическая линковка библиотек времени выполнения (CRT)" ON)
+# ????????? ?????????? ???????? ??? ????????????? ???????
+add_library(g723_stubs STATIC "g723_1/GLOBALS2.C")
+
+# Р”РѕР±Р°РІР»СЏРµРј РѕРїСЂРµРґРµР»РµРЅРёРµ РґР»СЏ СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё СЃ Windows
+add_compile_definitions(_single)
 
 # ====================================================================
-# 3. ИНТЕГРАЦИЯ СТАТИЧЕСКОГО АНАЛИЗАТОРА (CPPCHECK)
+# 2. РџР•Р Р•РљР›Р®Р§РђРўР•Р›Р Р Р•Р–РРњРћР’ РЎР‘РћР РљР Р РђРќРђР›РР—Рђ (OPTIONS)
+# ====================================================================
+option(ENABLE_ASAN "Р’РєР»СЋС‡РёС‚СЊ AddressSanitizer РґР»СЏ РїРѕРёСЃРєР° Р±Р°РіРѕРІ РїР°РјСЏС‚Рё" OFF)
+option(ENABLE_CPPCHECK "Р’РєР»СЋС‡РёС‚СЊ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРёР№ СЃС‚Р°С‚РёС‡РµСЃРєРёР№ Р°РЅР°Р»РёР· Cppcheck" ON)
+option(STATIC_LINK_CRT "РЎС‚Р°С‚РёС‡РµСЃРєР°СЏ Р»РёРЅРєРѕРІРєР° Р±РёР±Р»РёРѕС‚РµРє РІСЂРµРјРµРЅРё РІС‹РїРѕР»РЅРµРЅРёСЏ (CRT)" ON)
+
+# ====================================================================
+# 3. РРќРўР•Р“Р РђР¦РРЇ РЎРўРђРўРР§Р•РЎРљРћР“Рћ РђРќРђР›РР—РђРўРћР Рђ (CPPCHECK)
 # ====================================================================
 if(ENABLE_CPPCHECK)
     find_program(CPPCHECK_PROGRAM cppcheck)
@@ -36,29 +42,29 @@ if(ENABLE_CPPCHECK)
             "--quiet"
         )
         set(CMAKE_C_CPPCHECK ${CMAKE_CXX_CPPCHECK})
-        message(STATUS "[CPPCHECK] Успешно интегрирован (Платформа: win32A)")
+        message(STATUS "[CPPCHECK] РЈСЃРїРµС€РЅРѕ РёРЅС‚РµРіСЂРёСЂРѕРІР°РЅ (РџР»Р°С‚С„РѕСЂРјР°: win32A)")
     else()
-        message(WARNING "[CPPCHECK] Исполняемый файл не найден в PATH. Анализ отключен.")
+        message(WARNING "[CPPCHECK] РСЃРїРѕР»РЅСЏРµРјС‹Р№ С„Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ РІ PATH. РђРЅР°Р»РёР· РѕС‚РєР»СЋС‡РµРЅ.")
     endif()
 endif()
 
 # ====================================================================
-# 4. НАСТРОЙКА ADDRESSSANITIZER (ASAN) И ФЛАГОВ СБОРКИ
+# 4. РќРђРЎРўР РћР™РљРђ ADDRESSSANITIZER (ASAN) Р Р¤Р›РђР“РћР’ РЎР‘РћР РљР
 # ====================================================================
 if(ENABLE_ASAN)
     if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
         add_compile_options(-fsanitize=address -g -O1)
         add_link_options(-fsanitize=address)
-        message(STATUS "[ASAN] Активирован для GCC/Clang")
+        message(STATUS "[ASAN] РђРєС‚РёРІРёСЂРѕРІР°РЅ РґР»СЏ GCC/Clang")
     elseif(MSVC)
         add_compile_options(/fsanitize=address /Zi /O1)
-        message(STATUS "[ASAN] Активирован для MSVC")
+        message(STATUS "[ASAN] РђРєС‚РёРІРёСЂРѕРІР°РЅ РґР»СЏ MSVC")
     endif()
 endif()
 
-# Переносим специфические макросы и флаги оптимизации из Makefile
+# РЎРїРµС†РёС„РёС‡РµСЃРєРёРµ РјР°РєСЂРѕСЃС‹ Рё С„Р»Р°РіРё РѕРїС‚РёРјРёР·Р°С†РёРё
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    # Добавляем строгую сборку х32, генерацию SSE2 и макросы платформы из ITU_CFLAGS
+    # Р”РѕР±Р°РІР»СЏРµРј СЃС‚СЂРѕРіСѓСЋ СЃР±РѕСЂРєСѓ С…32, РіРµРЅРµСЂР°С†РёСЋ SSE2 Рё РјР°РєСЂРѕСЃС‹ РїР»Р°С‚С„РѕСЂРјС‹
     add_compile_options(-m32 -msse2 -mfpmath=sse -march=i686 -D__X86__ -D__i386__ -Wall)
     add_link_options(-m32)
 elseif(MSVC)
@@ -66,19 +72,18 @@ elseif(MSVC)
 endif()
 
 # ====================================================================
-# 5. СБОРКА ФАЙЛА РЕСУРСОВ (version.rc)
+# 5. РЎР‘РћР РљРђ Р¤РђР™Р›Рђ Р Р•РЎРЈР РЎРћР’ (version.rc)
 # ====================================================================
-# Переносим поддержку windres / rc из Makefile. CMake делает это автоматически.
 set(RES_SOURCES "")
 if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/version.rc")
     set(RES_SOURCES "version.rc")
 endif()
 
 # ====================================================================
-# 6. ОПРЕДЕЛЕНИЕ ЦЕЛЕЙ СБОРКИ (TARGETS)
+# 6. РћРџР Р•Р”Р•Р›Р•РќРР• Р¦Р•Р›Р•Р™ РЎР‘РћР РљР (TARGETS)
 # ====================================================================
 
-# Цель 1: Динамическая UDF-библиотека для InterBase
+# Р¦РµР»СЊ 1: Р”РёРЅР°РјРёС‡РµСЃРєР°СЏ UDF-Р±РёР±Р»РёРѕС‚РµРєР° РґР»СЏ InterBase
 add_library(sosna_udf SHARED 
     sosna_udf.cpp 
     g723_1_decoder.cpp 
@@ -87,39 +92,42 @@ add_library(sosna_udf SHARED
     ${RES_SOURCES}
 )
 
-# Возвращаем критически важный флаг --kill-at из Makefile для удаления декораций @size в MinGW
+# ??????? ????????
+target_link_libraries(sosna_udf PRIVATE g723_stubs)
+
+# Р’РѕР·РІСЂР°С‰Р°РµРј РєСЂРёС‚РёС‡РµСЃРєРё РІР°Р¶РЅС‹Р№ С„Р»Р°Рі --kill-at РґР»СЏ СѓРґР°Р»РµРЅРёСЏ РґРµРєРѕСЂР°С†РёР№ @size РІ MinGW
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     target_link_options(sosna_udf PRIVATE -Wl,--kill-at)
 endif()
 
-# Цель 2: Автономная тестовая программа для проверки кодека
+# Р¦РµР»СЊ 2: РђРІС‚РѕРЅРѕРјРЅР°СЏ С‚РµСЃС‚РѕРІР°СЏ РїСЂРѕРіСЂР°РјРјР° РґР»СЏ РїСЂРѕРІРµСЂРєРё РєРѕРґРµРєР°
 add_executable(test_sosna_udf test_transcode_g723.cpp)
 
 # ====================================================================
-# 7. УПРАВЛЕНИЕ ОПТИМИЗАЦИЕЙ КОНКРЕТНЫХ ФАЙЛОВ КОДЕКА (ITU_CFLAGS)
+# 7. РЈРџР РђР’Р›Р•РќРР• РћРџРўРРњРР—РђР¦РР•Р™ РљРћРќРљР Р•РўРќР«РҐ Р¤РђР™Р›РћР’ РљРћР”Р•РљРђ (ITU_CFLAGS)
 # ====================================================================
-# В Makefile для файлов .C был задан режим -O3. Переносим это требование:
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     foreach(source_file ${ITU_SOURCES})
         set_source_files_properties(${source_file} PROPERTIES COMPILE_FLAGS "-O3 -ftree-vectorize")
+        set_source_files_properties(${source_file} PROPERTIES LANGUAGE C)
     endforeach()
 endif()
 
 # ====================================================================
-# 8. УПРАВЛЕНИЕ ЛИНКОВКОЙ БИБЛИОТЕК ВРЕМЕНИ ВЫПОЛНЕНИЯ (CRT)
+# 8. РЈРџР РђР’Р›Р•РќРР• Р›РРќРљРћР’РљРћР™ Р‘РР‘Р›РРћРўР•Рљ Р’Р Р•РњР•РќР Р’Р«РџРћР›РќР•РќРРЇ (CRT)
 # ====================================================================
 if(MSVC)
     if(STATIC_LINK_CRT)
         set_property(TARGET test_sosna_udf PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
         set_property(TARGET sosna_udf PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreadedDLL$<$<CONFIG:Debug>:Debug>")
-        message(STATUS "[CRT LINK] Настроено: EXE -> /MT (Автономный), DLL -> /MD (Для InterBase)")
+        message(STATUS "[CRT LINK] РќР°СЃС‚СЂРѕРµРЅРѕ: EXE -> /MT (РђРІС‚РѕРЅРѕРјРЅС‹Р№), DLL -> /MD (Р”Р»СЏ InterBase)")
     else()
         set_property(TARGET test_sosna_udf PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreadedDLL$<$<CONFIG:Debug>:Debug>")
         set_property(TARGET sosna_udf PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreadedDLL$<$<CONFIG:Debug>:Debug>")
     endif()
 elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
     if(STATIC_LINK_CRT)
-        # Переносим флаги -static-libgcc и -static-libstdc++ из Makefile для полной автономности файлов
+        # Р¤Р»Р°РіРё -static-libgcc Рё -static-libstdc++ РґР»СЏ РїРѕР»РЅРѕР№ Р°РІС‚РѕРЅРѕРјРЅРѕСЃС‚Рё С„Р°Р№Р»РѕРІ
         target_link_options(test_sosna_udf PRIVATE -static -static-libgcc -static-libstdc++)
         target_link_options(sosna_udf PRIVATE -static-libgcc -static-libstdc++)
     endif()

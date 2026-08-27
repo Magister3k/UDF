@@ -1,8 +1,16 @@
 #include <windows.h>
 #include <cstring>
-#include <new> // std::nothrow
+#include <vector> // std::vector
+#include <new>    // std::nothrow
 #include "g723_1_decoder.h" // Интерфейс G.723.1
 #include "g711u_coder.h"    // Интерфейс G.711 u-law
+
+// Условная компиляция для отладочного вывода
+#ifdef _DEBUG
+#define DEBUG_OUTPUT(msg) OutputDebugStringA(msg)
+#else
+#define DEBUG_OUTPUT(msg)
+#endif
 
 #define G723_SAMPLES_PER_FRAME 240
 #define G723_FRAME_SIZE_SID 4
@@ -19,19 +27,23 @@ typedef struct blob_callback {
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved) {
     if (ul_reason_for_call == DLL_PROCESS_ATTACH) {
         if (!g711u_init_encoder()) { // Инициализация таблицы PCMU
-    OutputDebugStringA("Failed to initialize G.711 encoder\n");
-    return FALSE;
-}
+            DEBUG_OUTPUT("Failed to initialize G.711 encoder\n");
+            return FALSE;
+        }
         if (!g723_init_decoder()) {  // Инициализация глобального состояния декодера G.723.1
-    OutputDebugStringA("Failed to initialize G.723 decoder\n");
-    return FALSE;
-}
+            DEBUG_OUTPUT("Failed to initialize G.723 decoder\n");
+            return FALSE;
+        }
+    }
+    else if (ul_reason_for_call == DLL_PROCESS_DETACH) {
+        g723_cleanup_decoder(); // Очистка ресурсов декодера
     }
     return TRUE;
 }
 
-extern "C" __declspec(dllexport) void __cdecl transcode_g723(BLOB_CB in_blob, BLOB_CB out_blob) { // void __stdcall или __cdecl
-    if (!in_blob || !out_blob || !in_blob->blob_handle || !in_blob->blob_get_segment) {
+extern "C" __declspec(dllexport) void __cdecl transcode_g723(BLOB_CB in_blob, BLOB_CB out_blob) {
+    if (!in_blob || !out_blob || !in_blob->blob_handle || !in_blob->blob_get_segment || !out_blob->blob_put_segment) {
+        DEBUG_OUTPUT("Invalid BLOB callback or handle\n");
         return;
     }
 
@@ -39,66 +51,70 @@ extern "C" __declspec(dllexport) void __cdecl transcode_g723(BLOB_CB in_blob, BL
     g723_reset_decoder();
 
     const unsigned short max_seg_size = 32768;
-    char* input_chunk = new (std::nothrow) char[max_seg_size];
-    char* output_chunk = new (std::nothrow) char[max_seg_size * G723_SAMPLES_PER_FRAME];
-    if (!input_chunk || !output_chunk) {
-        OutputDebugStringA("Failed to allocate memory for chunks\n");
-        return;
-    }
-
+    std::vector<char> input_chunk(max_seg_size);
+    std::vector<char> output_chunk(max_seg_size * G723_SAMPLES_PER_FRAME);
+    
     unsigned short bytes_read = 0;
     int leftover_bytes = 0;
     int output_idx = 0;
+    size_t input_circular_pos = 0; // Позиция для циклического буфера
 
-    double pcm_output_buffer[G723_SAMPLES_PER_FRAME]; 
+    double pcm_output_buffer[G723_SAMPLES_PER_FRAME];
 
-    OutputDebugStringA("Starting processing loop\n");
-while ((in_blob->blob_get_segment(in_blob->blob_handle, input_chunk + leftover_bytes, max_seg_size - leftover_bytes, &bytes_read) == 0 && bytes_read > 0) || bytes_read > 0) {
+    DEBUG_OUTPUT("Starting processing loop\n");
+    
+    while ((in_blob->blob_get_segment(in_blob->blob_handle, input_chunk.data() + leftover_bytes, max_seg_size - leftover_bytes, &bytes_read) == 0 && bytes_read > 0) || leftover_bytes > 0) {
+        if (bytes_read == 0 && leftover_bytes == 0) {
+            break; // Нет данных для обработки
+        }
+        
         int total_valid_bytes = bytes_read + leftover_bytes;
-        int input_idx = 0;
-
-        while (input_idx < total_valid_bytes) {
-            int bytes_left = total_valid_bytes - input_idx;
+        
+        while (input_circular_pos < total_valid_bytes) {
+            int bytes_left = total_valid_bytes - input_circular_pos;
             
             if (bytes_left < G723_FRAME_SIZE_SID) {
-                std::memmove(input_chunk, &input_chunk[input_idx], bytes_left);
+                // Переносим оставшиеся байты в начало циклического буфера
+                if (input_circular_pos > 0) {
+                    std::memmove(input_chunk.data(), input_chunk.data() + input_circular_pos, bytes_left);
+                }
                 leftover_bytes = bytes_left;
-                input_idx = total_valid_bytes;
+                input_circular_pos = 0;
                 break;
             }
 
             // 1. Декодируем фрейм G.723.1 во float PCM
-            int consumed_bytes = g723_decode_frame((const unsigned char*)&input_chunk[input_idx], pcm_output_buffer);
+            int consumed_bytes = g723_decode_frame(reinterpret_cast<const unsigned char*>(input_chunk.data() + input_circular_pos), pcm_output_buffer);
             if (consumed_bytes <= 0) {
-                OutputDebugStringA("Failed to decode G.723 frame\n");
-                input_idx += 1; // Пропустим некорректный байт
+                DEBUG_OUTPUT("Failed to decode G.723 frame\n");
+                input_circular_pos += 1; // Пропустим некорректный байт
                 leftover_bytes = 0;
                 continue;
             }
-            OutputDebugStringA("Decoded G.723 frame\n");
-            input_idx += consumed_bytes;
+            DEBUG_OUTPUT("Decoded G.723 frame\n");
+            input_circular_pos += consumed_bytes;
             leftover_bytes = 0;
 
             // 2. Кодируем float PCM в G.711 u-law
             for (int i = 0; i < G723_SAMPLES_PER_FRAME; i++) {
-                short sample_short = (short)pcm_output_buffer[i];
-                
-                // Вызов изолированного кодера
-                output_chunk[output_idx++] = (char)g711u_linear_to_pcmu(sample_short);
-OutputDebugStringA("Encoded PCM to G.711\n");
+                short sample_short = static_cast<short>(pcm_output_buffer[i]);
+                output_chunk[output_idx++] = static_cast<char>(g711u_linear_to_pcmu(sample_short));
                 
                 if (output_idx >= max_seg_size) {
-                    out_blob->blob_put_segment(out_blob->blob_handle, output_chunk, output_idx);
+                    out_blob->blob_put_segment(out_blob->blob_handle, output_chunk.data(), output_idx);
                     output_idx = 0;
                 }
             }
         }
+        
+        // Сбрасываем позицию циклического буфера, если данные обработаны
+        if (leftover_bytes == 0) {
+            input_circular_pos = 0;
+        }
     }
 
+    // Отправляем оставшиеся данные
     if (output_idx > 0) {
-        out_blob->blob_put_segment(out_blob->blob_handle, output_chunk, output_idx);
+        out_blob->blob_put_segment(out_blob->blob_handle, output_chunk.data(), output_idx);
     }
-
-    delete[] input_chunk;
-    delete[] output_chunk;
 }

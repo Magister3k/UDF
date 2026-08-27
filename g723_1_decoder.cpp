@@ -8,9 +8,21 @@ static CRITICAL_SECTION g_critical_section;
 typedef short int Word16;
 typedef int Word32;
 typedef int Flag;
-typedef double FLOAT;
+
+// Определение для совместимости с ITU-T G.723.1
+#define G723_SAMPLES_PER_FRAME 240
+
+#ifdef _WIN32
+    typedef float FLOAT; // Совместимость с Windows API
+#else
+    typedef double FLOAT;
+#endif
 
 #define __unix__
+
+// Исправляем конфликт типов перед включением ITU-T
+#define __TYPEDEF2_H__
+// Определение _single перенесено в CMakeLists.txt
 
 extern "C" {
     #include "g723_1/typedef2.h"
@@ -19,8 +31,10 @@ extern "C" {
 }
 
 // Явное объявление функций для линкинга
-extern "C" Flag Decod(FLOAT *DataBuff, char *Vinp, Word16 Crc);
-extern "C" void Init_Decod(void);
+extern "C" {
+    Flag Decod(FLOAT *DataBuff, char *Vinp, Word16 Crc);
+    void Init_Decod(void);
+}
 
 #define G723_FRAME_SIZE_63 24
 #define G723_FRAME_SIZE_53 20
@@ -43,9 +57,15 @@ int g723_decode_frame(const unsigned char* input, double* output_pcm) {
     }
 
     // Потокобезопасный вызов декодера
+    float pcm_float_buffer[G723_SAMPLES_PER_FRAME];
     EnterCriticalSection(&g_critical_section);
-    Decod(output_pcm, (char*)input, (Word16)crnt_crate);
+    Decod(pcm_float_buffer, (char*)input, (Word16)crnt_crate);
     LeaveCriticalSection(&g_critical_section);
+    
+    // Конвертация float в double
+    for (int i = 0; i < G723_SAMPLES_PER_FRAME; i++) {
+        output_pcm[i] = static_cast<double>(pcm_float_buffer[i]);
+    }
     
     return current_frame_size;
 }
@@ -69,6 +89,4 @@ void g723_reset_decoder() {
 // Очистка ресурсов декодера (вызывается при выгрузке DLL)
 void g723_cleanup_decoder() {
     DeleteCriticalSection(&g_critical_section);
-}
-    Init_Decod();
 }
