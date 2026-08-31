@@ -161,30 +161,43 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named g723_codec
+# Target rules for targets named g723_core
 
 # Build rule for target.
-g723_codec: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 g723_codec
-.PHONY : g723_codec
+g723_core: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 g723_core
+.PHONY : g723_core
 
 # fast build rule for target.
-g723_codec/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/build
-.PHONY : g723_codec/fast
+g723_core/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/build
+.PHONY : g723_core/fast
 
 #=============================================================================
-# Target rules for targets named g723_stubs
+# Target rules for targets named g723_decoder_cpp
 
 # Build rule for target.
-g723_stubs: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 g723_stubs
-.PHONY : g723_stubs
+g723_decoder_cpp: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 g723_decoder_cpp
+.PHONY : g723_decoder_cpp
 
 # fast build rule for target.
-g723_stubs/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_stubs.dir\build.make CMakeFiles/g723_stubs.dir/build
-.PHONY : g723_stubs/fast
+g723_decoder_cpp/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_decoder_cpp.dir\build.make CMakeFiles/g723_decoder_cpp.dir/build
+.PHONY : g723_decoder_cpp/fast
+
+#=============================================================================
+# Target rules for targets named g723_udf_adapter
+
+# Build rule for target.
+g723_udf_adapter: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 g723_udf_adapter
+.PHONY : g723_udf_adapter
+
+# fast build rule for target.
+g723_udf_adapter/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_udf_adapter.dir\build.make CMakeFiles/g723_udf_adapter.dir/build
+.PHONY : g723_udf_adapter/fast
 
 #=============================================================================
 # Target rules for targets named sosna_udf
@@ -236,228 +249,12 @@ g711u_coder.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g711u_coder.cpp.s
 .PHONY : g711u_coder.cpp.s
 
-g723_1/DECCNG2.obj: g723_1/DECCNG2.C.obj
-.PHONY : g723_1/DECCNG2.obj
-
-# target to build an object file
-g723_1/DECCNG2.C.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/DECCNG2.C.obj
-.PHONY : g723_1/DECCNG2.C.obj
-
-g723_1/DECCNG2.i: g723_1/DECCNG2.C.i
-.PHONY : g723_1/DECCNG2.i
-
-# target to preprocess a source file
-g723_1/DECCNG2.C.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/DECCNG2.C.i
-.PHONY : g723_1/DECCNG2.C.i
-
-g723_1/DECCNG2.s: g723_1/DECCNG2.C.s
-.PHONY : g723_1/DECCNG2.s
-
-# target to generate assembly for a file
-g723_1/DECCNG2.C.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/DECCNG2.C.s
-.PHONY : g723_1/DECCNG2.C.s
-
-g723_1/DECOD2.obj: g723_1/DECOD2.C.obj
-.PHONY : g723_1/DECOD2.obj
-
-# target to build an object file
-g723_1/DECOD2.C.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/DECOD2.C.obj
-.PHONY : g723_1/DECOD2.C.obj
-
-g723_1/DECOD2.i: g723_1/DECOD2.C.i
-.PHONY : g723_1/DECOD2.i
-
-# target to preprocess a source file
-g723_1/DECOD2.C.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/DECOD2.C.i
-.PHONY : g723_1/DECOD2.C.i
-
-g723_1/DECOD2.s: g723_1/DECOD2.C.s
-.PHONY : g723_1/DECOD2.s
-
-# target to generate assembly for a file
-g723_1/DECOD2.C.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/DECOD2.C.s
-.PHONY : g723_1/DECOD2.C.s
-
-g723_1/EXC2.obj: g723_1/EXC2.C.obj
-.PHONY : g723_1/EXC2.obj
-
-# target to build an object file
-g723_1/EXC2.C.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/EXC2.C.obj
-.PHONY : g723_1/EXC2.C.obj
-
-g723_1/EXC2.i: g723_1/EXC2.C.i
-.PHONY : g723_1/EXC2.i
-
-# target to preprocess a source file
-g723_1/EXC2.C.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/EXC2.C.i
-.PHONY : g723_1/EXC2.C.i
-
-g723_1/EXC2.s: g723_1/EXC2.C.s
-.PHONY : g723_1/EXC2.s
-
-# target to generate assembly for a file
-g723_1/EXC2.C.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/EXC2.C.s
-.PHONY : g723_1/EXC2.C.s
-
-g723_1/GLOBALS2.obj: g723_1/GLOBALS2.C.obj
-.PHONY : g723_1/GLOBALS2.obj
-
-# target to build an object file
-g723_1/GLOBALS2.C.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_stubs.dir\build.make CMakeFiles/g723_stubs.dir/g723_1/GLOBALS2.C.obj
-.PHONY : g723_1/GLOBALS2.C.obj
-
-g723_1/GLOBALS2.i: g723_1/GLOBALS2.C.i
-.PHONY : g723_1/GLOBALS2.i
-
-# target to preprocess a source file
-g723_1/GLOBALS2.C.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_stubs.dir\build.make CMakeFiles/g723_stubs.dir/g723_1/GLOBALS2.C.i
-.PHONY : g723_1/GLOBALS2.C.i
-
-g723_1/GLOBALS2.s: g723_1/GLOBALS2.C.s
-.PHONY : g723_1/GLOBALS2.s
-
-# target to generate assembly for a file
-g723_1/GLOBALS2.C.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_stubs.dir\build.make CMakeFiles/g723_stubs.dir/g723_1/GLOBALS2.C.s
-.PHONY : g723_1/GLOBALS2.C.s
-
-g723_1/LPC2.obj: g723_1/LPC2.C.obj
-.PHONY : g723_1/LPC2.obj
-
-# target to build an object file
-g723_1/LPC2.C.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/LPC2.C.obj
-.PHONY : g723_1/LPC2.C.obj
-
-g723_1/LPC2.i: g723_1/LPC2.C.i
-.PHONY : g723_1/LPC2.i
-
-# target to preprocess a source file
-g723_1/LPC2.C.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/LPC2.C.i
-.PHONY : g723_1/LPC2.C.i
-
-g723_1/LPC2.s: g723_1/LPC2.C.s
-.PHONY : g723_1/LPC2.s
-
-# target to generate assembly for a file
-g723_1/LPC2.C.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/LPC2.C.s
-.PHONY : g723_1/LPC2.C.s
-
-g723_1/LSP2.obj: g723_1/LSP2.C.obj
-.PHONY : g723_1/LSP2.obj
-
-# target to build an object file
-g723_1/LSP2.C.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/LSP2.C.obj
-.PHONY : g723_1/LSP2.C.obj
-
-g723_1/LSP2.i: g723_1/LSP2.C.i
-.PHONY : g723_1/LSP2.i
-
-# target to preprocess a source file
-g723_1/LSP2.C.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/LSP2.C.i
-.PHONY : g723_1/LSP2.C.i
-
-g723_1/LSP2.s: g723_1/LSP2.C.s
-.PHONY : g723_1/LSP2.s
-
-# target to generate assembly for a file
-g723_1/LSP2.C.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/LSP2.C.s
-.PHONY : g723_1/LSP2.C.s
-
-g723_1/TAB2.obj: g723_1/TAB2.C.obj
-.PHONY : g723_1/TAB2.obj
-
-# target to build an object file
-g723_1/TAB2.C.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/TAB2.C.obj
-.PHONY : g723_1/TAB2.C.obj
-
-g723_1/TAB2.i: g723_1/TAB2.C.i
-.PHONY : g723_1/TAB2.i
-
-# target to preprocess a source file
-g723_1/TAB2.C.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/TAB2.C.i
-.PHONY : g723_1/TAB2.C.i
-
-g723_1/TAB2.s: g723_1/TAB2.C.s
-.PHONY : g723_1/TAB2.s
-
-# target to generate assembly for a file
-g723_1/TAB2.C.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/TAB2.C.s
-.PHONY : g723_1/TAB2.C.s
-
-g723_1/UTIL2.obj: g723_1/UTIL2.C.obj
-.PHONY : g723_1/UTIL2.obj
-
-# target to build an object file
-g723_1/UTIL2.C.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/UTIL2.C.obj
-.PHONY : g723_1/UTIL2.C.obj
-
-g723_1/UTIL2.i: g723_1/UTIL2.C.i
-.PHONY : g723_1/UTIL2.i
-
-# target to preprocess a source file
-g723_1/UTIL2.C.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/UTIL2.C.i
-.PHONY : g723_1/UTIL2.C.i
-
-g723_1/UTIL2.s: g723_1/UTIL2.C.s
-.PHONY : g723_1/UTIL2.s
-
-# target to generate assembly for a file
-g723_1/UTIL2.C.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/UTIL2.C.s
-.PHONY : g723_1/UTIL2.C.s
-
-g723_1/UTILCNG2.obj: g723_1/UTILCNG2.C.obj
-.PHONY : g723_1/UTILCNG2.obj
-
-# target to build an object file
-g723_1/UTILCNG2.C.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/UTILCNG2.C.obj
-.PHONY : g723_1/UTILCNG2.C.obj
-
-g723_1/UTILCNG2.i: g723_1/UTILCNG2.C.i
-.PHONY : g723_1/UTILCNG2.i
-
-# target to preprocess a source file
-g723_1/UTILCNG2.C.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/UTILCNG2.C.i
-.PHONY : g723_1/UTILCNG2.C.i
-
-g723_1/UTILCNG2.s: g723_1/UTILCNG2.C.s
-.PHONY : g723_1/UTILCNG2.s
-
-# target to generate assembly for a file
-g723_1/UTILCNG2.C.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_codec.dir\build.make CMakeFiles/g723_codec.dir/g723_1/UTILCNG2.C.s
-.PHONY : g723_1/UTILCNG2.C.s
-
 g723_1_decoder.obj: g723_1_decoder.cpp.obj
 .PHONY : g723_1_decoder.obj
 
 # target to build an object file
 g723_1_decoder.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1_decoder.cpp.obj
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_udf_adapter.dir\build.make CMakeFiles/g723_udf_adapter.dir/g723_1_decoder.cpp.obj
 .PHONY : g723_1_decoder.cpp.obj
 
 g723_1_decoder.i: g723_1_decoder.cpp.i
@@ -465,7 +262,7 @@ g723_1_decoder.i: g723_1_decoder.cpp.i
 
 # target to preprocess a source file
 g723_1_decoder.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1_decoder.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_udf_adapter.dir\build.make CMakeFiles/g723_udf_adapter.dir/g723_1_decoder.cpp.i
 .PHONY : g723_1_decoder.cpp.i
 
 g723_1_decoder.s: g723_1_decoder.cpp.s
@@ -473,8 +270,248 @@ g723_1_decoder.s: g723_1_decoder.cpp.s
 
 # target to generate assembly for a file
 g723_1_decoder.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/g723_1_decoder.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_udf_adapter.dir\build.make CMakeFiles/g723_udf_adapter.dir/g723_1_decoder.cpp.s
 .PHONY : g723_1_decoder.cpp.s
+
+g723_1_mod/DECCNG2.obj: g723_1_mod/DECCNG2.c.obj
+.PHONY : g723_1_mod/DECCNG2.obj
+
+# target to build an object file
+g723_1_mod/DECCNG2.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/DECCNG2.c.obj
+.PHONY : g723_1_mod/DECCNG2.c.obj
+
+g723_1_mod/DECCNG2.i: g723_1_mod/DECCNG2.c.i
+.PHONY : g723_1_mod/DECCNG2.i
+
+# target to preprocess a source file
+g723_1_mod/DECCNG2.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/DECCNG2.c.i
+.PHONY : g723_1_mod/DECCNG2.c.i
+
+g723_1_mod/DECCNG2.s: g723_1_mod/DECCNG2.c.s
+.PHONY : g723_1_mod/DECCNG2.s
+
+# target to generate assembly for a file
+g723_1_mod/DECCNG2.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/DECCNG2.c.s
+.PHONY : g723_1_mod/DECCNG2.c.s
+
+g723_1_mod/DECOD2.obj: g723_1_mod/DECOD2.c.obj
+.PHONY : g723_1_mod/DECOD2.obj
+
+# target to build an object file
+g723_1_mod/DECOD2.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/DECOD2.c.obj
+.PHONY : g723_1_mod/DECOD2.c.obj
+
+g723_1_mod/DECOD2.i: g723_1_mod/DECOD2.c.i
+.PHONY : g723_1_mod/DECOD2.i
+
+# target to preprocess a source file
+g723_1_mod/DECOD2.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/DECOD2.c.i
+.PHONY : g723_1_mod/DECOD2.c.i
+
+g723_1_mod/DECOD2.s: g723_1_mod/DECOD2.c.s
+.PHONY : g723_1_mod/DECOD2.s
+
+# target to generate assembly for a file
+g723_1_mod/DECOD2.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/DECOD2.c.s
+.PHONY : g723_1_mod/DECOD2.c.s
+
+g723_1_mod/EXC2.obj: g723_1_mod/EXC2.c.obj
+.PHONY : g723_1_mod/EXC2.obj
+
+# target to build an object file
+g723_1_mod/EXC2.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/EXC2.c.obj
+.PHONY : g723_1_mod/EXC2.c.obj
+
+g723_1_mod/EXC2.i: g723_1_mod/EXC2.c.i
+.PHONY : g723_1_mod/EXC2.i
+
+# target to preprocess a source file
+g723_1_mod/EXC2.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/EXC2.c.i
+.PHONY : g723_1_mod/EXC2.c.i
+
+g723_1_mod/EXC2.s: g723_1_mod/EXC2.c.s
+.PHONY : g723_1_mod/EXC2.s
+
+# target to generate assembly for a file
+g723_1_mod/EXC2.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/EXC2.c.s
+.PHONY : g723_1_mod/EXC2.c.s
+
+g723_1_mod/LPC2.obj: g723_1_mod/LPC2.c.obj
+.PHONY : g723_1_mod/LPC2.obj
+
+# target to build an object file
+g723_1_mod/LPC2.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/LPC2.c.obj
+.PHONY : g723_1_mod/LPC2.c.obj
+
+g723_1_mod/LPC2.i: g723_1_mod/LPC2.c.i
+.PHONY : g723_1_mod/LPC2.i
+
+# target to preprocess a source file
+g723_1_mod/LPC2.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/LPC2.c.i
+.PHONY : g723_1_mod/LPC2.c.i
+
+g723_1_mod/LPC2.s: g723_1_mod/LPC2.c.s
+.PHONY : g723_1_mod/LPC2.s
+
+# target to generate assembly for a file
+g723_1_mod/LPC2.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/LPC2.c.s
+.PHONY : g723_1_mod/LPC2.c.s
+
+g723_1_mod/LSP2.obj: g723_1_mod/LSP2.c.obj
+.PHONY : g723_1_mod/LSP2.obj
+
+# target to build an object file
+g723_1_mod/LSP2.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/LSP2.c.obj
+.PHONY : g723_1_mod/LSP2.c.obj
+
+g723_1_mod/LSP2.i: g723_1_mod/LSP2.c.i
+.PHONY : g723_1_mod/LSP2.i
+
+# target to preprocess a source file
+g723_1_mod/LSP2.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/LSP2.c.i
+.PHONY : g723_1_mod/LSP2.c.i
+
+g723_1_mod/LSP2.s: g723_1_mod/LSP2.c.s
+.PHONY : g723_1_mod/LSP2.s
+
+# target to generate assembly for a file
+g723_1_mod/LSP2.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/LSP2.c.s
+.PHONY : g723_1_mod/LSP2.c.s
+
+g723_1_mod/TAB2.obj: g723_1_mod/TAB2.c.obj
+.PHONY : g723_1_mod/TAB2.obj
+
+# target to build an object file
+g723_1_mod/TAB2.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/TAB2.c.obj
+.PHONY : g723_1_mod/TAB2.c.obj
+
+g723_1_mod/TAB2.i: g723_1_mod/TAB2.c.i
+.PHONY : g723_1_mod/TAB2.i
+
+# target to preprocess a source file
+g723_1_mod/TAB2.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/TAB2.c.i
+.PHONY : g723_1_mod/TAB2.c.i
+
+g723_1_mod/TAB2.s: g723_1_mod/TAB2.c.s
+.PHONY : g723_1_mod/TAB2.s
+
+# target to generate assembly for a file
+g723_1_mod/TAB2.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/TAB2.c.s
+.PHONY : g723_1_mod/TAB2.c.s
+
+g723_1_mod/UTIL2.obj: g723_1_mod/UTIL2.c.obj
+.PHONY : g723_1_mod/UTIL2.obj
+
+# target to build an object file
+g723_1_mod/UTIL2.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/UTIL2.c.obj
+.PHONY : g723_1_mod/UTIL2.c.obj
+
+g723_1_mod/UTIL2.i: g723_1_mod/UTIL2.c.i
+.PHONY : g723_1_mod/UTIL2.i
+
+# target to preprocess a source file
+g723_1_mod/UTIL2.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/UTIL2.c.i
+.PHONY : g723_1_mod/UTIL2.c.i
+
+g723_1_mod/UTIL2.s: g723_1_mod/UTIL2.c.s
+.PHONY : g723_1_mod/UTIL2.s
+
+# target to generate assembly for a file
+g723_1_mod/UTIL2.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/UTIL2.c.s
+.PHONY : g723_1_mod/UTIL2.c.s
+
+g723_1_mod/UTILCNG2.obj: g723_1_mod/UTILCNG2.c.obj
+.PHONY : g723_1_mod/UTILCNG2.obj
+
+# target to build an object file
+g723_1_mod/UTILCNG2.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/UTILCNG2.c.obj
+.PHONY : g723_1_mod/UTILCNG2.c.obj
+
+g723_1_mod/UTILCNG2.i: g723_1_mod/UTILCNG2.c.i
+.PHONY : g723_1_mod/UTILCNG2.i
+
+# target to preprocess a source file
+g723_1_mod/UTILCNG2.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/UTILCNG2.c.i
+.PHONY : g723_1_mod/UTILCNG2.c.i
+
+g723_1_mod/UTILCNG2.s: g723_1_mod/UTILCNG2.c.s
+.PHONY : g723_1_mod/UTILCNG2.s
+
+# target to generate assembly for a file
+g723_1_mod/UTILCNG2.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/UTILCNG2.c.s
+.PHONY : g723_1_mod/UTILCNG2.c.s
+
+g723_1_mod/g723_globals.obj: g723_1_mod/g723_globals.c.obj
+.PHONY : g723_1_mod/g723_globals.obj
+
+# target to build an object file
+g723_1_mod/g723_globals.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/g723_globals.c.obj
+.PHONY : g723_1_mod/g723_globals.c.obj
+
+g723_1_mod/g723_globals.i: g723_1_mod/g723_globals.c.i
+.PHONY : g723_1_mod/g723_globals.i
+
+# target to preprocess a source file
+g723_1_mod/g723_globals.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/g723_globals.c.i
+.PHONY : g723_1_mod/g723_globals.c.i
+
+g723_1_mod/g723_globals.s: g723_1_mod/g723_globals.c.s
+.PHONY : g723_1_mod/g723_globals.s
+
+# target to generate assembly for a file
+g723_1_mod/g723_globals.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_core.dir\build.make CMakeFiles/g723_core.dir/g723_1_mod/g723_globals.c.s
+.PHONY : g723_1_mod/g723_globals.c.s
+
+g723_decoder.obj: g723_decoder.cpp.obj
+.PHONY : g723_decoder.obj
+
+# target to build an object file
+g723_decoder.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_decoder_cpp.dir\build.make CMakeFiles/g723_decoder_cpp.dir/g723_decoder.cpp.obj
+.PHONY : g723_decoder.cpp.obj
+
+g723_decoder.i: g723_decoder.cpp.i
+.PHONY : g723_decoder.i
+
+# target to preprocess a source file
+g723_decoder.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_decoder_cpp.dir\build.make CMakeFiles/g723_decoder_cpp.dir/g723_decoder.cpp.i
+.PHONY : g723_decoder.cpp.i
+
+g723_decoder.s: g723_decoder.cpp.s
+.PHONY : g723_decoder.s
+
+# target to generate assembly for a file
+g723_decoder.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\g723_decoder_cpp.dir\build.make CMakeFiles/g723_decoder_cpp.dir/g723_decoder.cpp.s
+.PHONY : g723_decoder.cpp.s
 
 sosna_udf.obj: sosna_udf.cpp.obj
 .PHONY : sosna_udf.obj
@@ -544,43 +581,47 @@ help:
 	@echo ... install/strip
 	@echo ... list_install_components
 	@echo ... rebuild_cache
-	@echo ... g723_codec
-	@echo ... g723_stubs
+	@echo ... g723_core
+	@echo ... g723_decoder_cpp
+	@echo ... g723_udf_adapter
 	@echo ... sosna_udf
 	@echo ... test_sosna_udf
 	@echo ... g711u_coder.obj
 	@echo ... g711u_coder.i
 	@echo ... g711u_coder.s
-	@echo ... g723_1/DECCNG2.obj
-	@echo ... g723_1/DECCNG2.i
-	@echo ... g723_1/DECCNG2.s
-	@echo ... g723_1/DECOD2.obj
-	@echo ... g723_1/DECOD2.i
-	@echo ... g723_1/DECOD2.s
-	@echo ... g723_1/EXC2.obj
-	@echo ... g723_1/EXC2.i
-	@echo ... g723_1/EXC2.s
-	@echo ... g723_1/GLOBALS2.obj
-	@echo ... g723_1/GLOBALS2.i
-	@echo ... g723_1/GLOBALS2.s
-	@echo ... g723_1/LPC2.obj
-	@echo ... g723_1/LPC2.i
-	@echo ... g723_1/LPC2.s
-	@echo ... g723_1/LSP2.obj
-	@echo ... g723_1/LSP2.i
-	@echo ... g723_1/LSP2.s
-	@echo ... g723_1/TAB2.obj
-	@echo ... g723_1/TAB2.i
-	@echo ... g723_1/TAB2.s
-	@echo ... g723_1/UTIL2.obj
-	@echo ... g723_1/UTIL2.i
-	@echo ... g723_1/UTIL2.s
-	@echo ... g723_1/UTILCNG2.obj
-	@echo ... g723_1/UTILCNG2.i
-	@echo ... g723_1/UTILCNG2.s
 	@echo ... g723_1_decoder.obj
 	@echo ... g723_1_decoder.i
 	@echo ... g723_1_decoder.s
+	@echo ... g723_1_mod/DECCNG2.obj
+	@echo ... g723_1_mod/DECCNG2.i
+	@echo ... g723_1_mod/DECCNG2.s
+	@echo ... g723_1_mod/DECOD2.obj
+	@echo ... g723_1_mod/DECOD2.i
+	@echo ... g723_1_mod/DECOD2.s
+	@echo ... g723_1_mod/EXC2.obj
+	@echo ... g723_1_mod/EXC2.i
+	@echo ... g723_1_mod/EXC2.s
+	@echo ... g723_1_mod/LPC2.obj
+	@echo ... g723_1_mod/LPC2.i
+	@echo ... g723_1_mod/LPC2.s
+	@echo ... g723_1_mod/LSP2.obj
+	@echo ... g723_1_mod/LSP2.i
+	@echo ... g723_1_mod/LSP2.s
+	@echo ... g723_1_mod/TAB2.obj
+	@echo ... g723_1_mod/TAB2.i
+	@echo ... g723_1_mod/TAB2.s
+	@echo ... g723_1_mod/UTIL2.obj
+	@echo ... g723_1_mod/UTIL2.i
+	@echo ... g723_1_mod/UTIL2.s
+	@echo ... g723_1_mod/UTILCNG2.obj
+	@echo ... g723_1_mod/UTILCNG2.i
+	@echo ... g723_1_mod/UTILCNG2.s
+	@echo ... g723_1_mod/g723_globals.obj
+	@echo ... g723_1_mod/g723_globals.i
+	@echo ... g723_1_mod/g723_globals.s
+	@echo ... g723_decoder.obj
+	@echo ... g723_decoder.i
+	@echo ... g723_decoder.s
 	@echo ... sosna_udf.obj
 	@echo ... sosna_udf.i
 	@echo ... sosna_udf.s

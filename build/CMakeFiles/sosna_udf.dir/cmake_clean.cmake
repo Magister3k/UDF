@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/sosna_udf.dir/g711u_coder.cpp.obj"
   "CMakeFiles/sosna_udf.dir/g711u_coder.cpp.obj.d"
-  "CMakeFiles/sosna_udf.dir/g723_1_decoder.cpp.obj"
-  "CMakeFiles/sosna_udf.dir/g723_1_decoder.cpp.obj.d"
   "CMakeFiles/sosna_udf.dir/sosna_udf.cpp.obj"
   "CMakeFiles/sosna_udf.dir/sosna_udf.cpp.obj.d"
   "CMakeFiles/sosna_udf.dir/version.rc.obj"

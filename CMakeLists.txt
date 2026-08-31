@@ -4,20 +4,31 @@ project(SosnaUDF LANGUAGES C CXX)
 # ====================================================================
 # 1. ГЛОБАЛЬНЫЕ НАСТРОЙКИ СТАНДАРТОВ И ПУТЕЙ
 # ====================================================================
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
-# Указываем путь к заголовочным файлам кодека G.723.1
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/g723_1)
+# Пути к оптимизированному кодеку G.723.1
+set(G723_MOD_DIR "${CMAKE_CURRENT_SOURCE_DIR}/g723_1_mod")
 
-# Автоматически собираем все файлы кодека ANSI C в подпапке g723_1
-file(GLOB ITU_SOURCES_ALL "${CMAKE_CURRENT_SOURCE_DIR}/g723_1/*.C")
+# Только decoder-нужные файлы (encoder, VAD, CNG-encoder, тесты — исключены)
+set(G723_MOD_C_SOURCES
+    ${G723_MOD_DIR}/DECOD2.c
+    ${G723_MOD_DIR}/DECCNG2.c
+    ${G723_MOD_DIR}/EXC2.c
+    ${G723_MOD_DIR}/LPC2.c
+    ${G723_MOD_DIR}/LSP2.c
+    ${G723_MOD_DIR}/TAB2.c
+    ${G723_MOD_DIR}/UTIL2.c
+    ${G723_MOD_DIR}/UTILCNG2.c
+    ${G723_MOD_DIR}/g723_globals.c
+)
 
-# Исключаем GLOBALS2.C из ITU_SOURCES, так как он вынесен в отдельную библиотеку g723_stubs
-list(FILTER ITU_SOURCES_ALL EXCLUDE REGEX ".*GLOBALS2\\.C$")
-set(ITU_SOURCES ${ITU_SOURCES_ALL})
+# Decoder-only C++ wrapper
+set(G723_DECODER_CXX_SOURCES
+    ${CMAKE_CURRENT_SOURCE_DIR}/g723_decoder.cpp
+)
 
 # ====================================================================
 # 2. ПЕРЕКЛЮЧАТЕЛИ РЕЖИМОВ СБОРКИ И АНАЛИЗА (OPTIONS)
@@ -31,7 +42,19 @@ option(BUILD_SHARED_LIBS "Сборка динамической библиоте
 # 3. ИНТЕГРАЦИЯ СТАТИЧЕСКОГО АНАЛИЗАТОРА (CPPCHECK)
 # ====================================================================
 if(ENABLE_CPPCHECK)
-    find_program(CPPCHECK_PROGRAM cppcheck)
+    # Сначала проверяем конкретный путь из конфигурации
+    find_program(CPPCHECK_PROGRAM 
+        NAMES cppcheck 
+        PATHS "d:/Programs/cppcheck/App/Cppcheck64/" 
+        PATH_SUFFIXES ""
+        NO_DEFAULT_PATH
+    )
+    
+    # Если не найден - ищем в PATH
+    if(NOT CPPCHECK_PROGRAM)
+        find_program(CPPCHECK_PROGRAM cppcheck)
+    endif()
+    
     if(CPPCHECK_PROGRAM)
         set(CMAKE_CXX_CPPCHECK
             "${CPPCHECK_PROGRAM}"
@@ -42,9 +65,9 @@ if(ENABLE_CPPCHECK)
             "--suppress=missingIncludeSystem"
         )
         set(CMAKE_C_CPPCHECK ${CMAKE_CXX_CPPCHECK})
-        message(STATUS "[CPPCHECK] Успешно интегрирован (Платформа: win32A)")
+        message(STATUS "[CPPCHECK] Успешно интегрирован: ${CPPCHECK_PROGRAM} (Платформа: win32A)")
     else()
-        message(WARNING "[CPPCHECK] Исполняемый файл не найден в PATH. Анализ отключен.")
+        message(WARNING "[CPPCHECK] Исполняемый файл не найден в d:/Programs/cppcheck/App/Cppcheck64/ и в PATH. Анализ отключен.")
     endif()
 endif()
 
@@ -95,7 +118,12 @@ endif()
 # ====================================================================
 # 7. ОПРЕДЕЛЕНИЯ ПРЕПРОЦЕССОРА
 # ====================================================================
-add_compile_definitions(_single _CRT_SECURE_NO_WARNINGS)
+add_compile_definitions(_CRT_SECURE_NO_WARNINGS)
+
+# Для совместимости с ITU-T G.723.1 исходным кодом
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    add_compile_options(-D__unix__)
+endif()
 
 # ====================================================================
 # 8. СБОРКА ФАЙЛА РЕСУРСОВ (version.rc)
@@ -106,43 +134,52 @@ if(EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/version.rc")
 endif()
 
 # ====================================================================
-# 9. ЦЕЛЬ: ITU-T G.723.1 КОДЕК (СТАТИЧЕСКАЯ БИБЛИОТЕКА)
+# 9. ЦЕЛЬ: Оптимизированный ITU-T G.723.1 КОДЕК (C часть)
 # ====================================================================
-# Принудительно компилируем как C (файлы имеют расширение .C, которое CMake воспринимает как C++)
-add_library(g723_codec STATIC ${ITU_SOURCES})
-target_include_directories(g723_codec PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/g723_1)
-target_compile_definitions(g723_codec PRIVATE _single __unix__)
+add_library(g723_core STATIC ${G723_MOD_C_SOURCES})
+target_include_directories(g723_core PRIVATE ${G723_MOD_DIR})
 
+# Устанавливаем язык C для файлов
+foreach(source_file ${G723_MOD_C_SOURCES})
+    set_source_files_properties(${source_file} PROPERTIES LANGUAGE C)
+endforeach()
+
+# Оптимизация для файлов кодека
 if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    target_compile_options(g723_codec PRIVATE -x c -O3 -ftree-vectorize)
+    target_compile_options(g723_core PRIVATE -O3 -ftree-vectorize)
 elseif(MSVC)
-    target_compile_options(g723_codec PRIVATE /TC /O2 /arch:SSE2)
+    target_compile_options(g723_core PRIVATE /O2 /arch:SSE2)
 endif()
 
 # ====================================================================
-# 10. ЦЕЛЬ: СТУБЫ ДЛЯ ГЛОБАЛЬНЫХ ПЕРЕМЕННЫХ ITU-T
+# 10. ЦЕЛЬ: Decoder-only C++ обертка для G.723.1
 # ====================================================================
-add_library(g723_stubs STATIC "${CMAKE_CURRENT_SOURCE_DIR}/g723_1/GLOBALS2.C")
-target_include_directories(g723_stubs PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/g723_1")
-target_compile_definitions(g723_stubs PRIVATE _single __unix__)
-
-if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    target_compile_options(g723_stubs PRIVATE -x c)
-elseif(MSVC)
-    target_compile_options(g723_stubs PRIVATE /TC)
-endif()
+add_library(g723_decoder_cpp STATIC ${G723_DECODER_CXX_SOURCES})
+target_include_directories(g723_decoder_cpp PRIVATE ${CMAKE_CURRENT_SOURCE_DIR} ${G723_MOD_DIR})
+target_link_libraries(g723_decoder_cpp PRIVATE g723_core)
 
 # ====================================================================
-# 11. ЦЕЛЬ 1: ДИНАМИЧЕСКАЯ UDF-БИБЛИОТЕКА ДЛЯ INTERBASE
+# 11. ЦЕЛЬ: C-совместимая обертка для UDF (адаптер к g723_decoder::Decoder)
+# ====================================================================
+add_library(g723_udf_adapter STATIC 
+    g723_1_decoder.cpp
+)
+target_include_directories(g723_udf_adapter PRIVATE 
+    ${CMAKE_CURRENT_SOURCE_DIR}
+    ${G723_MOD_DIR}
+)
+target_link_libraries(g723_udf_adapter PRIVATE g723_decoder_cpp)
+
+# ====================================================================
+# 12. ЦЕЛЬ 1: ДИНАМИЧЕСКАЯ UDF-БИБЛИОТЕКА ДЛЯ INTERBASE
 # ====================================================================
 add_library(sosna_udf SHARED
     sosna_udf.cpp
-    g723_1_decoder.cpp
     g711u_coder.cpp
     ${RES_SOURCES}
 )
 
-target_link_libraries(sosna_udf PRIVATE g723_codec g723_stubs)
+target_link_libraries(sosna_udf PRIVATE g723_udf_adapter)
 target_include_directories(sosna_udf PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
 # Флаг --kill-at для удаления декораций @size в MinGW
@@ -159,14 +196,21 @@ set_target_properties(sosna_udf PROPERTIES
     SOVERSION 1
 )
 
+# Автоматический strip для Release сборки (убирает debug символы)
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    set_target_properties(sosna_udf PROPERTIES
+        RELEASE_POST_BUILD_COMMANDS "${CMAKE_STRIP} <TARGET_FILE:sosna_udf>"
+    )
+endif()
+
 # ====================================================================
-# 12. ЦЕЛЬ 2: АВТОНОМНАЯ ТЕСТОВАЯ ПРОГРАММА
+# 13. ЦЕЛЬ 2: АВТОНОМНАЯ ТЕСТОВАЯ ПРОГРАММА
 # ====================================================================
 add_executable(test_sosna_udf test_transcode_g723.cpp)
 target_link_libraries(test_sosna_udf PRIVATE sosna_udf)
 
 # ====================================================================
-# 13. УПРАВЛЕНИЕ ЛИНКОВКОЙ CRT
+# 14. УПРАВЛЕНИЕ ЛИНКОВКОЙ CRT
 # ====================================================================
 if(MSVC)
     if(STATIC_LINK_CRT)
@@ -185,7 +229,7 @@ elseif(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
 endif()
 
 # ====================================================================
-# 14. УСТАНОВКА И ВЫВОД ИНФОРМАЦИИ
+# 15. УСТАНОВКА И ВЫВОД ИНФОРМАЦИИ
 # ====================================================================
 install(TARGETS sosna_udf
     RUNTIME DESTINATION bin
@@ -204,5 +248,7 @@ message(STATUS "ASAN: ${ENABLE_ASAN}")
 message(STATUS "Cppcheck: ${ENABLE_CPPCHECK}")
 message(STATUS "Static CRT: ${STATIC_LINK_CRT}")
 message(STATUS "Shared Libs: ${BUILD_SHARED_LIBS}")
-message(STATUS "ITU Sources: ${ITU_SOURCES}")
+message(STATUS "G.723.1 Mod Sources: ${G723_MOD_DIR}")
+message(STATUS "C Sources: ${G723_MOD_C_SOURCES}")
+message(STATUS "C++ Sources: ${G723_MOD_CXX_SOURCES}")
 message(STATUS "==========================================")

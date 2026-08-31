@@ -191,28 +191,31 @@ CMakeFiles/sosna_udf.dir/sosna_udf.cpp.obj: \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_pair.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/move.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/utility.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/compare \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/concepts \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_iterator_base_types.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/iterator_concepts.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/ptr_traits.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/ranges_cmp.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_iterator_base_funcs.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/concept_check.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/debug/assertions.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_iterator.h \
- D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/ptr_traits.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/new \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/exception.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/new_except.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/exception_defines.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_construct.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/debug/debug.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/predefined_ops.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_function.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/backward/binders.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bit \
- D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/concepts \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/allocator.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/i686-w64-mingw32/bits/c++allocator.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/new_allocator.h \
- D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/new \
- D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/exception.h \
- D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/new_except.h \
- D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/exception_defines.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/new_throw.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/memoryfwd.h \
- D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_construct.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_uninitialized.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/ext/alloc_traits.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/alloc_traits.h \
@@ -220,6 +223,10 @@ CMakeFiles/sosna_udf.dir/sosna_udf.cpp.obj: \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stdexcept_throw.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stdexcept_throwfwd.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/initializer_list \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/ranges_base.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/max_size_type.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/numbers \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/limits \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_bvector.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/functional_hash.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/hash_bytes.h \
@@ -234,12 +241,15 @@ CMakeFiles/sosna_udf.dir/sosna_udf.cpp.obj: \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/uses_allocator_args.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/tuple \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/invoke.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/ranges_util.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/algorithm \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_algo.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/algorithmfwd.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_heap.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/uniform_int_dist.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_tempbuf.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/ranges_algo.h \
+ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/ranges_algobase.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/pstl/glue_algorithm_defs.h \
  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/pstl/execution_defs.h \
  D:\Projects\C++\UDF\g723_1_decoder.h D:\Projects\C++\UDF\g711u_coder.h

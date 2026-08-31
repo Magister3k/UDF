@@ -1,28 +1,12 @@
-#include <cstring>
-#include <new>
+#include <memory>
 #include "g723_1_decoder.h"
-
-#define __unix__
-#define _single
-
-extern "C" {
-    #include "g723_1/typedef2.h"
-    #include "g723_1/cst2.h"
-    #include "g723_1/decod2.h"
-}
-
-#define G723_SAMPLES_PER_FRAME 240
-#define G723_FRAME_SIZE_63 24
-#define G723_FRAME_SIZE_53 20
-#define G723_FRAME_SIZE_SID 4
+#include "g723_decoder.hpp"
 
 struct G723DecoderContext {
-    CRITICAL_SECTION critical_section;
-    bool initialized = false;
+    std::unique_ptr<g723_decoder::Decoder> decoder;
 };
 
 bool g723_init_decoder() {
-    Init_Decod();
     return true;
 }
 
@@ -34,65 +18,66 @@ G723DecoderContext* g723_create_context() {
     if (!ctx) {
         return nullptr;
     }
-
-    InitializeCriticalSection(&ctx->critical_section);
-    ctx->initialized = true;
-
-    EnterCriticalSection(&ctx->critical_section);
-    Init_Decod();
-    LeaveCriticalSection(&ctx->critical_section);
-
+    
+    g723_decoder::DecoderConfig config;
+    config.use_pf = true;
+    ctx->decoder = std::make_unique<g723_decoder::Decoder>(config);
+    
     return ctx;
 }
 
 void g723_destroy_context(G723DecoderContext* ctx) {
-    if (!ctx) {
-        return;
+    if (ctx) {
+        delete ctx;
     }
-
-    if (ctx->initialized) {
-        DeleteCriticalSection(&ctx->critical_section);
-        ctx->initialized = false;
-    }
-
-    delete ctx;
 }
 
 void g723_reset_decoder(G723DecoderContext* ctx) {
-    if (!ctx || !ctx->initialized) {
-        return;
+    if (ctx && ctx->decoder) {
+        ctx->decoder->reset();
     }
-
-    EnterCriticalSection(&ctx->critical_section);
-    Init_Decod();
-    LeaveCriticalSection(&ctx->critical_section);
 }
 
 int g723_decode_frame(G723DecoderContext* ctx, const unsigned char* input, double* output_pcm) {
-    if (!ctx || !ctx->initialized || !input || !output_pcm) {
+    if (!ctx || !ctx->decoder || !input || !output_pcm) {
         return 0;
     }
-
+    
     unsigned char first_byte = *input;
-    int current_frame_size = 0;
-    int crnt_crate = 0;
-
+    g723_decoder::FrameType type;
+    g723_decoder::CodecRate rate;
+    int frame_size = 0;
+    
     switch (first_byte & 0x03) {
-        case 0x00: current_frame_size = G723_FRAME_SIZE_63; crnt_crate = 0; break;
-        case 0x01: current_frame_size = G723_FRAME_SIZE_53; crnt_crate = 1; break;
-        case 0x02: current_frame_size = G723_FRAME_SIZE_SID; crnt_crate = 2; break;
-        default:   current_frame_size = 1; crnt_crate = 3; break;
+        case 0x00: type = g723_decoder::FrameType::Active; rate = g723_decoder::CodecRate::Rate63; frame_size = 24; break;
+        case 0x01: type = g723_decoder::FrameType::Active; rate = g723_decoder::CodecRate::Rate53; frame_size = 20; break;
+        case 0x02: type = g723_decoder::FrameType::SID; rate = g723_decoder::CodecRate::Rate63; frame_size = 4; break;
+        default:   type = g723_decoder::FrameType::Untransmitted; rate = g723_decoder::CodecRate::Rate63; frame_size = 1; break;
     }
-
-    FLOAT pcm_float_buffer[G723_SAMPLES_PER_FRAME];
-
-    EnterCriticalSection(&ctx->critical_section);
-    Decod(pcm_float_buffer, const_cast<char*>(reinterpret_cast<const char*>(input)), static_cast<Word16>(crnt_crate));
-    LeaveCriticalSection(&ctx->critical_section);
-
-    for (int i = 0; i < G723_SAMPLES_PER_FRAME; ++i) {
-        output_pcm[i] = static_cast<double>(pcm_float_buffer[i]);
+    
+    std::vector<uint8_t> data(frame_size);
+    data[0] = first_byte;
+    if (frame_size > 1) {
+        for (int i = 1; i < frame_size; ++i) {
+            data[i] = input[i];
+        }
     }
-
-    return current_frame_size;
+    
+    g723_decoder::BitstreamFrame frame;
+    frame.data = std::move(data);
+    frame.type = type;
+    frame.rate = rate;
+    frame.crc_error = false;
+    
+    auto result = ctx->decoder->decode(frame);
+    if (!result) {
+        return 0;
+    }
+    
+    const g723_decoder::AudioFrame& audio = result.value();
+    for (int i = 0; i < 240; ++i) {
+        output_pcm[i] = static_cast<double>(audio.samples[i]);
+    }
+    
+    return frame_size;
 }

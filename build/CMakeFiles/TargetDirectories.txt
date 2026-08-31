@@ -1,5 +1,6 @@
-D:/Projects/C++/UDF/build/CMakeFiles/g723_codec.dir
-D:/Projects/C++/UDF/build/CMakeFiles/g723_stubs.dir
+D:/Projects/C++/UDF/build/CMakeFiles/g723_core.dir
+D:/Projects/C++/UDF/build/CMakeFiles/g723_decoder_cpp.dir
+D:/Projects/C++/UDF/build/CMakeFiles/g723_udf_adapter.dir
 D:/Projects/C++/UDF/build/CMakeFiles/sosna_udf.dir
 D:/Projects/C++/UDF/build/CMakeFiles/test_sosna_udf.dir
 D:/Projects/C++/UDF/build/CMakeFiles/edit_cache.dir

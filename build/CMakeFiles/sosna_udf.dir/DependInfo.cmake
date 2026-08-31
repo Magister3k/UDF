@@ -14,20 +14,17 @@ set(CMAKE_DEPENDS_CHECK_RC
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_RC
   "_CRT_SECURE_NO_WARNINGS"
-  "_single"
   "sosna_udf_EXPORTS"
   )
 
 # The include file search paths:
 set(CMAKE_RC_TARGET_INCLUDE_PATH
-  "D:/Projects/C++/UDF/g723_1"
   "D:/Projects/C++/UDF"
   )
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/Projects/C++/UDF/g711u_coder.cpp" "CMakeFiles/sosna_udf.dir/g711u_coder.cpp.obj" "gcc" "CMakeFiles/sosna_udf.dir/g711u_coder.cpp.obj.d"
-  "D:/Projects/C++/UDF/g723_1_decoder.cpp" "CMakeFiles/sosna_udf.dir/g723_1_decoder.cpp.obj" "gcc" "CMakeFiles/sosna_udf.dir/g723_1_decoder.cpp.obj.d"
   "D:/Projects/C++/UDF/sosna_udf.cpp" "CMakeFiles/sosna_udf.dir/sosna_udf.cpp.obj" "gcc" "CMakeFiles/sosna_udf.dir/sosna_udf.cpp.obj.d"
   )
 
