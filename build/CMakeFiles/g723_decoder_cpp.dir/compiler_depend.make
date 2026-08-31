@@ -47,10 +47,12 @@ CMakeFiles/g723_decoder_cpp.dir/g723_decoder.cpp.obj: D:/Projects/C++/UDF/g723_d
   D:/Programs/MinGW/mingw32/i686-w64-mingw32/include/vadefs.h \
   D:/Programs/MinGW/mingw32/i686-w64-mingw32/include/wchar.h \
   D:/Programs/MinGW/mingw32/i686-w64-mingw32/include/wctype.h \
+  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/algorithm \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/array \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/backward/auto_ptr.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/backward/binders.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bit \
+  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/algorithmfwd.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/align.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/alloc_traits.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/allocated_ptr.h \
@@ -98,6 +100,7 @@ CMakeFiles/g723_decoder_cpp.dir/g723_decoder.cpp.obj: D:/Projects/C++/UDF/g723_d
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/predefined_ops.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/ptr_traits.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/range_access.h \
+  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/ranges_algo.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/ranges_algobase.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/ranges_base.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/ranges_cmp.h \
@@ -113,10 +116,12 @@ CMakeFiles/g723_decoder_cpp.dir/g723_decoder.cpp.obj: D:/Projects/C++/UDF/g723_d
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stdexcept_except.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stdexcept_throw.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stdexcept_throwfwd.h \
+  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_algo.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_algobase.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_bvector.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_construct.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_function.h \
+  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_heap.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_iterator.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_iterator_base_funcs.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_iterator_base_types.h \
@@ -129,6 +134,7 @@ CMakeFiles/g723_decoder_cpp.dir/g723_decoder.cpp.obj: D:/Projects/C++/UDF/g723_d
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/streambuf_iterator.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/string_view.tcc \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stringfwd.h \
+  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/uniform_int_dist.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/unique_ptr.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/uses_allocator.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/uses_allocator_args.h \
@@ -178,6 +184,7 @@ CMakeFiles/g723_decoder_cpp.dir/g723_decoder.cpp.obj: D:/Projects/C++/UDF/g723_d
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/numbers \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/optional \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/pstl/execution_defs.h \
+  D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/pstl/glue_algorithm_defs.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/pstl/glue_memory_defs.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/pstl/pstl_config.h \
   D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/span \
@@ -276,6 +283,8 @@ D:/Programs/MinGW/mingw32/i686-w64-mingw32/include/sec_api/sys/timeb_s.h:
 
 D:/Programs/MinGW/mingw32/i686-w64-mingw32/include/corecrt_wconio.h:
 
+D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_heap.h:
+
 D:/Programs/MinGW/mingw32/i686-w64-mingw32/include/ctype.h:
 
 D:/Programs/MinGW/mingw32/i686-w64-mingw32/include/corecrt_wctype.h:
@@ -340,8 +349,6 @@ D:/Programs/MinGW/mingw32/i686-w64-mingw32/include/sec_api/stdio_s.h:
 
 D:/Programs/MinGW/mingw32/i686-w64-mingw32/include/sec_api/wconio_s.h:
 
-D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/concept_check.h:
-
 D:/Programs/MinGW/mingw32/i686-w64-mingw32/include/sec_api/string_s.h:
 
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/type_traits:
@@ -378,6 +385,14 @@ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/streambuf:
 
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/array:
 
+D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/algorithm:
+
+D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/basic_string.h:
+
+D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/unique_ptr.h:
+
+D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/algorithmfwd.h:
+
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/alloc_traits.h:
 
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/align.h:
@@ -394,15 +409,15 @@ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/range
 
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/atomic_wait.h:
 
-D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/charconv.h:
-
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/basic_ios.h:
 
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_iterator_base_types.h:
 
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/basic_ios.tcc:
 
-D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/basic_string.h:
+D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/charconv.h:
+
+D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/concept_check.h:
 
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/cxxabi_forced.h:
 
@@ -460,6 +475,8 @@ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/string:
 
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/ptr_traits.h:
 
+D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/ranges_algo.h:
+
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/ranges_algobase.h:
 
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/cerrno:
@@ -490,6 +507,10 @@ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stdex
 
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stdexcept_throwfwd.h:
 
+D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/numbers:
+
+D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_algo.h:
+
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_algobase.h:
 
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stl_bvector.h:
@@ -514,7 +535,7 @@ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/strin
 
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/stringfwd.h:
 
-D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/unique_ptr.h:
+D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/bits/uniform_int_dist.h:
 
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/debug/assertions.h:
 
@@ -584,6 +605,8 @@ D:/Projects/C++/UDF/g723_1_mod/util2.h:
 
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/i686-w64-mingw32/bits/gthr.h:
 
+D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/pstl/glue_algorithm_defs.h:
+
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/i686-w64-mingw32/bits/os_defines.h:
 
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/tr1/hypergeometric.tcc:
@@ -595,8 +618,6 @@ D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/iosfwd:
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/limits:
 
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/memory:
-
-D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/numbers:
 
 D:/Programs/MinGW/mingw32/lib/gcc/i686-w64-mingw32/16.2.0/include/c++/optional:
 
