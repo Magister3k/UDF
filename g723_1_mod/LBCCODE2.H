@@ -28,5 +28,3 @@ extern Flag  UsePf;
 extern Flag  UseVx;
 extern enum  Wmode    WrkMode;
 extern enum  Crate    WrkRate;
-
-void    Update_Acf(FLOAT *Acf_sf);

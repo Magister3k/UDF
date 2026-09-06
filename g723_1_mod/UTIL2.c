@@ -781,13 +781,13 @@ void  Scale(FLOAT *Tv, FLOAT Sen)
 */
 FLOAT DotProd(FLOAT *in1, FLOAT *in2, int len)
 {
-    int i;
+    int   i;
     FLOAT sum;
 
 #if defined(__SSE2__) || defined(_M_X64) || (defined(_M_IX86_FP) && _M_IX86_FP >= 2)
     /* SSE2 optimized version for x86/x64 */
     __m128d vsum = _mm_setzero_pd();
-    i = 0;
+    int i = 0;
     for (; i <= len - 2; i += 2) {
         __m128d v1 = _mm_loadu_pd(&in1[i]);
         __m128d v2 = _mm_loadu_pd(&in2[i]);

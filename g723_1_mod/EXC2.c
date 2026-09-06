@@ -2448,9 +2448,9 @@ void    Regen(FLOAT *DataBuff, FLOAT *Buff, Word16 Lag, FLOAT Gain,
               int Ecount, Word16 *Sd)
 {
     int  i;
+    FLOAT gain_factor;
 
-    /*  Test for clearing */
-
+    /*  Test for clearing - after too many erasures, mute */
     if (Ecount >= ErrMaxNum)
     {
         for (i = 0; i < Frame; i++)
@@ -2460,27 +2460,31 @@ void    Regen(FLOAT *DataBuff, FLOAT *Buff, Word16 Lag, FLOAT Gain,
     }
     else
     {
+        /* Progressive gain attenuation for consecutive erasures
+         * FFmpeg-style: attenuate more aggressively with each erasure */
+        gain_factor = (FLOAT)0.75;
+        if (Ecount > 1)
+            gain_factor *= (FLOAT)0.85;  /* Additional attenuation for subsequent erasures */
+        if (Ecount > 2)
+            gain_factor *= (FLOAT)0.75;  /* Further attenuation */
 
         /*  Interpolate accordingly to the voicing estimation */
-
         if (Lag != 0)
         {
-            /*  Voiced case */
+            /*  Voiced case - periodic repetition with gain scaling */
             for (i = 0; i < Frame; i++)
                 Buff[PitchMax+i] = Buff[PitchMax-Lag+i];
             for (i = 0; i < Frame; i++)
-                DataBuff[i] = Buff[PitchMax+i] = Buff[PitchMax+i] * (FLOAT)0.75;
+                DataBuff[i] = Buff[PitchMax+i] = Buff[PitchMax+i] * gain_factor;
         }
         else
         {
-
-            /* Unvoiced case */
-
+            /* Unvoiced case - random excitation with scaled gain */
+            FLOAT scaled_gain = Gain * gain_factor;
             for (i = 0; i < Frame; i++)
-                DataBuff[i] = Gain*(FLOAT)Rand_lbc(Sd)*((FLOAT)1.0/(FLOAT)32768.0);
+                DataBuff[i] = scaled_gain * (FLOAT)Rand_lbc(Sd) * ((FLOAT)1.0/(FLOAT)32768.0);
 
             /* Clear buffer to reset memory */
-
             for (i = 0; i < Frame+PitchMax; i++)
                 Buff[i] = (FLOAT)0.0;
         }

@@ -24,6 +24,3 @@
 void    Init_Coder(void);
 Flag    Coder(FLOAT *DataBuff, char *Vout);
 extern  CODSTATDEF CodStat;
-
-void    Init_Cod_Cng(void);
-void    Cod_Cng(FLOAT *DataBuff, char *Vout, Word16 *Ftyp);

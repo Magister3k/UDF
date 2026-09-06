@@ -98,24 +98,26 @@ void Dec_Cng(Word16 Ftyp, LINEDEF *Line, FLOAT *DataExc, FLOAT *QntLpc)
     Word16 temp;
     int i;
 
+    /* Handle SID frame - update noise parameters */
     if (Ftyp == 2) {
         /*
          * SID Frame decoding
          */
-
         DecCng.SidGain = Dec_SidGain((Word16) Line->Sfs[0].Mamp);
 
         /* Inverse quantization of the LSP */
         Lsp_Inq(DecCng.LspSid, DecStat.PrevLsp, Line->LspId, 0);
+
+        /* Reset random seed for SID frame (FFmpeg-style) */
+        DecCng.RandSeed = 12345;
     }
     else {
-
         /*
-         * non SID Frame
+         * non SID Frame (untransmitted/erased)
          */
         if (DecCng.PastFtyp == 1) {
             /*
-             * Case of 1st SID frame erased : quantize-decode
+             * Case of 1st SID frame erased: quantize-decode
              * energy estimate stored in DecCng.SidGain
              * scaling factor in DecCng.CurGain
              */
@@ -124,20 +126,25 @@ void Dec_Cng(Word16 Ftyp, LINEDEF *Line, FLOAT *DataExc, FLOAT *QntLpc)
         }
     }
 
+    /* Smooth gain transition between SID updates (FFmpeg-style) */
     if (DecCng.PastFtyp == 1) {
+        /* First frame after active: use full SID gain */
         DecCng.CurGain = DecCng.SidGain;
     }
     else {
+        /* Subsequent frames: interpolate toward SID gain */
         DecCng.CurGain =   (FLOAT) 0.875 * DecCng.CurGain
                          + (FLOAT) 0.125 * DecCng.SidGain;
     }
+
+    /* Generate random excitation for comfort noise */
     Calc_Exc_Rand(DecCng.CurGain, DecStat.PrevExc, DataExc,
                     &DecCng.RandSeed, Line);
 
-    /* Interpolate the Lsp vectors */
+    /* Interpolate the Lsp vectors toward SID LSP */
     Lsp_Int( QntLpc, DecCng.LspSid, DecStat.PrevLsp );
 
-    /* Copy the LSP vector for the next frame */
+    /* Update LSP memory for next frame (FFmpeg: maintain SID LSP continuity) */
     for ( i = 0 ; i < LpcOrder ; i ++ )
         DecStat.PrevLsp[i] = DecCng.LspSid[i];
 

@@ -1,10 +1,11 @@
 /*
 **
-** File:        "codcng2.h"
+** File:        "vad2.h"
 **
-** Description:     Function prototypes for "codcng2.c"
+** Description:     Function prototypes for "vad2.c"
 **
 */
+
 /*
 	ITU-T G.723.1 Software Package Release 2 (June 2006)
 
@@ -17,8 +18,7 @@
     All rights reserved.
 */
 
-void    Init_Cod_Cng(void);
-void    Cod_Cng(FLOAT *DataExc, Word16 *Ftyp, LINEDEF *Line, FLOAT *QntLpc);
-void    Update_Acf(FLOAT *Acfsf);
+void    Init_Vad(void);
+Flag    Comp_Vad(FLOAT *Dpnt);
 
-extern  CODCNGDEF   CodCng;
+extern  VADSTATDEF  VadStat;
