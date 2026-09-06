@@ -91,7 +91,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-std=gnu++20"
+					"fragment" : "-g -O0 -fno-omit-frame-pointer -std=gnu++20"
 				},
 				{
 					"backtrace" : 5,
@@ -168,6 +168,10 @@
 	{
 		"commandFragments" : 
 		[
+			{
+				"fragment" : "-g -O0 -fno-omit-frame-pointer",
+				"role" : "flags"
+			},
 			{
 				"fragment" : "",
 				"role" : "flags"

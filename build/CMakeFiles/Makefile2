@@ -190,9 +190,9 @@ CMakeFiles/g723_udf_adapter.dir/clean:
 # Target rules for target CMakeFiles/sosna_udf.dir
 
 # All Build rule for target.
-CMakeFiles/sosna_udf.dir/all: CMakeFiles/g723_udf_adapter.dir/all
 CMakeFiles/sosna_udf.dir/all: CMakeFiles/g723_core.dir/all
 CMakeFiles/sosna_udf.dir/all: CMakeFiles/g723_decoder_cpp.dir/all
+CMakeFiles/sosna_udf.dir/all: CMakeFiles/g723_udf_adapter.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\sosna_udf.dir\build.make CMakeFiles/sosna_udf.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=15,16,17,18 "Built target sosna_udf"

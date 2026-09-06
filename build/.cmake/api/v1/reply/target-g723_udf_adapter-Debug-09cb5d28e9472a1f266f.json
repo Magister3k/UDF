@@ -82,7 +82,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-std=gnu++20"
+					"fragment" : "-g -O0 -fno-omit-frame-pointer -std=gnu++20"
 				},
 				{
 					"backtrace" : 3,

@@ -6,5 +6,5 @@ CXX_DEFINES = -D_CRT_SECURE_NO_WARNINGS
 
 CXX_INCLUDES = @CMakeFiles\g723_udf_adapter.dir\includes_CXX.rsp
 
-CXX_FLAGS = -std=gnu++20 -m32 -msse2 -mfpmath=sse -march=i686 -D__X86__ -D__i386__ -Wall -Wextra -Wpedantic -D__unix__
+CXX_FLAGS = -g -O0 -fno-omit-frame-pointer -std=gnu++20 -m32 -msse2 -mfpmath=sse -march=i686 -D__X86__ -D__i386__ -Wall -Wextra -Wpedantic -D__unix__
 

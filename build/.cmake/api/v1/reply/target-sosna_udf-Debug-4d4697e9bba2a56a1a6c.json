@@ -126,7 +126,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-std=gnu++20"
+					"fragment" : "-g -O0 -fno-omit-frame-pointer -std=gnu++20"
 				},
 				{
 					"backtrace" : 9,
@@ -245,15 +245,15 @@
 	[
 		{
 			"backtrace" : 6,
-			"id" : "g723_udf_adapter::@6890427a1f51a3e7e1df"
-		},
-		{
-			"backtrace" : 6,
 			"id" : "g723_core::@6890427a1f51a3e7e1df"
 		},
 		{
 			"backtrace" : 6,
 			"id" : "g723_decoder_cpp::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 6,
+			"id" : "g723_udf_adapter::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "sosna_udf::@6890427a1f51a3e7e1df",

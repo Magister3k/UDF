@@ -8,7 +8,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-2e6eb4ef40837732241b.json",
+					"jsonFile" : "directory-.-Debug-2e6eb4ef40837732241b.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.15"
@@ -25,7 +25,7 @@
 					]
 				}
 			],
-			"name" : "",
+			"name" : "Debug",
 			"projects" : 
 			[
 				{
@@ -49,35 +49,35 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "g723_core::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-g723_core-ae21a0934efc533fab82.json",
+					"jsonFile" : "target-g723_core-Debug-9fe64796570b010e3162.json",
 					"name" : "g723_core",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "g723_decoder_cpp::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-g723_decoder_cpp-bca73e28e3b8f81d35e4.json",
+					"jsonFile" : "target-g723_decoder_cpp-Debug-e23b1279a565574ef012.json",
 					"name" : "g723_decoder_cpp",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "g723_udf_adapter::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-g723_udf_adapter-8699e9e55ddbd5783c7a.json",
+					"jsonFile" : "target-g723_udf_adapter-Debug-09cb5d28e9472a1f266f.json",
 					"name" : "g723_udf_adapter",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "sosna_udf::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-sosna_udf-12c546a850d7e2f02eeb.json",
+					"jsonFile" : "target-sosna_udf-Debug-4d4697e9bba2a56a1a6c.json",
 					"name" : "sosna_udf",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "test_sosna_udf::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-test_sosna_udf-5b1203212b981ed3da9c.json",
+					"jsonFile" : "target-test_sosna_udf-Debug-05b386e7320746c9cd35.json",
 					"name" : "test_sosna_udf",
 					"projectIndex" : 0
 				}
