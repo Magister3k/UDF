@@ -6,5 +6,5 @@ C_DEFINES = -D_CRT_SECURE_NO_WARNINGS
 
 C_INCLUDES = @CMakeFiles\g723_core.dir\includes_C.rsp
 
-C_FLAGS = -g -O0 -fno-omit-frame-pointer -std=gnu11 -m32 -msse2 -mfpmath=sse -march=i686 -D__X86__ -D__i386__ -Wall -Wextra -Wpedantic -D__unix__ -O3 -ftree-vectorize
+C_FLAGS = -O3 -ftree-vectorize -fomit-frame-pointer -std=gnu11 -m32 -msse2 -mfpmath=sse -march=i686 -D__X86__ -D__i386__ -Wall -Wextra -Wpedantic -D__unix__ -O3 -ftree-vectorize
 

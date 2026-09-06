@@ -76,7 +76,7 @@ CMakeFiles/sosna_udf.dir/sosna_udf.cpp.obj: CMakeFiles/sosna_udf.dir/includes_CX
 CMakeFiles/sosna_udf.dir/sosna_udf.cpp.obj: D:/Projects/C++/UDF/sosna_udf.cpp
 CMakeFiles/sosna_udf.dir/sosna_udf.cpp.obj: CMakeFiles/sosna_udf.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/sosna_udf.dir/sosna_udf.cpp.obj"
-	$(CMAKE_COMMAND) -E __run_co_compile --cppcheck=D:/Programs/cppcheck/App/Cppcheck64/cppcheck.exe;--platform=win32A;--enable=warning,style,performance,portability;--inline-suppr;--quiet;--suppress=missingIncludeSystem --source=D:\Projects\C++\UDF\sosna_udf.cpp -- d:\Programs\MinGW\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sosna_udf.dir/sosna_udf.cpp.obj -MF CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj.d -o CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj -c D:\Projects\C++\UDF\sosna_udf.cpp
+	d:\Programs\MinGW\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sosna_udf.dir/sosna_udf.cpp.obj -MF CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj.d -o CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj -c D:\Projects\C++\UDF\sosna_udf.cpp
 
 CMakeFiles/sosna_udf.dir/sosna_udf.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/sosna_udf.dir/sosna_udf.cpp.i"
@@ -91,7 +91,7 @@ CMakeFiles/sosna_udf.dir/g711u_coder.cpp.obj: CMakeFiles/sosna_udf.dir/includes_
 CMakeFiles/sosna_udf.dir/g711u_coder.cpp.obj: D:/Projects/C++/UDF/g711u_coder.cpp
 CMakeFiles/sosna_udf.dir/g711u_coder.cpp.obj: CMakeFiles/sosna_udf.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/sosna_udf.dir/g711u_coder.cpp.obj"
-	$(CMAKE_COMMAND) -E __run_co_compile --cppcheck=D:/Programs/cppcheck/App/Cppcheck64/cppcheck.exe;--platform=win32A;--enable=warning,style,performance,portability;--inline-suppr;--quiet;--suppress=missingIncludeSystem --source=D:\Projects\C++\UDF\g711u_coder.cpp -- d:\Programs\MinGW\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sosna_udf.dir/g711u_coder.cpp.obj -MF CMakeFiles\sosna_udf.dir\g711u_coder.cpp.obj.d -o CMakeFiles\sosna_udf.dir\g711u_coder.cpp.obj -c D:\Projects\C++\UDF\g711u_coder.cpp
+	d:\Programs\MinGW\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/sosna_udf.dir/g711u_coder.cpp.obj -MF CMakeFiles\sosna_udf.dir\g711u_coder.cpp.obj.d -o CMakeFiles\sosna_udf.dir\g711u_coder.cpp.obj -c D:\Projects\C++\UDF\g711u_coder.cpp
 
 CMakeFiles/sosna_udf.dir/g711u_coder.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/sosna_udf.dir/g711u_coder.cpp.i"

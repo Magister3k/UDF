@@ -75,7 +75,7 @@ CMakeFiles/test_sosna_udf.dir/test_transcode_g723.cpp.obj: CMakeFiles/test_sosna
 CMakeFiles/test_sosna_udf.dir/test_transcode_g723.cpp.obj: D:/Projects/C++/UDF/test_transcode_g723.cpp
 CMakeFiles/test_sosna_udf.dir/test_transcode_g723.cpp.obj: CMakeFiles/test_sosna_udf.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/test_sosna_udf.dir/test_transcode_g723.cpp.obj"
-	$(CMAKE_COMMAND) -E __run_co_compile --cppcheck=D:/Programs/cppcheck/App/Cppcheck64/cppcheck.exe;--platform=win32A;--enable=warning,style,performance,portability;--inline-suppr;--quiet;--suppress=missingIncludeSystem --source=D:\Projects\C++\UDF\test_transcode_g723.cpp -- d:\Programs\MinGW\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_sosna_udf.dir/test_transcode_g723.cpp.obj -MF CMakeFiles\test_sosna_udf.dir\test_transcode_g723.cpp.obj.d -o CMakeFiles\test_sosna_udf.dir\test_transcode_g723.cpp.obj -c D:\Projects\C++\UDF\test_transcode_g723.cpp
+	d:\Programs\MinGW\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test_sosna_udf.dir/test_transcode_g723.cpp.obj -MF CMakeFiles\test_sosna_udf.dir\test_transcode_g723.cpp.obj.d -o CMakeFiles\test_sosna_udf.dir\test_transcode_g723.cpp.obj -c D:\Projects\C++\UDF\test_transcode_g723.cpp
 
 CMakeFiles/test_sosna_udf.dir/test_transcode_g723.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/test_sosna_udf.dir/test_transcode_g723.cpp.i"

@@ -76,7 +76,7 @@ CMakeFiles/g723_core.dir/g723_1_mod/DECOD2.c.obj: CMakeFiles/g723_core.dir/inclu
 CMakeFiles/g723_core.dir/g723_1_mod/DECOD2.c.obj: D:/Projects/C++/UDF/g723_1_mod/DECOD2.c
 CMakeFiles/g723_core.dir/g723_1_mod/DECOD2.c.obj: CMakeFiles/g723_core.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/g723_core.dir/g723_1_mod/DECOD2.c.obj"
-	$(CMAKE_COMMAND) -E __run_co_compile --cppcheck=D:/Programs/cppcheck/App/Cppcheck64/cppcheck.exe;--platform=win32A;--enable=warning,style,performance,portability;--inline-suppr;--quiet;--suppress=missingIncludeSystem --source=D:\Projects\C++\UDF\g723_1_mod\DECOD2.c -- d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/g723_core.dir/g723_1_mod/DECOD2.c.obj -MF CMakeFiles\g723_core.dir\g723_1_mod\DECOD2.c.obj.d -o CMakeFiles\g723_core.dir\g723_1_mod\DECOD2.c.obj -c D:\Projects\C++\UDF\g723_1_mod\DECOD2.c
+	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/g723_core.dir/g723_1_mod/DECOD2.c.obj -MF CMakeFiles\g723_core.dir\g723_1_mod\DECOD2.c.obj.d -o CMakeFiles\g723_core.dir\g723_1_mod\DECOD2.c.obj -c D:\Projects\C++\UDF\g723_1_mod\DECOD2.c
 
 CMakeFiles/g723_core.dir/g723_1_mod/DECOD2.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/g723_core.dir/g723_1_mod/DECOD2.c.i"
@@ -91,7 +91,7 @@ CMakeFiles/g723_core.dir/g723_1_mod/DECCNG2.c.obj: CMakeFiles/g723_core.dir/incl
 CMakeFiles/g723_core.dir/g723_1_mod/DECCNG2.c.obj: D:/Projects/C++/UDF/g723_1_mod/DECCNG2.c
 CMakeFiles/g723_core.dir/g723_1_mod/DECCNG2.c.obj: CMakeFiles/g723_core.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/g723_core.dir/g723_1_mod/DECCNG2.c.obj"
-	$(CMAKE_COMMAND) -E __run_co_compile --cppcheck=D:/Programs/cppcheck/App/Cppcheck64/cppcheck.exe;--platform=win32A;--enable=warning,style,performance,portability;--inline-suppr;--quiet;--suppress=missingIncludeSystem --source=D:\Projects\C++\UDF\g723_1_mod\DECCNG2.c -- d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/g723_core.dir/g723_1_mod/DECCNG2.c.obj -MF CMakeFiles\g723_core.dir\g723_1_mod\DECCNG2.c.obj.d -o CMakeFiles\g723_core.dir\g723_1_mod\DECCNG2.c.obj -c D:\Projects\C++\UDF\g723_1_mod\DECCNG2.c
+	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/g723_core.dir/g723_1_mod/DECCNG2.c.obj -MF CMakeFiles\g723_core.dir\g723_1_mod\DECCNG2.c.obj.d -o CMakeFiles\g723_core.dir\g723_1_mod\DECCNG2.c.obj -c D:\Projects\C++\UDF\g723_1_mod\DECCNG2.c
 
 CMakeFiles/g723_core.dir/g723_1_mod/DECCNG2.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/g723_core.dir/g723_1_mod/DECCNG2.c.i"
@@ -106,7 +106,7 @@ CMakeFiles/g723_core.dir/g723_1_mod/EXC2.c.obj: CMakeFiles/g723_core.dir/include
 CMakeFiles/g723_core.dir/g723_1_mod/EXC2.c.obj: D:/Projects/C++/UDF/g723_1_mod/EXC2.c
 CMakeFiles/g723_core.dir/g723_1_mod/EXC2.c.obj: CMakeFiles/g723_core.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/g723_core.dir/g723_1_mod/EXC2.c.obj"
-	$(CMAKE_COMMAND) -E __run_co_compile --cppcheck=D:/Programs/cppcheck/App/Cppcheck64/cppcheck.exe;--platform=win32A;--enable=warning,style,performance,portability;--inline-suppr;--quiet;--suppress=missingIncludeSystem --source=D:\Projects\C++\UDF\g723_1_mod\EXC2.c -- d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/g723_core.dir/g723_1_mod/EXC2.c.obj -MF CMakeFiles\g723_core.dir\g723_1_mod\EXC2.c.obj.d -o CMakeFiles\g723_core.dir\g723_1_mod\EXC2.c.obj -c D:\Projects\C++\UDF\g723_1_mod\EXC2.c
+	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/g723_core.dir/g723_1_mod/EXC2.c.obj -MF CMakeFiles\g723_core.dir\g723_1_mod\EXC2.c.obj.d -o CMakeFiles\g723_core.dir\g723_1_mod\EXC2.c.obj -c D:\Projects\C++\UDF\g723_1_mod\EXC2.c
 
 CMakeFiles/g723_core.dir/g723_1_mod/EXC2.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/g723_core.dir/g723_1_mod/EXC2.c.i"
@@ -121,7 +121,7 @@ CMakeFiles/g723_core.dir/g723_1_mod/LPC2.c.obj: CMakeFiles/g723_core.dir/include
 CMakeFiles/g723_core.dir/g723_1_mod/LPC2.c.obj: D:/Projects/C++/UDF/g723_1_mod/LPC2.c
 CMakeFiles/g723_core.dir/g723_1_mod/LPC2.c.obj: CMakeFiles/g723_core.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/g723_core.dir/g723_1_mod/LPC2.c.obj"
-	$(CMAKE_COMMAND) -E __run_co_compile --cppcheck=D:/Programs/cppcheck/App/Cppcheck64/cppcheck.exe;--platform=win32A;--enable=warning,style,performance,portability;--inline-suppr;--quiet;--suppress=missingIncludeSystem --source=D:\Projects\C++\UDF\g723_1_mod\LPC2.c -- d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/g723_core.dir/g723_1_mod/LPC2.c.obj -MF CMakeFiles\g723_core.dir\g723_1_mod\LPC2.c.obj.d -o CMakeFiles\g723_core.dir\g723_1_mod\LPC2.c.obj -c D:\Projects\C++\UDF\g723_1_mod\LPC2.c
+	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/g723_core.dir/g723_1_mod/LPC2.c.obj -MF CMakeFiles\g723_core.dir\g723_1_mod\LPC2.c.obj.d -o CMakeFiles\g723_core.dir\g723_1_mod\LPC2.c.obj -c D:\Projects\C++\UDF\g723_1_mod\LPC2.c
 
 CMakeFiles/g723_core.dir/g723_1_mod/LPC2.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/g723_core.dir/g723_1_mod/LPC2.c.i"
@@ -136,7 +136,7 @@ CMakeFiles/g723_core.dir/g723_1_mod/LSP2.c.obj: CMakeFiles/g723_core.dir/include
 CMakeFiles/g723_core.dir/g723_1_mod/LSP2.c.obj: D:/Projects/C++/UDF/g723_1_mod/LSP2.c
 CMakeFiles/g723_core.dir/g723_1_mod/LSP2.c.obj: CMakeFiles/g723_core.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/g723_core.dir/g723_1_mod/LSP2.c.obj"
-	$(CMAKE_COMMAND) -E __run_co_compile --cppcheck=D:/Programs/cppcheck/App/Cppcheck64/cppcheck.exe;--platform=win32A;--enable=warning,style,performance,portability;--inline-suppr;--quiet;--suppress=missingIncludeSystem --source=D:\Projects\C++\UDF\g723_1_mod\LSP2.c -- d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/g723_core.dir/g723_1_mod/LSP2.c.obj -MF CMakeFiles\g723_core.dir\g723_1_mod\LSP2.c.obj.d -o CMakeFiles\g723_core.dir\g723_1_mod\LSP2.c.obj -c D:\Projects\C++\UDF\g723_1_mod\LSP2.c
+	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/g723_core.dir/g723_1_mod/LSP2.c.obj -MF CMakeFiles\g723_core.dir\g723_1_mod\LSP2.c.obj.d -o CMakeFiles\g723_core.dir\g723_1_mod\LSP2.c.obj -c D:\Projects\C++\UDF\g723_1_mod\LSP2.c
 
 CMakeFiles/g723_core.dir/g723_1_mod/LSP2.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/g723_core.dir/g723_1_mod/LSP2.c.i"
@@ -151,7 +151,7 @@ CMakeFiles/g723_core.dir/g723_1_mod/TAB2.c.obj: CMakeFiles/g723_core.dir/include
 CMakeFiles/g723_core.dir/g723_1_mod/TAB2.c.obj: D:/Projects/C++/UDF/g723_1_mod/TAB2.c
 CMakeFiles/g723_core.dir/g723_1_mod/TAB2.c.obj: CMakeFiles/g723_core.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/g723_core.dir/g723_1_mod/TAB2.c.obj"
-	$(CMAKE_COMMAND) -E __run_co_compile --cppcheck=D:/Programs/cppcheck/App/Cppcheck64/cppcheck.exe;--platform=win32A;--enable=warning,style,performance,portability;--inline-suppr;--quiet;--suppress=missingIncludeSystem --source=D:\Projects\C++\UDF\g723_1_mod\TAB2.c -- d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/g723_core.dir/g723_1_mod/TAB2.c.obj -MF CMakeFiles\g723_core.dir\g723_1_mod\TAB2.c.obj.d -o CMakeFiles\g723_core.dir\g723_1_mod\TAB2.c.obj -c D:\Projects\C++\UDF\g723_1_mod\TAB2.c
+	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/g723_core.dir/g723_1_mod/TAB2.c.obj -MF CMakeFiles\g723_core.dir\g723_1_mod\TAB2.c.obj.d -o CMakeFiles\g723_core.dir\g723_1_mod\TAB2.c.obj -c D:\Projects\C++\UDF\g723_1_mod\TAB2.c
 
 CMakeFiles/g723_core.dir/g723_1_mod/TAB2.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/g723_core.dir/g723_1_mod/TAB2.c.i"
@@ -166,7 +166,7 @@ CMakeFiles/g723_core.dir/g723_1_mod/UTIL2.c.obj: CMakeFiles/g723_core.dir/includ
 CMakeFiles/g723_core.dir/g723_1_mod/UTIL2.c.obj: D:/Projects/C++/UDF/g723_1_mod/UTIL2.c
 CMakeFiles/g723_core.dir/g723_1_mod/UTIL2.c.obj: CMakeFiles/g723_core.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/g723_core.dir/g723_1_mod/UTIL2.c.obj"
-	$(CMAKE_COMMAND) -E __run_co_compile --cppcheck=D:/Programs/cppcheck/App/Cppcheck64/cppcheck.exe;--platform=win32A;--enable=warning,style,performance,portability;--inline-suppr;--quiet;--suppress=missingIncludeSystem --source=D:\Projects\C++\UDF\g723_1_mod\UTIL2.c -- d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/g723_core.dir/g723_1_mod/UTIL2.c.obj -MF CMakeFiles\g723_core.dir\g723_1_mod\UTIL2.c.obj.d -o CMakeFiles\g723_core.dir\g723_1_mod\UTIL2.c.obj -c D:\Projects\C++\UDF\g723_1_mod\UTIL2.c
+	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/g723_core.dir/g723_1_mod/UTIL2.c.obj -MF CMakeFiles\g723_core.dir\g723_1_mod\UTIL2.c.obj.d -o CMakeFiles\g723_core.dir\g723_1_mod\UTIL2.c.obj -c D:\Projects\C++\UDF\g723_1_mod\UTIL2.c
 
 CMakeFiles/g723_core.dir/g723_1_mod/UTIL2.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/g723_core.dir/g723_1_mod/UTIL2.c.i"
@@ -181,7 +181,7 @@ CMakeFiles/g723_core.dir/g723_1_mod/UTILCNG2.c.obj: CMakeFiles/g723_core.dir/inc
 CMakeFiles/g723_core.dir/g723_1_mod/UTILCNG2.c.obj: D:/Projects/C++/UDF/g723_1_mod/UTILCNG2.c
 CMakeFiles/g723_core.dir/g723_1_mod/UTILCNG2.c.obj: CMakeFiles/g723_core.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/g723_core.dir/g723_1_mod/UTILCNG2.c.obj"
-	$(CMAKE_COMMAND) -E __run_co_compile --cppcheck=D:/Programs/cppcheck/App/Cppcheck64/cppcheck.exe;--platform=win32A;--enable=warning,style,performance,portability;--inline-suppr;--quiet;--suppress=missingIncludeSystem --source=D:\Projects\C++\UDF\g723_1_mod\UTILCNG2.c -- d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/g723_core.dir/g723_1_mod/UTILCNG2.c.obj -MF CMakeFiles\g723_core.dir\g723_1_mod\UTILCNG2.c.obj.d -o CMakeFiles\g723_core.dir\g723_1_mod\UTILCNG2.c.obj -c D:\Projects\C++\UDF\g723_1_mod\UTILCNG2.c
+	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/g723_core.dir/g723_1_mod/UTILCNG2.c.obj -MF CMakeFiles\g723_core.dir\g723_1_mod\UTILCNG2.c.obj.d -o CMakeFiles\g723_core.dir\g723_1_mod\UTILCNG2.c.obj -c D:\Projects\C++\UDF\g723_1_mod\UTILCNG2.c
 
 CMakeFiles/g723_core.dir/g723_1_mod/UTILCNG2.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/g723_core.dir/g723_1_mod/UTILCNG2.c.i"
@@ -196,7 +196,7 @@ CMakeFiles/g723_core.dir/g723_1_mod/g723_globals.c.obj: CMakeFiles/g723_core.dir
 CMakeFiles/g723_core.dir/g723_1_mod/g723_globals.c.obj: D:/Projects/C++/UDF/g723_1_mod/g723_globals.c
 CMakeFiles/g723_core.dir/g723_1_mod/g723_globals.c.obj: CMakeFiles/g723_core.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/g723_core.dir/g723_1_mod/g723_globals.c.obj"
-	$(CMAKE_COMMAND) -E __run_co_compile --cppcheck=D:/Programs/cppcheck/App/Cppcheck64/cppcheck.exe;--platform=win32A;--enable=warning,style,performance,portability;--inline-suppr;--quiet;--suppress=missingIncludeSystem --source=D:\Projects\C++\UDF\g723_1_mod\g723_globals.c -- d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/g723_core.dir/g723_1_mod/g723_globals.c.obj -MF CMakeFiles\g723_core.dir\g723_1_mod\g723_globals.c.obj.d -o CMakeFiles\g723_core.dir\g723_1_mod\g723_globals.c.obj -c D:\Projects\C++\UDF\g723_1_mod\g723_globals.c
+	d:\Programs\MinGW\mingw32\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/g723_core.dir/g723_1_mod/g723_globals.c.obj -MF CMakeFiles\g723_core.dir\g723_1_mod\g723_globals.c.obj.d -o CMakeFiles\g723_core.dir\g723_1_mod\g723_globals.c.obj -c D:\Projects\C++\UDF\g723_1_mod\g723_globals.c
 
 CMakeFiles/g723_core.dir/g723_1_mod/g723_globals.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/g723_core.dir/g723_1_mod/g723_globals.c.i"

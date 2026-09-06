@@ -40,7 +40,8 @@ static bool validate_blob_callbacks(const BLOB_CB in_blob, const BLOB_CB out_blo
     if (!in_blob || !out_blob) return false;
     if (!in_blob->blob_handle || !in_blob->blob_get_segment) return false;
     if (!out_blob->blob_put_segment) return false;
-    if (in_blob->blob_max_segment <= 0 || in_blob->blob_max_segment > 200000) return false;
+    // blob_max_segment может быть 0 в некоторых версиях InterBase — допускаем
+    if (in_blob->blob_max_segment < 0 || in_blob->blob_max_segment > 200000) return false;
     return true;
 }
 
@@ -73,35 +74,27 @@ static void transcode_internal(BLOB_CB in_blob, BLOB_CB out_blob) {
     G723DecoderContext* decoder_ctx = g723_create_context();
     if (!decoder_ctx) return;
 
+    // InterBase API: blob_get_segment возвращает 0 — есть ещё данные, 1 — последний сегмент прочитан
+    // Читаем сегменты пока не получим result != 0 (конец BLOB)
     bool eof_reached = false;
     unsigned int chunk_size_limit = static_cast<unsigned int>(in_blob->blob_max_segment);
     if (chunk_size_limit == 0 || chunk_size_limit > 65535) chunk_size_limit = 65535;
 
     while (true) {
-        // Определяем минимальный размер следующего кадра
-        int min_frame_needed = G723_FRAME_SIZE_SID;
-        if (buffer_data_size >= G723_FRAME_SIZE_SID) {
-            unsigned char first_byte = input_buffer[0];
-            switch (first_byte & 0x03) {
-                case 0x00: min_frame_needed = G723_MAX_FRAME_SIZE; break;
-                case 0x01: min_frame_needed = 20; break;
-                case 0x02: min_frame_needed = G723_FRAME_SIZE_SID; break;
-                default:   min_frame_needed = 1; break;
-            }
-        }
-
-        // Дозагружаем данные до min_frame_needed
-        while (buffer_data_size < static_cast<unsigned int>(min_frame_needed)) {
-            unsigned short bytes_read = 0;
+        // Читаем жадно: заполняем буфер целиком пока есть место и данные.
+        // result == 0: данные есть, продолжаем читать
+        // result != 0: последний сегмент прочитан (или ошибка), больше не читаем
+        while (!eof_reached) {
             unsigned int space_left = max_seg_size - buffer_data_size;
-            unsigned short max_read = static_cast<unsigned short>(std::min<unsigned int>(space_left, chunk_size_limit));
+            if (space_left < chunk_size_limit) break;  // буфер почти полон — обработаем сначала
+            unsigned short bytes_read = 0;
+            unsigned short max_read = static_cast<unsigned short>(chunk_size_limit);
             short result = in_blob->blob_get_segment(in_blob->blob_handle,
                 reinterpret_cast<char*>(input_buffer.data() + buffer_data_size),
                 max_read, &bytes_read);
 
-            if (result != 0) break;
-            if (bytes_read == 0) { eof_reached = true; break; }
-            buffer_data_size += bytes_read;
+            if (bytes_read > 0) buffer_data_size += bytes_read;
+            if (result != 0) { eof_reached = true; break; }  // конец BLOB
         }
 
         if (buffer_data_size < G723_FRAME_SIZE_SID) {

@@ -23,14 +23,16 @@ short MockGetSegment(void* handle, char* buffer, unsigned short max_length, unsi
     MockBlobContext* ctx = static_cast<MockBlobContext*>(handle);
     if (ctx->read_position >= ctx->data.size()) {
         *bytes_read = 0;
-        return 1;
+        return 1;  // конец BLOB
     }
     size_t available = ctx->data.size() - ctx->read_position;
-    size_t to_read = available;  // Игнорируем max_length, отдаём всё сразу
+    // Имитируем реальный InterBase: читаем не больше max_length за раз
+    size_t to_read = std::min<size_t>(available, max_length);
     std::memcpy(buffer, &ctx->data[ctx->read_position], to_read);
     ctx->read_position += to_read;
     *bytes_read = static_cast<unsigned short>(to_read);
-    return 0;
+    // InterBase: 0 = есть ещё данные, 1 = последний сегмент
+    return (ctx->read_position >= ctx->data.size()) ? 1 : 0;
 }
 
 void MockPutSegment(void* handle, const char* buffer, unsigned short length) {

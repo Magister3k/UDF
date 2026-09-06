@@ -7,7 +7,7 @@ CXX_DEFINES = -D_CRT_SECURE_NO_WARNINGS -Dsosna_udf_EXPORTS
 
 CXX_INCLUDES = @CMakeFiles\sosna_udf.dir\includes_CXX.rsp
 
-CXX_FLAGS = -g -O0 -fno-omit-frame-pointer -std=gnu++20 -m32 -msse2 -mfpmath=sse -march=i686 -D__X86__ -D__i386__ -Wall -Wextra -Wpedantic -D__unix__
+CXX_FLAGS = -O3 -ftree-vectorize -fomit-frame-pointer -std=gnu++20 -m32 -msse2 -mfpmath=sse -march=i686 -D__X86__ -D__i386__ -Wall -Wextra -Wpedantic -D__unix__
 
 RC_DEFINES = -D_CRT_SECURE_NO_WARNINGS -Dsosna_udf_EXPORTS
 
