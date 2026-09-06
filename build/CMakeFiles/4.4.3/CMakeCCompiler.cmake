@@ -1,4 +1,4 @@
-set(CMAKE_C_COMPILER "D:/Programs/MinGW/mingw32/bin/cc.exe")
+set(CMAKE_C_COMPILER "d:/Programs/MinGW/mingw32/bin/gcc.exe")
 set(CMAKE_C_COMPILER_ARG1 "")
 set(CMAKE_C_COMPILER_ID "GNU")
 set(CMAKE_C_COMPILER_VERSION "16.2.0")

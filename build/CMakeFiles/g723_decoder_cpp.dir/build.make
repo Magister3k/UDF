@@ -76,15 +76,15 @@ CMakeFiles/g723_decoder_cpp.dir/g723_decoder.cpp.obj: CMakeFiles/g723_decoder_cp
 CMakeFiles/g723_decoder_cpp.dir/g723_decoder.cpp.obj: D:/Projects/C++/UDF/g723_decoder.cpp
 CMakeFiles/g723_decoder_cpp.dir/g723_decoder.cpp.obj: CMakeFiles/g723_decoder_cpp.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Projects\C++\UDF\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/g723_decoder_cpp.dir/g723_decoder.cpp.obj"
-	$(CMAKE_COMMAND) -E __run_co_compile --cppcheck=D:/Programs/cppcheck/App/Cppcheck64/cppcheck.exe;--platform=win32A;--enable=warning,style,performance,portability;--inline-suppr;--quiet;--suppress=missingIncludeSystem --source=D:\Projects\C++\UDF\g723_decoder.cpp -- D:\Programs\MinGW\mingw32\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/g723_decoder_cpp.dir/g723_decoder.cpp.obj -MF CMakeFiles\g723_decoder_cpp.dir\g723_decoder.cpp.obj.d -o CMakeFiles\g723_decoder_cpp.dir\g723_decoder.cpp.obj -c D:\Projects\C++\UDF\g723_decoder.cpp
+	$(CMAKE_COMMAND) -E __run_co_compile --cppcheck=D:/Programs/cppcheck/App/Cppcheck64/cppcheck.exe;--platform=win32A;--enable=warning,style,performance,portability;--inline-suppr;--quiet;--suppress=missingIncludeSystem --source=D:\Projects\C++\UDF\g723_decoder.cpp -- d:\Programs\MinGW\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/g723_decoder_cpp.dir/g723_decoder.cpp.obj -MF CMakeFiles\g723_decoder_cpp.dir\g723_decoder.cpp.obj.d -o CMakeFiles\g723_decoder_cpp.dir\g723_decoder.cpp.obj -c D:\Projects\C++\UDF\g723_decoder.cpp
 
 CMakeFiles/g723_decoder_cpp.dir/g723_decoder.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/g723_decoder_cpp.dir/g723_decoder.cpp.i"
-	D:\Programs\MinGW\mingw32\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Projects\C++\UDF\g723_decoder.cpp > CMakeFiles\g723_decoder_cpp.dir\g723_decoder.cpp.i
+	d:\Programs\MinGW\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Projects\C++\UDF\g723_decoder.cpp > CMakeFiles\g723_decoder_cpp.dir\g723_decoder.cpp.i
 
 CMakeFiles/g723_decoder_cpp.dir/g723_decoder.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/g723_decoder_cpp.dir/g723_decoder.cpp.s"
-	D:\Programs\MinGW\mingw32\bin\c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Projects\C++\UDF\g723_decoder.cpp -o CMakeFiles\g723_decoder_cpp.dir\g723_decoder.cpp.s
+	d:\Programs\MinGW\mingw32\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Projects\C++\UDF\g723_decoder.cpp -o CMakeFiles\g723_decoder_cpp.dir\g723_decoder.cpp.s
 
 # Object files for target g723_decoder_cpp
 g723_decoder_cpp_OBJECTS = \

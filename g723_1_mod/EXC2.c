@@ -79,10 +79,11 @@
 #include "cst2.h"
 #include "tab2.h"
 #include "lbccode2.h"
-#include "coder2.h"
 #include "util2.h"
 #include "exc2.h"
 #include "utilcng2.h"
+
+CODSTATDEF CodStat;
 
 /*
 **

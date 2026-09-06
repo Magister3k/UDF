@@ -54,11 +54,11 @@
 #include "cst2.h"
 #include "tab2.h"
 #include "lbccode2.h"
-#include "coder2.h"
 #include "decod2.h"
 #include "util2.h"
 #include "lpc2.h"
-#include "codcng2.h"
+
+extern CODSTATDEF CodStat;
 
 /*
 **
@@ -169,7 +169,7 @@ void  Comp_Lpc(FLOAT *UnqLpc, FLOAT *PrevDat, FLOAT *DataBuff)
     if ( k >= 14 )
         CodStat.SinDet |= 0x8000 ;
 
-    Update_Acf(Acf_sf);
+    /* Update_Acf(Acf_sf); // Encoder-only, not needed for decoder */
 }
 
 

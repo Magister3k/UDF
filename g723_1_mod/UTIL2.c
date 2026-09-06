@@ -57,9 +57,10 @@
 #include "typedef2.h"
 #include "cst2.h"
 #include "lbccode2.h"
-#include "coder2.h"
 #include "decod2.h"
 #include "util2.h"
+
+extern CODSTATDEF CodStat;
 
 /*
 **
@@ -781,7 +782,6 @@ void  Scale(FLOAT *Tv, FLOAT Sen)
 */
 FLOAT DotProd(FLOAT *in1, FLOAT *in2, int len)
 {
-    int   i;
     FLOAT sum;
 
 #if defined(__SSE2__) || defined(_M_X64) || (defined(_M_IX86_FP) && _M_IX86_FP >= 2)
@@ -807,7 +807,7 @@ FLOAT DotProd(FLOAT *in1, FLOAT *in2, int len)
 #else
     /* Scalar fallback */
     sum = (FLOAT)0.0;
-    for (i = 0; i < len; i++)
+    for (int i = 0; i < len; i++)
         sum += in1[i] * in2[i];
 #endif
 
