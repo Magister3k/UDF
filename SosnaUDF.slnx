@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Solution>
+	<Configurations>
+		<BuildType Name="Debug"/>
+		<BuildType Name="Release"/>
+		<Platform Name="x64"/>
+	</Configurations>
+	<Project Path="ALL_BUILD.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="b78e7f16-b828-30e0-8521-865e7c83ce10" DefaultStartup="true">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="g723_core.vcxproj"/>
+		<BuildDependency Project="g723_decoder_cpp.vcxproj"/>
+		<BuildDependency Project="g723_udf_adapter.vcxproj"/>
+		<BuildDependency Project="sosna_udf.vcxproj"/>
+		<BuildDependency Project="test_sosna_udf.vcxproj"/>
+	</Project>
+	<Project Path="INSTALL.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="e0fcee9e-6094-348f-b264-ef87517d14ee">
+		<BuildDependency Project="ALL_BUILD.vcxproj"/>
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<Build Solution="Debug|*" Project="false"/>
+		<Build Solution="Release|*" Project="false"/>
+	</Project>
+	<Project Path="ZERO_CHECK.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="a9f4b18d-d1d7-30ad-8824-97910cb94e04"/>
+	<Project Path="g723_core.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="77f499b3-9eba-30c7-9466-7fad235ca230">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+	</Project>
+	<Project Path="g723_decoder_cpp.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="49f793d3-bc40-3834-86fe-f3ca0b73043a">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="g723_core.vcxproj"/>
+	</Project>
+	<Project Path="g723_udf_adapter.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="f45e4fb9-5246-3cbc-8a25-04e277219aaa">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="g723_core.vcxproj"/>
+		<BuildDependency Project="g723_decoder_cpp.vcxproj"/>
+	</Project>
+	<Project Path="sosna_udf.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="c9de5b9a-8399-35ea-8780-a2a7426f6a94">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="g723_core.vcxproj"/>
+		<BuildDependency Project="g723_decoder_cpp.vcxproj"/>
+		<BuildDependency Project="g723_udf_adapter.vcxproj"/>
+	</Project>
+	<Project Path="test_sosna_udf.vcxproj" Type="8bc9ceb8-8b4a-11d0-8d11-00a0c91bc942" Id="331301cf-b0cb-3971-bb99-257c0d531ff8">
+		<BuildDependency Project="ZERO_CHECK.vcxproj"/>
+		<BuildDependency Project="sosna_udf.vcxproj"/>
+	</Project>
+</Solution>
