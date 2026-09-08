@@ -422,11 +422,11 @@ void  Gen_Trn(FLOAT *Dst, FLOAT *Src, int Olp)
 **
 */
 /* Static thread-local scratch buffers for Find_Best */
-static __thread FLOAT s_FindBest_Imr[SubFrLen];
-static __thread FLOAT s_FindBest_OccPos[SubFrLen];
-static __thread FLOAT s_FindBest_ImrCorr[SubFrLen];
-static __thread FLOAT s_FindBest_ErrBlk[SubFrLen];
-static __thread FLOAT s_FindBest_WrkBlk[SubFrLen];
+static THREAD_LOCAL FLOAT s_FindBest_Imr[SubFrLen];
+static THREAD_LOCAL FLOAT s_FindBest_OccPos[SubFrLen];
+static THREAD_LOCAL FLOAT s_FindBest_ImrCorr[SubFrLen];
+static THREAD_LOCAL FLOAT s_FindBest_ErrBlk[SubFrLen];
+static THREAD_LOCAL FLOAT s_FindBest_WrkBlk[SubFrLen];
 
 void  Find_Best(BESTDEF *Best, FLOAT *Tv, FLOAT *ImpResp,int Np,int Olp)
 {

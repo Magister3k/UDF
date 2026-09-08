@@ -68,6 +68,7 @@ static void transcode_internal(BLOB_CB in_blob, BLOB_CB out_blob) {
 
     unsigned int buffer_data_size = 0;
     size_t output_idx = 0;
+    int frame_count = 0;
 
     // Явная инициализация глобальных таблиц декодера перед созданием контекста
     g723_init_decoder();
@@ -115,9 +116,10 @@ static void transcode_internal(BLOB_CB in_blob, BLOB_CB out_blob) {
                     int consumed = g723_decode_frame(decoder_ctx, &input_buffer[input_pos], pcm_output);
                     if (consumed <= 0) { input_pos += 1; continue; }
                     input_pos += consumed;
+                    frame_count++;
                     encode_pcm_to_pcmu(pcm_output, &output_buffer[output_idx], G723_SAMPLES_PER_FRAME);
                     output_idx += G723_SAMPLES_PER_FRAME;
-                    if (output_idx >= 65535) flush_output_buffer(out_blob, output_buffer, output_idx);
+                    if (output_idx >= 65535 - G723_SAMPLES_PER_FRAME) flush_output_buffer(out_blob, output_buffer, output_idx);
                 }
             }
             break;
@@ -141,10 +143,13 @@ static void transcode_internal(BLOB_CB in_blob, BLOB_CB out_blob) {
             int consumed = g723_decode_frame(decoder_ctx, &input_buffer[input_pos], pcm_output);
             if (consumed <= 0) { input_pos += 1; continue; }
             input_pos += consumed;
+            frame_count++;
 
             encode_pcm_to_pcmu(pcm_output, &output_buffer[output_idx], G723_SAMPLES_PER_FRAME);
             output_idx += G723_SAMPLES_PER_FRAME;
-            if (output_idx >= 65535) flush_output_buffer(out_blob, output_buffer, output_idx);
+            // InterBase BLOB API: max segment size = 65535 (unsigned short).
+            // Флашим заранее, чтобы не превысить лимит при приведении к unsigned short.
+            if (output_idx >= 65535 - G723_SAMPLES_PER_FRAME) flush_output_buffer(out_blob, output_buffer, output_idx);
         }
 
         // Копируем необработанный хвост в начало буфера

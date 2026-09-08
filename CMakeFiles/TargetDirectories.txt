@@ -1,8 +1,0 @@
-D:/Projects/C++/UDF/CMakeFiles/g723_core.dir
-D:/Projects/C++/UDF/CMakeFiles/g723_decoder_cpp.dir
-D:/Projects/C++/UDF/CMakeFiles/g723_udf_adapter.dir
-D:/Projects/C++/UDF/CMakeFiles/sosna_udf.dir
-D:/Projects/C++/UDF/CMakeFiles/test_sosna_udf.dir
-D:/Projects/C++/UDF/CMakeFiles/INSTALL.dir
-D:/Projects/C++/UDF/CMakeFiles/ALL_BUILD.dir
-D:/Projects/C++/UDF/CMakeFiles/ZERO_CHECK.dir

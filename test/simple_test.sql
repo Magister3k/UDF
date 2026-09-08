@@ -1,2 +1,0 @@
-UPDATE speech SET rec = (SELECT rec_out FROM TRANSCODE_G723(rec)) WHERE id = 1;
-COMMIT;

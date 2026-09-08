@@ -76,4 +76,11 @@ _Static_assert(sizeof(Flag) == 2, "Flag must be 16 bits");
 #define UNLIKELY(x) (x)
 #endif
 
+/* Thread-local storage macro */
+#if defined(_MSC_VER)
+#define THREAD_LOCAL __declspec(thread)
+#else
+#define THREAD_LOCAL __thread
+#endif
+
 #endif /* TYPEDEF2_H */

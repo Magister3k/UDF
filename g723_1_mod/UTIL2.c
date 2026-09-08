@@ -277,7 +277,7 @@ void  Rem_Dc(FLOAT *Dpnt)
 */
 
 /* Static thread-local scratch buffer for Mem_Shift */
-static __thread FLOAT s_MemShift_Dpnt[Frame+LpcFrame-SubFrLen];
+static THREAD_LOCAL FLOAT s_MemShift_Dpnt[Frame+LpcFrame-SubFrLen];
 
 void  Mem_Shift(FLOAT *PrevDat, FLOAT *DataBuff)
 {

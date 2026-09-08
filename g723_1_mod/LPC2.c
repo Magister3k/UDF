@@ -91,9 +91,9 @@ extern CODSTATDEF CodStat;
 **
 */
 /* Static thread-local scratch buffers for Comp_Lpc */
-static __thread FLOAT s_CompLpc_Dpnt[Frame+LpcFrame-SubFrLen];
-static __thread FLOAT s_CompLpc_Vect[LpcFrame];
-static __thread FLOAT s_CompLpc_Acf_sf[LpcOrderP1*SubFrames];
+static THREAD_LOCAL FLOAT s_CompLpc_Dpnt[Frame+LpcFrame-SubFrLen];
+static THREAD_LOCAL FLOAT s_CompLpc_Vect[LpcFrame];
+static THREAD_LOCAL FLOAT s_CompLpc_Acf_sf[LpcOrderP1*SubFrames];
 
 void  Comp_Lpc(FLOAT *UnqLpc, FLOAT *PrevDat, FLOAT *DataBuff)
 {

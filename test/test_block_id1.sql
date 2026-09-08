@@ -1,0 +1,19 @@
+SET TERM ^ ;
+EXECUTE BLOCK
+RETURNS (rec_out BLOB SUB_TYPE 0)
+AS
+DECLARE VARIABLE rec_in BLOB SUB_TYPE 0;
+BEGIN
+  SELECT rec FROM speech WHERE id = 1 INTO :rec_in;
+  IF (rec_in IS NOT NULL) THEN
+  BEGIN
+    SELECT rec_out FROM TRANSCODE_G723(:rec_in) INTO :rec_out;
+  END
+  ELSE
+  BEGIN
+    rec_out = NULL;
+  END
+  SUSPEND;
+END^
+COMMIT^
+SET TERM ; ^
