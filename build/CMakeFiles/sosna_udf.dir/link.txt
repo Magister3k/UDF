@@ -1,0 +1,3 @@
+D:\Programs\cmake\bin\cmake.exe -E rm -f CMakeFiles\sosna_udf.dir/objects.a
+D:\Programs\MinGW\mingw32\bin\ar.exe qc CMakeFiles\sosna_udf.dir/objects.a @CMakeFiles\sosna_udf.dir\objects1.rsp
+d:\Programs\MinGW\mingw32\bin\g++.exe -g -O0 -fno-omit-frame-pointer -shared -m32 -Wl,--kill-at -static-libgcc -static-libstdc++ -o sosna_udf.dll -Wl,--out-implib,libsosna_udf.dll.a -Wl,--major-image-version,1,--minor-image-version,0 -Wl,--whole-archive CMakeFiles\sosna_udf.dir/objects.a -Wl,--no-whole-archive @CMakeFiles\sosna_udf.dir\linkLibs.rsp
