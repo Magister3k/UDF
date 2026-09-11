@@ -9,9 +9,6 @@ extern "C" {
 	
 	typedef struct G723DecoderContext G723DecoderContext;
 	
-	bool g723_init_decoder();
-	void g723_cleanup_decoder();
-	
 	G723DecoderContext* __cdecl g723_create_context();
 	void g723_destroy_context(G723DecoderContext* ctx);
 	void g723_reset_decoder(G723DecoderContext* ctx);

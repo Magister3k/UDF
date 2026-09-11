@@ -6,3 +6,5 @@ SET rec = (
     )
 )
 WHERE id = 1;
+
+COMMIT;

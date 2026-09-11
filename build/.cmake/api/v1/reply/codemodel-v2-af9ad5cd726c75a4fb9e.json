@@ -1,0 +1,98 @@
+{
+	"configurations" : 
+	[
+		{
+			"abstractTargets" : [],
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-Debug-375b287b42ba8a5ef831.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.15"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "SosnaUDF",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "g723_core::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-g723_core-Debug-12a378858f95c9f65621.json",
+					"name" : "g723_core",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "g723_decoder_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-g723_decoder_cpp-Debug-3062837d6ec5bd17dedf.json",
+					"name" : "g723_decoder_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "g723_udf_adapter::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-g723_udf_adapter-Debug-174baf7485400884c6ca.json",
+					"name" : "g723_udf_adapter",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "sosna_udf::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-sosna_udf-Debug-0303761f79e85ac40d99.json",
+					"name" : "sosna_udf",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "test_sosna_udf::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-test_sosna_udf-Debug-d0357f610c2bedc77258.json",
+					"name" : "test_sosna_udf",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "D:/Projects/C++/UDF/build",
+		"source" : "D:/Projects/C++/UDF"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 11
+	}
+}

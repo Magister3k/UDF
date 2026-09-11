@@ -1,7 +1,4 @@
 #include "g723_decoder.hpp"
-#include <cstring>
-#include <cmath>
-#include <vector>
 #include <algorithm>
 
 extern "C" {
@@ -26,9 +23,6 @@ struct Decoder::Impl {
 
     Impl(const DecoderConfig& cfg) : config(cfg) {
         use_pf = cfg.use_pf;
-        //::UsePf = use_pf ? True : False;
-        //Init_Decod();
-        //Init_Dec_Cng();
     }
 
     Result<AudioFrame> decode_frame(std::span<const uint8_t> data, bool crc_error) {

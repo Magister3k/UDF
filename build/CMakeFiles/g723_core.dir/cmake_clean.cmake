@@ -17,8 +17,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/g723_core.dir/g723_1_mod/UTILCNG2.c.obj.d"
   "CMakeFiles/g723_core.dir/g723_1_mod/g723_globals.c.obj"
   "CMakeFiles/g723_core.dir/g723_1_mod/g723_globals.c.obj.d"
-  "libg723_core.a"
-  "libg723_core.pdb"
+  "build_mingw/libg723_core.a"
+  "build_mingw/libg723_core.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

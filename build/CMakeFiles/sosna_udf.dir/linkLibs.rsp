@@ -1,1 +1,1 @@
- libg723_udf_adapter.a libg723_decoder_cpp.a libg723_core.a -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 
+ build_mingw/libg723_udf_adapter.a build_mingw/libg723_decoder_cpp.a build_mingw/libg723_core.a -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/g723_decoder_cpp.dir/g723_decoder.cpp.obj"
   "CMakeFiles/g723_decoder_cpp.dir/g723_decoder.cpp.obj.d"
-  "libg723_decoder_cpp.a"
-  "libg723_decoder_cpp.pdb"
+  "build_mingw/libg723_decoder_cpp.a"
+  "build_mingw/libg723_decoder_cpp.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

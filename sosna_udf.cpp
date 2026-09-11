@@ -1,9 +1,5 @@
 #include <windows.h>
 #include <cstring>
-#include <vector>
-#include <new>
-#include <algorithm>
-#include <cstdio>
 #include <climits>
 
 #include "g723_1_decoder.h"
@@ -12,8 +8,6 @@
 #define G723_SAMPLES_PER_FRAME 240
 #define G723_FRAME_SIZE_SID 4
 #define G723_MAX_FRAME_SIZE 24
-#define G723_MIN_FRAME_SIZE 1
-
 #define INPUT_SEGMENT_SIZE 4096
 #define INPUT_BUFFER_SIZE (INPUT_SEGMENT_SIZE + G723_MAX_FRAME_SIZE)
 
@@ -61,13 +55,11 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserv
     (void)hModule; (void)lpReserved;
 
     if (ul_reason_for_call == DLL_PROCESS_ATTACH) {
-        OutputDebugStringA("[UDF] DllMain: DLL_PROCESS_ATTACH\n");
         InitializeCriticalSection(&g_decoder_lock);
         g711u_init_encoder();
         g_decoder_initialized = true;
     }
     else if (ul_reason_for_call == DLL_PROCESS_DETACH) {
-        OutputDebugStringA("[UDF] DllMain: DLL_PROCESS_DETACH\n");
         g_decoder_initialized = false;
         DeleteCriticalSection(&g_decoder_lock);
     }
@@ -91,10 +83,7 @@ static inline void flush_output_buffer(BLOB_CB out_blob, unsigned char* output_b
 }
 
 static void transcode_internal(BLOB_CB in_blob, BLOB_CB out_blob) {
-    OutputDebugStringA("[UDF] ������ transcode_internal - ����� ���������\n");
-
     if (!in_blob->blob_get_segment || !out_blob->blob_put_segment) {
-        OutputDebugStringA("[UDF] ������: �������� BLOB callback\n");
         return;
     }
 
@@ -106,23 +95,18 @@ static void transcode_internal(BLOB_CB in_blob, BLOB_CB out_blob) {
     // ������� �������� ��������
     G723DecoderContext* decoder_ctx = g723_create_context();
     if (!decoder_ctx) {
-        OutputDebugStringA("[UDF] ����������� ������: �� ������� ������� �������� �������� g723\n");
         return;
     }
 
-    unsigned short bytes_read = 0;
-    short result = 0;
-
     if (in_blob->blob_total_length < 0) {
-        OutputDebugStringA("[UDF] ������: ������������ ������ BLOB\n");
         g723_destroy_context(decoder_ctx);
         return;
     }
 
     bool end_of_blob = false;
     while (!end_of_blob) {
-        bytes_read = 0;
-        result = in_blob->blob_get_segment(
+        unsigned short bytes_read = 0;
+        const short result = in_blob->blob_get_segment(
             in_blob->blob_handle,
             reinterpret_cast<char*>(input_buffer + pending_size),
             static_cast<unsigned short>(INPUT_SEGMENT_SIZE),
@@ -131,7 +115,6 @@ static void transcode_internal(BLOB_CB in_blob, BLOB_CB out_blob) {
 
         if (bytes_read > INPUT_SEGMENT_SIZE ||
             pending_size + bytes_read > sizeof(input_buffer)) {
-            OutputDebugStringA("[UDF] ������: �������� blob_get_segment\n");
             break;
         }
 
@@ -182,13 +165,11 @@ static void transcode_internal(BLOB_CB in_blob, BLOB_CB out_blob) {
         }
 
         if (!end_of_blob && bytes_read == 0) {
-            OutputDebugStringA("[UDF] ������: BLOB �� �������� ������\n");
             break;
         }
     }
 
     if (!received_input) {
-        OutputDebugStringA("[UDF] ��������: ������� BLOB ����, ���������������� ��������\n");
         g723_destroy_context(decoder_ctx);
         return;
     }
@@ -205,7 +186,6 @@ extern "C" void __stdcall transcode_g723(BLOB_CB in_blob, BLOB_CB out_blob) {
         transcode_internal(in_blob, out_blob);
     }
     catch (...) {
-        OutputDebugStringA("[UDF] ������: ���������� ���������� ����������\n");
     }
 }
 
@@ -217,6 +197,5 @@ extern "C" void __stdcall transcode_g723_ib_util(BLOB_CB in_blob, BLOB_CB out_bl
         transcode_internal(in_blob, out_blob);
     }
     catch (...) {
-        OutputDebugStringA("[UDF] ������: ���������� ���������� ����������\n");
     }
 }

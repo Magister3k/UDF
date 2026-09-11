@@ -1,3 +1,3 @@
 file(REMOVE_RECURSE
-  "libg723_core.a"
+  "build_mingw/libg723_core.a"
 )

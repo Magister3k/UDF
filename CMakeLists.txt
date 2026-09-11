@@ -2,12 +2,26 @@ cmake_minimum_required(VERSION 3.15)
 project(SosnaUDF LANGUAGES C CXX)
 
 # ====================================================================
-# 1. ГЛОБАЛЬНЫЕ НАСТРОЙКИ СТАНДАРТОВ И ПУТЕЙ
+# 1. ГЛОБАЛЬНЫЕ НАСТРОЙКИ СТАНДАРТОВ И ПУТЕЙ СБОРКИ
 # ====================================================================
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
+
+# НАСТРОЙКА ПАПКИ ВЫВОДА ДЛЯ MINGW (GCC/Clang)
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    set(MINGW_OUTPUT_DIR "${CMAKE_BINARY_DIR}/build_mingw")
+    
+    # Куда складывать исполняемые файлы (.exe) и динамические библиотеки (.dll)
+    set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${MINGW_OUTPUT_DIR}")
+    # Куда складывать библиотеки импорта (.dll.a)
+    set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${MINGW_OUTPUT_DIR}")
+    # Куда складывать статические библиотеки (.a)
+    set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${MINGW_OUTPUT_DIR}")
+    
+    message(STATUS "[MinGW] Все бинарные файлы будут собраны в: ${MINGW_OUTPUT_DIR}")
+endif()
 
 # Пути к оптимизированному кодеку G.723.1
 set(G723_MOD_DIR "${CMAKE_CURRENT_SOURCE_DIR}/g723_1_mod")
@@ -247,4 +261,7 @@ message(STATUS "Shared Libs: ${BUILD_SHARED_LIBS}")
 message(STATUS "G.723.1 Mod Sources: ${G723_MOD_DIR}")
 message(STATUS "C Sources: ${G723_MOD_C_SOURCES}")
 message(STATUS "C++ Sources: ${G723_MOD_CXX_SOURCES}")
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    message(STATUS "MinGW Output Directory: ${MINGW_OUTPUT_DIR}")
+endif()
 message(STATUS "==========================================")

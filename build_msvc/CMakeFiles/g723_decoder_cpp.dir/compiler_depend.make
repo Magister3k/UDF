@@ -112,7 +112,6 @@ CMakeFiles\g723_decoder_cpp.dir\g723_decoder.cpp.obj: "c:\Program Files (x86)\Mi
 CMakeFiles\g723_decoder_cpp.dir\g723_decoder.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\__msvc_string_view.hpp"
 CMakeFiles\g723_decoder_cpp.dir\g723_decoder.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\cctype"
 CMakeFiles\g723_decoder_cpp.dir\g723_decoder.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\ctype.h"
-CMakeFiles\g723_decoder_cpp.dir\g723_decoder.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\cmath"
 CMakeFiles\g723_decoder_cpp.dir\g723_decoder.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\algorithm"
 CMakeFiles\g723_decoder_cpp.dir\g723_decoder.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\__msvc_heap_algorithms.hpp"
 CMakeFiles\g723_decoder_cpp.dir\g723_decoder.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\__msvc_int128.hpp"
@@ -358,8 +357,6 @@ D:\Projects\C++\UDF\g723_1_mod\typedef2.h:
 D:\Projects\C++\UDF\g723_1_mod\decod2.h:
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\ctype.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\cmath":
 
 "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\algorithm":
 

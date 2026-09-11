@@ -4,10 +4,10 @@ file(REMOVE_RECURSE
   "CMakeFiles/sosna_udf.dir/sosna_udf.cpp.obj"
   "CMakeFiles/sosna_udf.dir/sosna_udf.cpp.obj.d"
   "CMakeFiles/sosna_udf.dir/version.rc.obj"
-  "libsosna_udf.dll.a"
-  "sosna_udf.dll"
-  "sosna_udf.dll.manifest"
-  "sosna_udf.pdb"
+  "build_mingw/libsosna_udf.dll.a"
+  "build_mingw/sosna_udf.dll"
+  "build_mingw/sosna_udf.dll.manifest"
+  "build_mingw/sosna_udf.pdb"
 )
 
 # Per-language clean rules from dependency scanning.

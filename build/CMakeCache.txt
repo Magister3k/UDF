@@ -35,10 +35,8 @@ CMAKE_COLOR_MAKEFILE:BOOL=ON
 //Конфигурации сборки
 CMAKE_CONFIGURATION_TYPES:STRING=Debug;Release
 
-//Full path to the compiler used for language <LANG>. Set by CMake
-// during compiler detection on the first configure; users may
-// override on the command line to select a specific toolchain.
-CMAKE_CXX_COMPILER:FILEPATH=d:/Programs/MinGW/mingw32/bin/g++.exe
+//CXX compiler
+CMAKE_CXX_COMPILER:STRING=d:/Programs/MinGW/mingw32/bin/g++.exe
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler
@@ -66,10 +64,8 @@ CMAKE_CXX_FLAGS_RELWITHDEBINFO:STRING=-O2 -g -DNDEBUG
 //Libraries linked by default with all C++ applications.
 CMAKE_CXX_STANDARD_LIBRARIES:STRING=-lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
 
-//Full path to the compiler used for language <LANG>. Set by CMake
-// during compiler detection on the first configure; users may
-// override on the command line to select a specific toolchain.
-CMAKE_C_COMPILER:FILEPATH=d:/Programs/MinGW/mingw32/bin/gcc.exe
+//C compiler
+CMAKE_C_COMPILER:STRING=d:/Programs/MinGW/mingw32/bin/gcc.exe
 
 //A wrapper around 'ar' adding the appropriate '--plugin' option
 // for the GCC compiler

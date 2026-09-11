@@ -242,84 +242,11 @@ CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "C:\Program Files (x86)\Windows Kits
 CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\cstring"
 CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\yvals_core.h"
 CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xkeycheck.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\vector"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\__msvc_bit_utils.hpp"
 CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\climits"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xtr1common"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\intrin0.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\intrin0.inl.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\__msvc_sanitizer_annotate_container.hpp"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xmemory"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\cstdint"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\stdint.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\cstdlib"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\math.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_math.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\limits"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\cfloat"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\float.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\cwchar"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\cstdio"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\stdio.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstdio.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_stdio_config.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\wchar.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wconio.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wdirect.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wio.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_share.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wprocess.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wtime.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\sys\stat.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\sys\types.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\intrin.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\setjmp.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\immintrin.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\wmmintrin.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\nmmintrin.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\smmintrin.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\tmmintrin.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\pmmintrin.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\emmintrin.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xmmintrin.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\mmintrin.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\malloc.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\zmmintrin.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\ammintrin.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\mm3dnow.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\new"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\exception"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\yvals.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\__msvc_doom_core.hpp"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\crtdbg.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\vcruntime_new_debug.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\vcruntime_new.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\crtdefs.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\use_ansi.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\type_traits"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\cstddef"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\vcruntime_exception.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\eh.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_terminate.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xatomic.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xutility"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\__msvc_iter_core.hpp"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\utility"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\initializer_list"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\compare"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\concepts"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\tuple"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xpolymorphic_allocator.h"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\algorithm"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\__msvc_heap_algorithms.hpp"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\__msvc_int128.hpp"
-CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\__msvc_minmax.hpp"
 CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: D:\Projects\C++\UDF\g723_1_decoder.h
 CMakeFiles\sosna_udf.dir\sosna_udf.cpp.obj: D:\Projects\C++\UDF\g711u_coder.h
 
 
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\type_traits":
 
 "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\excpt.h":
 
@@ -337,19 +264,13 @@ D:\Projects\C++\UDF\g711u_coder.cpp:
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\sysinfoapi.h":
 
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\concepts":
-
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\driverspecs.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\wmmintrin.h":
 
 "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\vcruntime.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\winapifamily.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\ctype.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\intrin0.inl.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\rpcnsi.h":
 
@@ -385,8 +306,6 @@ D:\Projects\C++\UDF\sosna_udf.cpp:
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\windef.h":
 
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\mmintrin.h":
-
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\minwindef.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\specstrings.h":
@@ -401,11 +320,7 @@ D:\Projects\C++\UDF\sosna_udf.cpp:
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\errno.h":
 
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xpolymorphic_allocator.h":
-
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\kernelspecs.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\emmintrin.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\prsht.h":
 
@@ -414,8 +329,6 @@ D:\Projects\C++\UDF\sosna_udf.cpp:
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\basetsd.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\guiddef.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\vector":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\string.h":
 
@@ -427,19 +340,13 @@ D:\Projects\C++\UDF\sosna_udf.cpp:
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_memcpy_s.h":
 
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\__msvc_doom_core.hpp":
-
 "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\vcruntime_string.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\synchapi.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\fibersapi.h":
 
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\stdio.h":
-
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\minwinbase.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\cfloat":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\winioctl.h":
 
@@ -461,11 +368,7 @@ D:\Projects\C++\UDF\sosna_udf.cpp:
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\ktmtypes.h":
 
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\mm3dnow.h":
-
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\winbase.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\stdint.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\apisetcconv.h":
 
@@ -509,15 +412,11 @@ D:\Projects\C++\UDF\g723_1_decoder.h:
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\namespaceapi.h":
 
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xmmintrin.h":
-
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\systemtopologyapi.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\processtopologyapi.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\securityappcontainer.h":
-
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wprocess.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\oaidl.h":
 
@@ -539,23 +438,15 @@ D:\Projects\C++\UDF\g723_1_decoder.h:
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\datetimeapi.h":
 
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\cstdlib":
-
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\stringapiset.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\intrin.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\wincon.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\wincontypes.h":
 
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\compare":
-
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_malloc.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\consoleapi.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\yvals.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\consoleapi2.h":
 
@@ -577,15 +468,11 @@ D:\Projects\C++\UDF\g723_1_decoder.h:
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\ddeml.h":
 
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xutility":
-
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\dlgs.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\lzexpand.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\mmsystem.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\cstdio":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\mmsyscom.h":
 
@@ -595,23 +482,17 @@ D:\Projects\C++\UDF\g723_1_decoder.h:
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\mmiscapi2.h":
 
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xatomic.h":
-
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\playsoundapi.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\mmeapi.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\timeapi.h":
 
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\utility":
-
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\joystickapi.h":
 
 "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xkeycheck.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\nb30.h":
-
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wio.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\rpc.h":
 
@@ -620,8 +501,6 @@ D:\Projects\C++\UDF\g723_1_decoder.h:
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\rpcdcep.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\rpcasync.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\new":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\shellapi.h":
 
@@ -633,23 +512,17 @@ D:\Projects\C++\UDF\g723_1_decoder.h:
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\inaddr.h":
 
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xtr1common":
-
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\wincrypt.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\bcrypt.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\ncrypt.h":
 
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\tuple":
-
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\dpapi.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\winefs.h":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\winscard.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\__msvc_bit_utils.hpp":
 
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\shared\wtypes.h":
 
@@ -708,89 +581,3 @@ D:\Projects\C++\UDF\g723_1_decoder.h:
 "C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\um\ime_cmodes.h":
 
 "c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\climits":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\intrin0.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\__msvc_sanitizer_annotate_container.hpp":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\xmemory":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\cstdint":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\__msvc_iter_core.hpp":
-
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\math.h":
-
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_math.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\limits":
-
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\float.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\cwchar":
-
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wstdio.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\__msvc_heap_algorithms.hpp":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\setjmp.h":
-
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_stdio_config.h":
-
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\wchar.h":
-
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wconio.h":
-
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wdirect.h":
-
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_share.h":
-
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_wtime.h":
-
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\sys\stat.h":
-
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\sys\types.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\immintrin.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\nmmintrin.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\smmintrin.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\tmmintrin.h":
-
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\crtdbg.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\pmmintrin.h":
-
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\malloc.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\zmmintrin.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\ammintrin.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\exception":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\vcruntime_new_debug.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\vcruntime_new.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\crtdefs.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\use_ansi.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\cstddef":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\vcruntime_exception.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\eh.h":
-
-"C:\Program Files (x86)\Windows Kits\10\include\10.0.26100.0\ucrt\corecrt_terminate.h":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\initializer_list":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\algorithm":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\__msvc_int128.hpp":
-
-"c:\Program Files (x86)\Microsoft Visual Studio\18\BuildTools\VC\Tools\MSVC\14.51.36231\include\__msvc_minmax.hpp":

@@ -1,0 +1,2 @@
+D:\Programs\MinGW\mingw32\bin\ar.exe qc libg723_udf_adapter.a CMakeFiles/g723_udf_adapter.dir/g723_1_decoder.cpp.obj
+D:\Programs\MinGW\mingw32\bin\ranlib.exe libg723_udf_adapter.a
