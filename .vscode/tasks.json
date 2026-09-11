@@ -1,0 +1,40 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Проверка UDF InterBase",
+			"type": "shell",
+			"command": "c:\\InterBase\\bin\\isql.exe",
+			"args": [
+				"-user",
+				"sysdba",
+				"-password",
+				"masterkey",
+				"d:\\Projects\\C++\\UDF\\test\\db.gdb",
+				"-i",
+				"d:\\Projects\\C++\\UDF\\test\\test_udf_single.sql"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Проверка UDF InterBase повтор",
+			"type": "shell",
+			"command": "cmd.exe",
+			"args": [
+				"/c",
+				"c:\\InterBase\\bin\\isql.exe -user sysdba -password masterkey d:\\Projects\\C++\\UDF\\test\\db.gdb -i d:\\Projects\\C++\\UDF\\test\\test_udf_single.sql"
+			],
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "Финальная сборка MSVC",
+			"type": "shell",
+			"command": "cmd /c call \"c:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Auxiliary\\Build\\vcvarsall.bat\" x86 ^&^& cmake --build build_msvc --config Release",
+			"args": [],
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}

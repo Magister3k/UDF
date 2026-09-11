@@ -6,8 +6,7 @@ DECLARE EXTERNAL FUNCTION UDF_TRANSCODE_G723
     BLOB,
     BLOB
     RETURNS PARAMETER 2
-    ENTRY_POINT 'transcode_g723_ib_util'
-/*    ENTRY_POINT 'transcode_g723' */
+    ENTRY_POINT 'transcode_g723'
     MODULE_NAME 'sosna_udf';
 COMMIT;
 

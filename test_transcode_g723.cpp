@@ -8,10 +8,12 @@
 #include <algorithm>
 
 typedef struct blob_callback {
-    short   (*blob_get_segment) (void*, char*, unsigned short, unsigned short*);
+    short   (__cdecl *blob_get_segment) (void*, char*, unsigned short, unsigned short*);
     void*   blob_handle;
+    long    blob_number_segments;
     long    blob_max_segment;
-    void    (*blob_put_segment) (void*, const char*, unsigned short);
+    long    blob_total_length;
+    void    (__cdecl *blob_put_segment) (void*, char*, unsigned short);
 } *BLOB_CB;
 
 struct MockBlobContext {
@@ -35,13 +37,13 @@ short MockGetSegment(void* handle, char* buffer, unsigned short max_length, unsi
     return (ctx->read_position >= ctx->data.size()) ? 1 : 0;
 }
 
-void MockPutSegment(void* handle, const char* buffer, unsigned short length) {
+void MockPutSegment(void* handle, char* buffer, unsigned short length) {
     MockBlobContext* ctx = static_cast<MockBlobContext*>(handle);
     ctx->data.insert(ctx->data.end(), buffer, buffer + length);
 }
 
-typedef void (__cdecl *TranscodeBlobFunc)(BLOB_CB, BLOB_CB);
-typedef void (__cdecl *TranscodeBlobFuncWithAlloc)(BLOB_CB, BLOB_CB, void* (*)(size_t), void (*)(void*));
+typedef void (__stdcall *TranscodeBlobFunc)(BLOB_CB, BLOB_CB);
+typedef void (__stdcall *TranscodeBlobFuncWithAlloc)(BLOB_CB, BLOB_CB, void* (*)(size_t), void (*)(void*));
 
 struct TranscodeResult {
     std::string input_filename;
@@ -105,8 +107,8 @@ static TranscodeResult transcode_file(TranscodeBlobFunc transcode_g723, const st
     result.rate = detect_g723_rate(input_ctx.data);
 
     MockBlobContext output_ctx;
-    blob_callback in_blob_cb = { MockGetSegment, &input_ctx, 200000, nullptr };
-    blob_callback out_blob_cb = { nullptr, &output_ctx, 0, MockPutSegment };
+    blob_callback in_blob_cb = { MockGetSegment, &input_ctx, 0, 200000, static_cast<long>(input_ctx.data.size()), nullptr };
+    blob_callback out_blob_cb = { nullptr, &output_ctx, 0, 0, 0, MockPutSegment };
 
     auto start = std::chrono::high_resolution_clock::now();
     try {
@@ -219,8 +221,8 @@ static void test_edge_cases(TranscodeBlobFunc transcode_g723) {
     MockBlobContext input_ctx;
     MockBlobContext output_ctx;
 
-    blob_callback in_blob_cb = { MockGetSegment, &input_ctx, 200000, nullptr };
-    blob_callback out_blob_cb = { nullptr, &output_ctx, 0, MockPutSegment };
+    blob_callback in_blob_cb = { MockGetSegment, &input_ctx, 0, 200000, static_cast<long>(input_ctx.data.size()), nullptr };
+    blob_callback out_blob_cb = { nullptr, &output_ctx, 0, 0, 0, MockPutSegment };
 
     std::cout << "[ИНФО] Пустой BLOB..." << std::endl;
     transcode_g723(&in_blob_cb, &out_blob_cb);

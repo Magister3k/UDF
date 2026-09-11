@@ -1,0 +1,6 @@
+
+REC                             80:1
+BLOB display set to subtype 1. This BLOB: subtype = 0
+
+
+
