@@ -122,6 +122,7 @@ sosna_udf.dll: CMakeFiles/sosna_udf.dir/build.make
 sosna_udf.dll: libg723_udf_adapter.a
 sosna_udf.dll: libg723_decoder_cpp.a
 sosna_udf.dll: libg723_core.a
+sosna_udf.dll: D:/Projects/C++/UDF/sosna_udf.def
 sosna_udf.dll: CMakeFiles/sosna_udf.dir/linkLibs.rsp
 sosna_udf.dll: CMakeFiles/sosna_udf.dir/objects1.rsp
 sosna_udf.dll: CMakeFiles/sosna_udf.dir/link.txt

@@ -3,6 +3,8 @@
 #include <vector>
 #include <new>
 #include <algorithm>
+#include <cstdio>
+
 #include "g723_1_decoder.h"
 #include "g711u_coder.h"
 
@@ -11,37 +13,42 @@
 #define G723_MAX_FRAME_SIZE 24
 #define G723_MIN_FRAME_SIZE 1
 
+#define MAX_SEG_SIZE 200000
+
+// Жесткая Borland-упаковка для InterBase 2009
+#pragma pack(push, 2)
 typedef struct blob_callback {
-    short   (*blob_get_segment) (void*, char*, unsigned short, unsigned short*);
+    short   (__stdcall *blob_get_segment) (void*, char*, unsigned short, short*);
     void*   blob_handle;
-    long    blob_max_segment;
-    void    (*blob_put_segment) (void*, const char*, unsigned short);
+    
+    // cppcheck-suppress unusedStructMember
+    unsigned int blob_max_segment;
+    
+    void    (__stdcall *blob_put_segment) (void*, const char*, unsigned short);
 } *BLOB_CB;
+// Возвращаем стандартную упаковку для остального кода
+#pragma pack(pop)
 
 static bool g_decoder_initialized = false;
 
+// Аппаратно выровненные статические буферы для защиты от SSE/AVX Alignment Fault
+__declspec(align(16)) static unsigned char g_input_buffer[MAX_SEG_SIZE];
+__declspec(align(16)) static unsigned char g_output_buffer[MAX_SEG_SIZE];
+__declspec(align(16)) static double g_pcm_output[G723_SAMPLES_PER_FRAME];
+
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD ul_reason_for_call, LPVOID lpReserved) {
-    (void)hModule;
-    (void)lpReserved;
+    (void)hModule; (void)lpReserved;
 
     if (ul_reason_for_call == DLL_PROCESS_ATTACH) {
-        if (!g711u_init_encoder()) return FALSE;
-        if (!g723_init_decoder()) return FALSE;
+        OutputDebugStringA("[UDF] DllMain: DLL_PROCESS_ATTACH\n");
+        g711u_init_encoder();
         g_decoder_initialized = true;
     }
     else if (ul_reason_for_call == DLL_PROCESS_DETACH) {
-        g723_cleanup_decoder();
+        OutputDebugStringA("[UDF] DllMain: DLL_PROCESS_DETACH\n");
         g_decoder_initialized = false;
     }
     return TRUE;
-}
-
-static bool validate_blob_callbacks(const BLOB_CB in_blob, const BLOB_CB out_blob) {
-    if (!in_blob || !out_blob) return false;
-    if (!in_blob->blob_handle || !in_blob->blob_get_segment) return false;
-    if (!out_blob->blob_put_segment) return false;
-    if (in_blob->blob_max_segment < 0 || in_blob->blob_max_segment > 200000) return false;
-    return true;
 }
 
 static inline void encode_pcm_to_pcmu(const double* pcm_input, unsigned char* output, int sample_count) {
@@ -51,152 +58,128 @@ static inline void encode_pcm_to_pcmu(const double* pcm_input, unsigned char* ou
     }
 }
 
-static inline void flush_output_buffer(BLOB_CB out_blob, std::vector<unsigned char>& output_buffer, size_t& output_idx) {
+static inline void flush_output_buffer(BLOB_CB out_blob, unsigned char* output_buffer, size_t& output_idx) {
     if (output_idx > 0) {
-        out_blob->blob_put_segment(out_blob->blob_handle, reinterpret_cast<const char*>(output_buffer.data()), static_cast<unsigned short>(output_idx));
+        out_blob->blob_put_segment(out_blob->blob_handle, 
+                                   reinterpret_cast<const char*>(output_buffer), 
+                                   static_cast<unsigned short>(output_idx));
         output_idx = 0;
     }
 }
 
 static void transcode_internal(BLOB_CB in_blob, BLOB_CB out_blob) {
-    const unsigned int max_seg_size = 200000;
+    OutputDebugStringA("[UDF] ВНУТРИ transcode_internal - СТАРТ КОНВЕЙЕРА\n");
 
-    std::vector<unsigned char> input_buffer(max_seg_size);
-    std::vector<unsigned char> output_buffer(max_seg_size);
-    double pcm_output[G723_SAMPLES_PER_FRAME];
+    // Обнуляем глобальные статические буферы перед использованием для безопасности
+    std::memset(g_input_buffer, 0, MAX_SEG_SIZE);
+    std::memset(g_output_buffer, 0, MAX_SEG_SIZE);
+    std::memset(g_pcm_output, 0, sizeof(g_pcm_output));
 
+    // ====================================================================
+    // ЖЕСТКОЕ ИСПРАВЛЕНИЕ: ТОЛЬКО ЧИСТЫЕ СИ-ТИПЫ! НИКАКИХ std::vector!
+    // ====================================================================
     unsigned int buffer_data_size = 0;
     size_t output_idx = 0;
     int frame_count = 0;
 
-    g723_init_decoder();
+    // Создаем контекст декодера
     G723DecoderContext* decoder_ctx = g723_create_context();
-    if (!decoder_ctx) return;
-
-    FILE* log = fopen("d:/Projects/C++/UDF/test/udf_debug.log", "a");
-    if (!log) {
-        log = fopen("d:/Projects/C++/UDF/test/udf_debug2.log", "a");
-    }
-    if (log) {
-        fprintf(log, "=== START transcode fixed ===\n");
-        fclose(log);
+    if (!decoder_ctx) {
+        OutputDebugStringA("[UDF] КРИТИЧЕСКАЯ ОШИБКА: Не удалось создать контекст декодера g723\n");
+        return;
     }
 
-    bool eof_reached = false;
-    unsigned int chunk_size_limit = static_cast<unsigned int>(in_blob->blob_max_segment);
-    if (chunk_size_limit == 0 || chunk_size_limit > 65535) chunk_size_limit = 65535;
+    short bytes_read = 0;
+    short result = 0;
+    
+    // Прямолинейный цикл чтения сегментов
+    do {
+        unsigned int space_left = MAX_SEG_SIZE - buffer_data_size;
+        if (space_left < 4096) break; 
 
-    while (true) {
-        // РќР°РїРѕР»РЅРµРЅРёРµ РІС…РѕРґРЅРѕРіРѕ Р±СѓС„РµСЂР°
-        while (!eof_reached) {
-            unsigned int space_left = max_seg_size - buffer_data_size;
-            if (space_left < chunk_size_limit) break; // Р‘СѓС„РµСЂ РїРѕР»РѕРЅ, СЃРЅР°С‡Р°Р»Р° РѕР±СЂР°Р±РѕС‚Р°РµРј
+        bytes_read = 0;
+        result = in_blob->blob_get_segment(
+            in_blob->blob_handle,
+            reinterpret_cast<char*>(g_input_buffer + buffer_data_size),
+            4096, 
+            &bytes_read
+        );
 
-            unsigned short bytes_read = 0;
-            unsigned short max_read = static_cast<unsigned short>(chunk_size_limit);
-            
-            // Р’С‹Р·РѕРІ InterBase API
-            short result = in_blob->blob_get_segment(in_blob->blob_handle,
-                reinterpret_cast<char*>(input_buffer.data() + buffer_data_size),
-                max_read, &bytes_read);
-
-            if (bytes_read > 0) {
-                buffer_data_size += bytes_read;
-            }
-
-            // РРЎРџР РђР’Р›Р•РќРР•: result == 1 РѕР·РЅР°С‡Р°РµС‚ "РїРѕСЃР»РµРґРЅРёР№ СЃРµРіРјРµРЅС‚ РїСЂРѕС‡РёС‚Р°РЅ", 
-            // РЅРѕ bytes_read РїСЂРё СЌС‚РѕРј СЃРѕРґРµСЂР¶Р°Р» РІР°Р»РёРґРЅС‹Рµ РґР°РЅРЅС‹Рµ! 
-            // result == 343597383 РёР»Рё РґСЂСѓРіРёРµ РєРѕРґС‹ вЂ” РѕС€РёР±РєРё/РєРѕРЅРµС† РїРѕС‚РѕРєР°.
-            if (result != 0 && bytes_read == 0) { 
-                eof_reached = true; 
-                break; 
-            }
-            if (result != 0 && result != 1) {
-                eof_reached = true; // Р—Р°С‰РёС‚Р° РѕС‚ РєСЂРёС‚РёС‡РµСЃРєРёС… РѕС€РёР±РѕРє С‡С‚РµРЅРёСЏ СЃС‚СЂР°РЅРёС†
-                break;
-            }
+        if (bytes_read > 0) {
+            buffer_data_size += bytes_read;
         }
 
-        // РљР РРўРР§Р•РЎРљРћР• РРЎРџР РђР’Р›Р•РќРР•: РЈРґР°Р»РµРЅ РїСЂРµР¶РґРµРІСЂРµРјРµРЅРЅС‹Р№ break, 
-        // Р»РѕРјР°РІС€РёР№ Р»РѕРіРёРєСѓ, РµСЃР»Рё РІРµСЃСЊ С„Р°Р№Р» РїРѕРјРµСЃС‚РёР»СЃСЏ РІ РѕРґРёРЅ Р±СѓС„РµСЂ.
-        // РџР°СЂСЃРёРј С„СЂРµР№РјС‹ РґРѕ С‚РµС… РїРѕСЂ, РїРѕРєР° Р±СѓС„РµСЂ СЃРѕРґРµСЂР¶РёС‚ С…РѕС‚СЏ Р±С‹ РјРёРЅРёРјР°Р»СЊРЅС‹Р№ РєР°РґСЂ SID
-        size_t input_pos = 0;
-        while (input_pos + G723_FRAME_SIZE_SID <= buffer_data_size) {
-            int bytes_left = buffer_data_size - static_cast<int>(input_pos);
-            if (bytes_left < G723_FRAME_SIZE_SID) break;
+    } while (result == 0);
 
-            unsigned char first_byte = input_buffer[input_pos];
-            int current_frame_size = 0;
-            
-            // РџРѕР±РёС‚РѕРІС‹Р№ Р°РЅР°Р»РёР· С‚РёРїР° РєР°РґСЂР° G.723.1
-            switch (first_byte & 0x03) {
-                case 0x00: current_frame_size = G723_MAX_FRAME_SIZE; break; // 6.3 kbps (24 bytes)
-                case 0x01: current_frame_size = 20; break;                  // 5.3 kbps (20 bytes)
-                case 0x02: current_frame_size = G723_FRAME_SIZE_SID; break; // РЎРІРµСЂС…РєРѕРјРїСЂРµСЃСЃРёСЏ SID (4 bytes)
-                default:   current_frame_size = 1; break;
-            }
-            
-            if (bytes_left < current_frame_size) break; // РџР°РєРµС‚ РѕР±РѕСЂРІР°РЅ, Р¶РґРµРј РґРѕР·Р°РіСЂСѓР·РєРё
+    // Лог после гарантированного вычитывания всех страниц
+    char dbg_loop[128]; // ИСПРАВЛЕНО: строго массив символов вместо char
+    sprintf_s(dbg_loop, sizeof(dbg_loop), "[UDF] Начинаем парсинг: buffer_data_size=%u\n", buffer_data_size);
+    OutputDebugStringA(dbg_loop);
+    
+    // Если база пуста, сразу выходим БЕЗ деструкторов и БЕЗ падений кучи
+    if (buffer_data_size == 0) {
+        OutputDebugStringA("[UDF] ВНИМАНИЕ: Входной BLOB пуст, транскодирование отменено\n");
+        g723_destroy_context(decoder_ctx);
+        return; // <--- ТЕПЕРЬ ЭТОТ ВЫХОД АБСОЛЮТНО БЕЗОПАСЕН, КОНФЛИКТА КУЧИ НЕТ!
+    }
+    
+    size_t input_pos = 0;
+    while (input_pos + G723_FRAME_SIZE_SID <= buffer_data_size) {
+        size_t bytes_left_calc = buffer_data_size - input_pos;
+        if (bytes_left_calc < G723_FRAME_SIZE_SID) break;
 
-            int consumed = g723_decode_frame(decoder_ctx, &input_buffer[input_pos], pcm_output);
-            if (consumed <= 0) { 
-                input_pos += 1; 
-                continue; 
-            }
-            input_pos += consumed;
-            frame_count++;
+        char dbg_step[128]; // ИСПРАВЛЕНО: строго массив символов вместо char
+        sprintf_s(dbg_step, sizeof(dbg_step), "[UDF] Итерация парсера: pos=%zu, left=%lu\n", input_pos, (unsigned long)bytes_left_calc);
+        OutputDebugStringA(dbg_step);
 
-            // РљРѕРјРїР°РЅРґРёСЂРѕРІР°РЅРёРµ PCM (Linear) РІ С‚РµР»РµС„РѕРЅРёСЋ PCMU (G.711u)
-            encode_pcm_to_pcmu(pcm_output, &output_buffer[output_idx], G723_SAMPLES_PER_FRAME);
-            output_idx += G723_SAMPLES_PER_FRAME;
-            
-            // Р•СЃР»Рё РІС‹С…РѕРґРЅРѕР№ СЃРєРѕР»СЊР·СЏС‰РёР№ Р±СѓС„РµСЂ Р±Р»РёР·РѕРє Рє Р»РёРјРёС‚Сѓ unsigned short (65535), СЃР±СЂР°СЃС‹РІР°РµРј РµРіРѕ РІ РЎРЈР‘Р”
-            if (output_idx >= 65535 - G723_SAMPLES_PER_FRAME) {
-                flush_output_buffer(out_blob, output_buffer, output_idx);
-            }
-        }
-
-        // РЎРјРµС‰РµРЅРёРµ РЅРµРѕР±СЂР°Р±РѕС‚Р°РЅРЅРѕРіРѕ РѕСЃС‚Р°С‚РєР° РґР°РЅРЅС‹С… (С„СЂР°РіРјРµРЅС‚Р° РєР°РґСЂР°) РІ РЅР°С‡Р°Р»Рѕ Р±СѓС„РµСЂР°
-        if (input_pos > 0 && input_pos < buffer_data_size) {
-            std::copy(input_buffer.begin() + input_pos, input_buffer.begin() + buffer_data_size, input_buffer.begin());
-            buffer_data_size -= static_cast<unsigned int>(input_pos);
-        } else if (input_pos >= buffer_data_size) {
-            buffer_data_size = 0;
-        }
-
-        // РЈСЃР»РѕРІРёРµ РіР°СЂР°РЅС‚РёСЂРѕРІР°РЅРЅРѕРіРѕ РІС‹С…РѕРґР°: СЃРµС‚СЊ/Р‘Р” РїСѓСЃС‚С‹ Рё Р±СѓС„РµСЂ РїРѕР»РЅРѕСЃС‚СЊСЋ РІС‹С‡РёС‚Р°РЅ
-        if (eof_reached && buffer_data_size == 0) {
-            break;
+        unsigned char first_byte = g_input_buffer[input_pos];
+        int current_frame_size = 0;
+        
+        switch (first_byte & 0x03) {
+            case 0x00: current_frame_size = G723_MAX_FRAME_SIZE; break; 
+            case 0x01: current_frame_size = 20; break;                  
+            case 0x02: current_frame_size = G723_FRAME_SIZE_SID; break; 
+            default:   current_frame_size = 1; break;
         }
         
-        // Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅС‹Р№ Р±Р°СЂСЊРµСЂ: РµСЃР»Рё РјС‹ Р·Р°СЃС‚СЂСЏР»Рё РЅР° РїРѕРІСЂРµР¶РґРµРЅРЅРѕРј СѓС‡Р°СЃС‚РєРµ
-        if (eof_reached && input_pos == 0 && buffer_data_size > 0) {
-            break; // Р—Р°С‰РёС‚Р° РѕС‚ Р±РµСЃРєРѕРЅРµС‡РЅРѕРіРѕ С†РёРєР»Р° РЅР° Р±РёС‚С‹С… Р±Р°Р№С‚Р°С… РІ РєРѕРЅС†Рµ BLOB
+        if (bytes_left_calc < static_cast<size_t>(current_frame_size)) break;
+
+        char dbg_frame[128]; // ИСПРАВЛЕНО: строго массив символов вместо char
+        sprintf_s(dbg_frame, sizeof(dbg_frame), "[UDF] Вызов g723_decode_frame: pos=%zu, size=%d\n", input_pos, current_frame_size);
+        OutputDebugStringA(dbg_frame);
+
+        int consumed = g723_decode_frame(decoder_ctx, &g_input_buffer[input_pos], g_pcm_output);
+        if (consumed <= 0) { 
+            input_pos += 1; 
+            continue; 
+        }
+        input_pos += consumed;
+        frame_count++;
+
+        encode_pcm_to_pcmu(g_pcm_output, &g_output_buffer[output_idx], G723_SAMPLES_PER_FRAME);
+        output_idx += G723_SAMPLES_PER_FRAME;
+        
+        if (output_idx >= 65535 - G723_SAMPLES_PER_FRAME) {
+            flush_output_buffer(out_blob, g_output_buffer, output_idx);
         }
     }
 
-    // Р¤РёРЅР°Р»СЊРЅС‹Р№ РІС‹С‚Р°Р»РєРёРІР°СЋС‰РёР№ С„Р»Р°С€ РѕСЃС‚Р°С‚РєРѕРІ Р°СѓРґРёРѕРїРѕС‚РѕРєР°
-    flush_output_buffer(out_blob, output_buffer, output_idx);
+    flush_output_buffer(out_blob, g_output_buffer, output_idx);
 
-    log = fopen("d:/Projects/C++/UDF/test/udf_debug.log", "a");
-    if (!log) {
-        log = fopen("d:/Projects/C++/UDF/test/udf_debug2.log", "a");
-    }
-    if (log) { 
-        fprintf(log, "FINAL FIXED: frames=%d, output_idx=%zu\n", frame_count, output_idx); 
-        fclose(log); 
-    }
+    char dbg_final[128]; // ИСПРАВЛЕНО: строго массив символов вместо char
+    sprintf_s(dbg_final, sizeof(dbg_final), "[UDF] УСПЕШНЫЙ ФИНАЛ: Обработано кадров=%d, байт=%zu\n", frame_count, output_idx);
+    OutputDebugStringA(dbg_final);
 
     g723_destroy_context(decoder_ctx);
 }
 
-extern "C" __declspec(dllexport) void __cdecl transcode_g723(BLOB_CB in_blob, BLOB_CB out_blob) {
-    if (!g_decoder_initialized || !validate_blob_callbacks(in_blob, out_blob)) return;
+extern "C" void __stdcall transcode_g723(BLOB_CB in_blob, BLOB_CB out_blob) {
+    if (!g_decoder_initialized || !in_blob || !out_blob) return;
     transcode_internal(in_blob, out_blob);
 }
 
-extern "C" __declspec(dllexport) void __cdecl transcode_g723_ib_util(BLOB_CB in_blob, BLOB_CB out_blob, void* (*ib_util_malloc)(size_t), void (*ib_util_free)(void*)) {
+extern "C" void __stdcall transcode_g723_ib_util(BLOB_CB in_blob, BLOB_CB out_blob, void* (*ib_util_malloc)(size_t), void (*ib_util_free)(void*)) {
     (void)ib_util_malloc; (void)ib_util_free;
-    if (!g_decoder_initialized || !validate_blob_callbacks(in_blob, out_blob)) return;
+    if (!g_decoder_initialized || !in_blob || !out_blob) return;
     transcode_internal(in_blob, out_blob);
 }

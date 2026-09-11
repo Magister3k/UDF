@@ -26,9 +26,9 @@ struct Decoder::Impl {
 
     Impl(const DecoderConfig& cfg) : config(cfg) {
         use_pf = cfg.use_pf;
-        ::UsePf = use_pf ? True : False;
-        Init_Decod();
-        Init_Dec_Cng();
+        //::UsePf = use_pf ? True : False;
+        //Init_Decod();
+        //Init_Dec_Cng();
     }
 
     Result<AudioFrame> decode_frame(const BitstreamFrame& frame) {

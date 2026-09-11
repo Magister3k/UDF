@@ -6,6 +6,23 @@ UDF-библиотека для InterBase 2009 (Win32), выполняющая �
 
 ---
 
+## Схема проекта
+
+```mermaid
+graph TD
+    A[InterBase: BLOB input] -->|blob_get_segment| B(sosna_udf.cpp)
+    B -->|__cdecl вызов плоских байт| C(g723_1_decoder.cpp)
+    C -->|Вызов метода C++ класса| D(g723_decoder.cpp :: Decoder)
+    D -->|Вызов Си-функций математики| E(g723_core: DECOD2.c)
+    E -->|Массив сэмплов FLOAT| D
+    D -->|Result AudioFrame| C
+    C -->|double* output_pcm| B
+    B -->|encode_pcm_to_pcmu| F(g711u_coder.cpp)
+    F -->|blob_put_segment| G[InterBase: BLOB output PCMU]
+```
+
+---
+
 ## Файлы проекта
 
 | Файл | Назначение |

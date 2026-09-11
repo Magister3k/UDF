@@ -2087,8 +2087,8 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "D:/Projects/C++/UDF/build_msvc/CMakeFiles/CMakeScratch/TryCompile-tnw1t5"
-      binary: "D:/Projects/C++/UDF/build_msvc/CMakeFiles/CMakeScratch/TryCompile-tnw1t5"
+      source: "D:/Projects/C++/UDF/build_msvc/CMakeFiles/CMakeScratch/TryCompile-hm9pv1"
+      binary: "D:/Projects/C++/UDF/build_msvc/CMakeFiles/CMakeScratch/TryCompile-hm9pv1"
     cmakeVariables:
       CMAKE_CXX_STDLIB_MODULES_JSON: ""
       CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
@@ -2098,28 +2098,28 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: false
       stdout: |
-        Change Dir: 'D:/Projects/C++/UDF/build_msvc/CMakeFiles/CMakeScratch/TryCompile-tnw1t5'
+        Change Dir: 'D:/Projects/C++/UDF/build_msvc/CMakeFiles/CMakeScratch/TryCompile-hm9pv1'
         
-        Run Build Command(s): D:/Programs/cmake/bin/cmake.exe -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_1879a\\fast
-        	"c:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX86\\x86\\nmake.exe"  -f CMakeFiles\\cmTC_1879a.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_1879a.dir\\build
-        Building C object CMakeFiles/cmTC_1879a.dir/CMakeCCompilerABI.c.obj
-        	D:\\Programs\\cmake\\bin\\cmake.exe -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_1879a.dir\\CMakeCCompilerABI.c.obj.d --working-dir=D:\\Projects\\C++\\UDF\\build_msvc\\CMakeFiles\\CMakeScratch\\TryCompile-tnw1t5 --filter-prefix="\xcf\xf0\xe8\xec\xe5\xf7\xe0\xed\xe8\xe5: \xe2\xea\xeb\xfe\xf7\xe5\xed\xe8\xe5 \xf4\xe0\xe9\xeb\xe0:  " -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\cl.exe" @C:\\Temp\\nm5DD3.tmp
+        Run Build Command(s): D:/Programs/cmake/bin/cmake.exe -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_d44a5\\fast
+        	"c:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX86\\x86\\nmake.exe"  -f CMakeFiles\\cmTC_d44a5.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_d44a5.dir\\build
+        Building C object CMakeFiles/cmTC_d44a5.dir/CMakeCCompilerABI.c.obj
+        	D:\\Programs\\cmake\\bin\\cmake.exe -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_d44a5.dir\\CMakeCCompilerABI.c.obj.d --working-dir=D:\\Projects\\C++\\UDF\\build_msvc\\CMakeFiles\\CMakeScratch\\TryCompile-hm9pv1 --filter-prefix="\xcf\xf0\xe8\xec\xe5\xf7\xe0\xed\xe8\xe5: \xe2\xea\xeb\xfe\xf7\xe5\xed\xe8\xe5 \xf4\xe0\xe9\xeb\xe0:  " -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\cl.exe" @C:\\Temp\\nm15BC.tmp
         CMakeCCompilerABI.c
-        Linking C executable cmTC_1879a.exe
-        	D:\\Programs\\cmake\\bin\\cmake.exe -E vs_link_exe --msvc-ver=1951 --intdir=CMakeFiles\\cmTC_1879a.dir --rc="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\rc.exe" --mt="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\mt.exe" --manifests -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\link.exe" /nologo @CMakeFiles\\cmTC_1879a.dir\\objects1.rsp @C:\\Temp\\nm5F5A.tmp
+        Linking C executable cmTC_d44a5.exe
+        	D:\\Programs\\cmake\\bin\\cmake.exe -E vs_link_exe --msvc-ver=1951 --intdir=CMakeFiles\\cmTC_d44a5.dir --rc="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\rc.exe" --mt="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\mt.exe" --manifests -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\link.exe" /nologo @CMakeFiles\\cmTC_d44a5.dir\\objects1.rsp @C:\\Temp\\nm1782.tmp
         Visual Studio Incremental Link with embedded manifests
-        Create CMakeFiles\\cmTC_1879a.dir/manifest.rc
-        Create empty: CMakeFiles\\cmTC_1879a.dir/embed.manifest
+        Create CMakeFiles\\cmTC_d44a5.dir/manifest.rc
+        Create empty: CMakeFiles\\cmTC_d44a5.dir/embed.manifest
         RC Pass 1:
-        C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\rc.exe /fo CMakeFiles\\cmTC_1879a.dir/manifest.res CMakeFiles\\cmTC_1879a.dir/manifest.rc
+        C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\rc.exe /fo CMakeFiles\\cmTC_d44a5.dir/manifest.res CMakeFiles\\cmTC_d44a5.dir/manifest.rc
         LINK Pass 1:
-        C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\link.exe /nologo @CMakeFiles\\cmTC_1879a.dir\\objects1.rsp /out:cmTC_1879a.exe /implib:cmTC_1879a.lib /pdb:D:\\Projects\\C++\\UDF\\build_msvc\\CMakeFiles\\CMakeScratch\\TryCompile-tnw1t5\\cmTC_1879a.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_1879a.dir/intermediate.manifest CMakeFiles\\cmTC_1879a.dir/manifest.res
+        C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\link.exe /nologo @CMakeFiles\\cmTC_d44a5.dir\\objects1.rsp /out:cmTC_d44a5.exe /implib:cmTC_d44a5.lib /pdb:D:\\Projects\\C++\\UDF\\build_msvc\\CMakeFiles\\CMakeScratch\\TryCompile-hm9pv1\\cmTC_d44a5.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_d44a5.dir/intermediate.manifest CMakeFiles\\cmTC_d44a5.dir/manifest.res
         MT:
-        C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\mt.exe /nologo /manifest CMakeFiles\\cmTC_1879a.dir/intermediate.manifest /out:CMakeFiles\\cmTC_1879a.dir/embed.manifest /notify_update
+        C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\mt.exe /nologo /manifest CMakeFiles\\cmTC_d44a5.dir/intermediate.manifest /out:CMakeFiles\\cmTC_d44a5.dir/embed.manifest /notify_update
         RC Pass 2:
-        C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\rc.exe /fo CMakeFiles\\cmTC_1879a.dir/manifest.res CMakeFiles\\cmTC_1879a.dir/manifest.rc
+        C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\rc.exe /fo CMakeFiles\\cmTC_d44a5.dir/manifest.res CMakeFiles\\cmTC_d44a5.dir/manifest.rc
         FINAL LINK:
-        C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\link.exe /nologo @CMakeFiles\\cmTC_1879a.dir\\objects1.rsp /out:cmTC_1879a.exe /implib:cmTC_1879a.lib /pdb:D:\\Projects\\C++\\UDF\\build_msvc\\CMakeFiles\\CMakeScratch\\TryCompile-tnw1t5\\cmTC_1879a.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_1879a.dir/intermediate.manifest CMakeFiles\\cmTC_1879a.dir/manifest.res
+        C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\link.exe /nologo @CMakeFiles\\cmTC_d44a5.dir\\objects1.rsp /out:cmTC_d44a5.exe /implib:cmTC_d44a5.lib /pdb:D:\\Projects\\C++\\UDF\\build_msvc\\CMakeFiles\\CMakeScratch\\TryCompile-hm9pv1\\cmTC_d44a5.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_d44a5.dir/intermediate.manifest CMakeFiles\\cmTC_d44a5.dir/manifest.res
         
       exitCode: 0
   -
@@ -2132,7 +2132,7 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
-        link line: [	D:\\Programs\\cmake\\bin\\cmake.exe -E vs_link_exe --msvc-ver=1951 --intdir=CMakeFiles\\cmTC_1879a.dir --rc="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\rc.exe" --mt="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\mt.exe" --manifests -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\link.exe" /nologo @CMakeFiles\\cmTC_1879a.dir\\objects1.rsp @C:\\Temp\\nm5F5A.tmp] ==> linker [C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\link.exe]
+        link line: [	D:\\Programs\\cmake\\bin\\cmake.exe -E vs_link_exe --msvc-ver=1951 --intdir=CMakeFiles\\cmTC_d44a5.dir --rc="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\rc.exe" --mt="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\mt.exe" --manifests -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\link.exe" /nologo @CMakeFiles\\cmTC_d44a5.dir\\objects1.rsp @C:\\Temp\\nm1782.tmp] ==> linker [C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\link.exe]
         linker tool for 'C': C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/VC/Tools/MSVC/14.51.36231/bin/Hostx86/x86/link.exe 
         implicit libs: []
         implicit objs: []
@@ -2160,8 +2160,8 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "D:/Projects/C++/UDF/build_msvc/CMakeFiles/CMakeScratch/TryCompile-k470zz"
-      binary: "D:/Projects/C++/UDF/build_msvc/CMakeFiles/CMakeScratch/TryCompile-k470zz"
+      source: "D:/Projects/C++/UDF/build_msvc/CMakeFiles/CMakeScratch/TryCompile-xcvuoi"
+      binary: "D:/Projects/C++/UDF/build_msvc/CMakeFiles/CMakeScratch/TryCompile-xcvuoi"
     cmakeVariables:
       CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /GR /EHsc"
       CMAKE_CXX_FLAGS_DEBUG: "/Zi /Ob0 /Od /RTC1"
@@ -2172,28 +2172,28 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: false
       stdout: |
-        Change Dir: 'D:/Projects/C++/UDF/build_msvc/CMakeFiles/CMakeScratch/TryCompile-k470zz'
+        Change Dir: 'D:/Projects/C++/UDF/build_msvc/CMakeFiles/CMakeScratch/TryCompile-xcvuoi'
         
-        Run Build Command(s): D:/Programs/cmake/bin/cmake.exe -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_edb69\\fast
-        	"c:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX86\\x86\\nmake.exe"  -f CMakeFiles\\cmTC_edb69.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_edb69.dir\\build
-        Building CXX object CMakeFiles/cmTC_edb69.dir/CMakeCXXCompilerABI.cpp.obj
-        	D:\\Programs\\cmake\\bin\\cmake.exe -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_edb69.dir\\CMakeCXXCompilerABI.cpp.obj.d --working-dir=D:\\Projects\\C++\\UDF\\build_msvc\\CMakeFiles\\CMakeScratch\\TryCompile-k470zz --filter-prefix="\xcf\xf0\xe8\xec\xe5\xf7\xe0\xed\xe8\xe5: \xe2\xea\xeb\xfe\xf7\xe5\xed\xe8\xe5 \xf4\xe0\xe9\xeb\xe0:  " -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\cl.exe" @C:\\Temp\\nm64D8.tmp
+        Run Build Command(s): D:/Programs/cmake/bin/cmake.exe -E env VERBOSE=1 nmake -f Makefile /nologo cmTC_7ecd3\\fast
+        	"c:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\HostX86\\x86\\nmake.exe"  -f CMakeFiles\\cmTC_7ecd3.dir\\build.make /nologo -L                  CMakeFiles\\cmTC_7ecd3.dir\\build
+        Building CXX object CMakeFiles/cmTC_7ecd3.dir/CMakeCXXCompilerABI.cpp.obj
+        	D:\\Programs\\cmake\\bin\\cmake.exe -E cmake_cl_compile_depends --dep-file=CMakeFiles\\cmTC_7ecd3.dir\\CMakeCXXCompilerABI.cpp.obj.d --working-dir=D:\\Projects\\C++\\UDF\\build_msvc\\CMakeFiles\\CMakeScratch\\TryCompile-xcvuoi --filter-prefix="\xcf\xf0\xe8\xec\xe5\xf7\xe0\xed\xe8\xe5: \xe2\xea\xeb\xfe\xf7\xe5\xed\xe8\xe5 \xf4\xe0\xe9\xeb\xe0:  " -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\cl.exe" @C:\\Temp\\nm1C73.tmp
         CMakeCXXCompilerABI.cpp
-        Linking CXX executable cmTC_edb69.exe
-        	D:\\Programs\\cmake\\bin\\cmake.exe -E vs_link_exe --msvc-ver=1951 --intdir=CMakeFiles\\cmTC_edb69.dir --rc="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\rc.exe" --mt="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\mt.exe" --manifests -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\link.exe" /nologo @CMakeFiles\\cmTC_edb69.dir\\objects1.rsp @C:\\Temp\\nm65A4.tmp
+        Linking CXX executable cmTC_7ecd3.exe
+        	D:\\Programs\\cmake\\bin\\cmake.exe -E vs_link_exe --msvc-ver=1951 --intdir=CMakeFiles\\cmTC_7ecd3.dir --rc="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\rc.exe" --mt="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\mt.exe" --manifests -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\link.exe" /nologo @CMakeFiles\\cmTC_7ecd3.dir\\objects1.rsp @C:\\Temp\\nm1D20.tmp
         Visual Studio Incremental Link with embedded manifests
-        Create CMakeFiles\\cmTC_edb69.dir/manifest.rc
-        Create empty: CMakeFiles\\cmTC_edb69.dir/embed.manifest
+        Create CMakeFiles\\cmTC_7ecd3.dir/manifest.rc
+        Create empty: CMakeFiles\\cmTC_7ecd3.dir/embed.manifest
         RC Pass 1:
-        C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\rc.exe /fo CMakeFiles\\cmTC_edb69.dir/manifest.res CMakeFiles\\cmTC_edb69.dir/manifest.rc
+        C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\rc.exe /fo CMakeFiles\\cmTC_7ecd3.dir/manifest.res CMakeFiles\\cmTC_7ecd3.dir/manifest.rc
         LINK Pass 1:
-        C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\link.exe /nologo @CMakeFiles\\cmTC_edb69.dir\\objects1.rsp /out:cmTC_edb69.exe /implib:cmTC_edb69.lib /pdb:D:\\Projects\\C++\\UDF\\build_msvc\\CMakeFiles\\CMakeScratch\\TryCompile-k470zz\\cmTC_edb69.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_edb69.dir/intermediate.manifest CMakeFiles\\cmTC_edb69.dir/manifest.res
+        C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\link.exe /nologo @CMakeFiles\\cmTC_7ecd3.dir\\objects1.rsp /out:cmTC_7ecd3.exe /implib:cmTC_7ecd3.lib /pdb:D:\\Projects\\C++\\UDF\\build_msvc\\CMakeFiles\\CMakeScratch\\TryCompile-xcvuoi\\cmTC_7ecd3.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_7ecd3.dir/intermediate.manifest CMakeFiles\\cmTC_7ecd3.dir/manifest.res
         MT:
-        C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\mt.exe /nologo /manifest CMakeFiles\\cmTC_edb69.dir/intermediate.manifest /out:CMakeFiles\\cmTC_edb69.dir/embed.manifest /notify_update
+        C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\mt.exe /nologo /manifest CMakeFiles\\cmTC_7ecd3.dir/intermediate.manifest /out:CMakeFiles\\cmTC_7ecd3.dir/embed.manifest /notify_update
         RC Pass 2:
-        C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\rc.exe /fo CMakeFiles\\cmTC_edb69.dir/manifest.res CMakeFiles\\cmTC_edb69.dir/manifest.rc
+        C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\rc.exe /fo CMakeFiles\\cmTC_7ecd3.dir/manifest.res CMakeFiles\\cmTC_7ecd3.dir/manifest.rc
         FINAL LINK:
-        C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\link.exe /nologo @CMakeFiles\\cmTC_edb69.dir\\objects1.rsp /out:cmTC_edb69.exe /implib:cmTC_edb69.lib /pdb:D:\\Projects\\C++\\UDF\\build_msvc\\CMakeFiles\\CMakeScratch\\TryCompile-k470zz\\cmTC_edb69.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_edb69.dir/intermediate.manifest CMakeFiles\\cmTC_edb69.dir/manifest.res
+        C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\link.exe /nologo @CMakeFiles\\cmTC_7ecd3.dir\\objects1.rsp /out:cmTC_7ecd3.exe /implib:cmTC_7ecd3.lib /pdb:D:\\Projects\\C++\\UDF\\build_msvc\\CMakeFiles\\CMakeScratch\\TryCompile-xcvuoi\\cmTC_7ecd3.pdb /version:0.0 /machine:X86 /debug /INCREMENTAL /subsystem:console kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTFILE:CMakeFiles\\cmTC_7ecd3.dir/intermediate.manifest CMakeFiles\\cmTC_7ecd3.dir/manifest.res
         
       exitCode: 0
   -
@@ -2206,7 +2206,7 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|"|[0-9]+>[ 	-]*Build:[ 	0-9]+ ms[ 	]*)?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
-        link line: [	D:\\Programs\\cmake\\bin\\cmake.exe -E vs_link_exe --msvc-ver=1951 --intdir=CMakeFiles\\cmTC_edb69.dir --rc="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\rc.exe" --mt="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\mt.exe" --manifests -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\link.exe" /nologo @CMakeFiles\\cmTC_edb69.dir\\objects1.rsp @C:\\Temp\\nm65A4.tmp] ==> linker [C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\link.exe]
+        link line: [	D:\\Programs\\cmake\\bin\\cmake.exe -E vs_link_exe --msvc-ver=1951 --intdir=CMakeFiles\\cmTC_7ecd3.dir --rc="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\rc.exe" --mt="C:\\Program Files (x86)\\Windows Kits\\10\\bin\\10.0.26100.0\\x86\\mt.exe" --manifests -- "C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\link.exe" /nologo @CMakeFiles\\cmTC_7ecd3.dir\\objects1.rsp @C:\\Temp\\nm1D20.tmp] ==> linker [C:\\Program Files (x86)\\Microsoft Visual Studio\\18\\BuildTools\\VC\\Tools\\MSVC\\14.51.36231\\bin\\Hostx86\\x86\\link.exe]
         linker tool for 'CXX': C:/Program Files (x86)/Microsoft Visual Studio/18/BuildTools/VC/Tools/MSVC/14.51.36231/bin/Hostx86/x86/link.exe 
         implicit libs: []
         implicit objs: []

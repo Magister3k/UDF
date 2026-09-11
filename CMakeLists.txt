@@ -12,7 +12,7 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 # Пути к оптимизированному кодеку G.723.1
 set(G723_MOD_DIR "${CMAKE_CURRENT_SOURCE_DIR}/g723_1_mod")
 
-# Только decoder-нужные файлы (encoder, VAD, CNG-encoder, тесты — исключены)
+# Файлы, нужные для декодирования
 set(G723_MOD_C_SOURCES
     ${G723_MOD_DIR}/DECOD2.c
     ${G723_MOD_DIR}/DECCNG2.c
@@ -176,16 +176,17 @@ target_link_libraries(g723_udf_adapter PRIVATE g723_decoder_cpp)
 add_library(sosna_udf SHARED
     sosna_udf.cpp
     g711u_coder.cpp
+    sosna_udf.def
     ${RES_SOURCES}
 )
 
 target_link_libraries(sosna_udf PRIVATE g723_udf_adapter)
 target_include_directories(sosna_udf PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
-# Флаг --kill-at для удаления декораций @size в MinGW
-if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
-    target_link_options(sosna_udf PRIVATE -Wl,--kill-at)
-endif()
+# Используем .def файл для экспорта функций
+set_target_properties(sosna_udf PROPERTIES
+    COMPILE_FLAGS "/D__EXPORT_SYMBOLS"
+)
 
 # Выходное имя DLL
 set_target_properties(sosna_udf PROPERTIES
