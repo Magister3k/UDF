@@ -67,13 +67,13 @@
 },
 {
   "directory": "D:/Projects/C++/UDF/build",
-  "command": "d:\\Programs\\MinGW\\mingw32\\bin\\g++.exe -D_CRT_SECURE_NO_WARNINGS -Dsosna_udf_EXPORTS @CMakeFiles\\sosna_udf.dir\\includes_CXX.rsp -g -O0 -fno-omit-frame-pointer -std=gnu++20 /D__EXPORT_SYMBOLS -m32 -msse2 -mfpmath=sse -march=i686 -D__X86__ -D__i386__ -Wall -Wextra -Wpedantic -D__unix__ -o CMakeFiles\\sosna_udf.dir\\sosna_udf.cpp.obj -c D:\\Projects\\C++\\UDF\\sosna_udf.cpp",
+  "command": "d:\\Programs\\MinGW\\mingw32\\bin\\g++.exe -D_CRT_SECURE_NO_WARNINGS -Dsosna_udf_EXPORTS @CMakeFiles\\sosna_udf.dir\\includes_CXX.rsp -g -O0 -fno-omit-frame-pointer -std=gnu++20 -m32 -msse2 -mfpmath=sse -march=i686 -D__X86__ -D__i386__ -Wall -Wextra -Wpedantic -D__unix__ -o CMakeFiles\\sosna_udf.dir\\sosna_udf.cpp.obj -c D:\\Projects\\C++\\UDF\\sosna_udf.cpp",
   "file": "D:/Projects/C++/UDF/sosna_udf.cpp",
   "output": "CMakeFiles/sosna_udf.dir/sosna_udf.cpp.obj"
 },
 {
   "directory": "D:/Projects/C++/UDF/build",
-  "command": "d:\\Programs\\MinGW\\mingw32\\bin\\g++.exe -D_CRT_SECURE_NO_WARNINGS -Dsosna_udf_EXPORTS @CMakeFiles\\sosna_udf.dir\\includes_CXX.rsp -g -O0 -fno-omit-frame-pointer -std=gnu++20 /D__EXPORT_SYMBOLS -m32 -msse2 -mfpmath=sse -march=i686 -D__X86__ -D__i386__ -Wall -Wextra -Wpedantic -D__unix__ -o CMakeFiles\\sosna_udf.dir\\g711u_coder.cpp.obj -c D:\\Projects\\C++\\UDF\\g711u_coder.cpp",
+  "command": "d:\\Programs\\MinGW\\mingw32\\bin\\g++.exe -D_CRT_SECURE_NO_WARNINGS -Dsosna_udf_EXPORTS @CMakeFiles\\sosna_udf.dir\\includes_CXX.rsp -g -O0 -fno-omit-frame-pointer -std=gnu++20 -m32 -msse2 -mfpmath=sse -march=i686 -D__X86__ -D__i386__ -Wall -Wextra -Wpedantic -D__unix__ -o CMakeFiles\\sosna_udf.dir\\g711u_coder.cpp.obj -c D:\\Projects\\C++\\UDF\\g711u_coder.cpp",
   "file": "D:/Projects/C++/UDF/g711u_coder.cpp",
   "output": "CMakeFiles/sosna_udf.dir/g711u_coder.cpp.obj"
 },

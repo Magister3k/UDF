@@ -183,11 +183,6 @@ add_library(sosna_udf SHARED
 target_link_libraries(sosna_udf PRIVATE g723_udf_adapter)
 target_include_directories(sosna_udf PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
 
-# Используем .def файл для экспорта функций
-set_target_properties(sosna_udf PROPERTIES
-    COMPILE_FLAGS "/D__EXPORT_SYMBOLS"
-)
-
 # Выходное имя DLL
 set_target_properties(sosna_udf PROPERTIES
     OUTPUT_NAME "sosna_udf"

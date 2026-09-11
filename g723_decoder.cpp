@@ -31,14 +31,14 @@ struct Decoder::Impl {
         //Init_Dec_Cng();
     }
 
-    Result<AudioFrame> decode_frame(const BitstreamFrame& frame) {
+    Result<AudioFrame> decode_frame(std::span<const uint8_t> data, bool crc_error) {
         FLOAT data_buff[240] = {0};
         char vinp[24] = {0};
         
-        size_t copy_size = std::min(frame.data.size(), size_t(24));
-        std::copy_n(frame.data.data(), copy_size, vinp);
+        size_t copy_size = std::min(data.size(), size_t(24));
+        std::copy_n(data.data(), copy_size, vinp);
         
-        Word16 crc = frame.crc_error ? 1 : 0;
+        Word16 crc = crc_error ? 1 : 0;
         Decod(data_buff, vinp, crc);
 
         AudioFrame result;
@@ -56,16 +56,13 @@ Decoder::Decoder(Decoder&&) noexcept = default;
 Decoder& Decoder::operator=(Decoder&&) noexcept = default;
 
 Result<AudioFrame> Decoder::decode(const BitstreamFrame& frame) {
-    return pimpl_->decode_frame(frame);
+    return pimpl_->decode_frame(frame.data, frame.crc_error);
 }
 
 Result<AudioFrame> Decoder::decode(std::span<const uint8_t> data, FrameType type, CodecRate rate, bool crc) {
-    BitstreamFrame frame;
-    frame.data.assign(data.begin(), data.end());
-    frame.type = type;
-    frame.rate = rate;
-    frame.crc_error = crc;
-    return decode(frame);
+    (void)type;
+    (void)rate;
+    return pimpl_->decode_frame(data, crc);
 }
 
 void Decoder::reset() {

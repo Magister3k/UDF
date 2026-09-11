@@ -51,17 +51,18 @@ int g723_decode_frame(G723DecoderContext* ctx, const unsigned char* input, doubl
     
     if (!g_shared_decoder) return 0;
 
-    // ��������� ����� ��� C++ �������
-    g723_decoder::BitstreamFrame frame;
-    frame.data.resize(24);
     const size_t frame_size = (input[0] & 0x03) == 0x01 ? 20u :
                               (input[0] & 0x03) == 0x02 ? 4u :
                               (input[0] & 0x03) == 0x03 ? 1u : 24u;
-    std::memset(frame.data.data(), 0, frame.data.size());
-    std::memcpy(frame.data.data(), input, frame_size);
 
     // �������� ������������ �������
-    auto result = g_shared_decoder->decode(frame);
+    auto result = g_shared_decoder->decode(
+        std::span<const uint8_t>(input, frame_size),
+        (input[0] & 0x03) == 0x01 ? g723_decoder::FrameType::Active :
+        (input[0] & 0x03) == 0x02 ? g723_decoder::FrameType::SID :
+                                    g723_decoder::FrameType::Untransmitted,
+        (input[0] & 0x03) == 0x01 ? g723_decoder::CodecRate::Rate53 :
+                                    g723_decoder::CodecRate::Rate63);
     if (!result.has_value()) {
         return 0; 
     }

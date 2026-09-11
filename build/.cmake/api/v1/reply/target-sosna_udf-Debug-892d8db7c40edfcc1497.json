@@ -43,7 +43,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 235,
+				"line" : 230,
 				"parent" : 0
 			},
 			{
@@ -55,7 +55,7 @@
 			{
 				"command" : 3,
 				"file" : 0,
-				"line" : 228,
+				"line" : 223,
 				"parent" : 0
 			},
 			{
@@ -121,9 +121,6 @@
 			[
 				{
 					"fragment" : "-g -O0 -fno-omit-frame-pointer -std=gnu++20"
-				},
-				{
-					"fragment" : "/D__EXPORT_SYMBOLS"
 				},
 				{
 					"backtrace" : 8,
@@ -201,9 +198,6 @@
 		{
 			"compileCommandFragments" : 
 			[
-				{
-					"fragment" : "/D__EXPORT_SYMBOLS"
-				},
 				{
 					"backtrace" : 8,
 					"fragment" : "-D__X86__"
